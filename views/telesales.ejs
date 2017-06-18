@@ -1,0 +1,23 @@
+<% include ./partials/header.ejs %>
+
+<div class="container">
+  <div class="title">
+    <h4 >
+      Telesales
+      <small></small>
+    </h4> 
+  </div> 
+</div> 
+<div class="container">
+  <div class="btn-group pull-right">
+     <select type="button" class="btn btn-default" onchange="survey.locale = this.value; survey.render();">
+              <option value="en" selected=selected>English</option>
+              <option value="ta">Tamil</option>
+    </select>
+  </div>
+  <div class="container">
+    <div id="surveyElement"></div>
+  </div>
+</div>
+
+<% include ./partials/footer.ejs %>
