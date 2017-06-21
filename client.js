@@ -5,7 +5,11 @@ var express 		= require('express'),
 	passport		= require('passport'),
 	localStrategy	= require('passport-local'),
 	mongoose		= require('mongoose'),
-	User			= require('./models/user');
+	User			= require('./models/user'),
+	request			= require('request'),
+ 	http 			= require("http"),
+    https 			= require("https");
+
 
 var databaseUri = 'mongodb://localhost:27017/gdmp';
 
@@ -78,6 +82,30 @@ function isLoggedIn(req,res,next){
 	return res.redirect("/login");
 }
 
+var employeeProfile;
+
+app.get("/usermanagement",function(req,res){
+	var options = {		
+		uri:'https://gdp-server-manikandanmuthuv.c9users.io/employee/profile',
+	method: 'GET',
+	headers: {
+	    'Content-Type': 'application/json'
+	}
+};
+
+request('https://gdp-server-manikandanmuthuv.c9users.io/employee/profile',function(error, response, body){
+//	request('http://localhost:3001/employee/profile',function(error, response, body){
+	res.render("usermanagement",{users:JSON.parse(response.body)});
+	});
+	
+});
+
+app.post("/usermanagement",passport.authenticate("local",
+	{
+		// successRedirect:"/telesales",
+		// failureRedirect:"/login"
+	}),function(req,res){
+});
 
 var port = 3001;
 var httpServer = require('http').createServer(app);

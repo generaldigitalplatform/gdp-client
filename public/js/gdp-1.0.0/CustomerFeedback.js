@@ -12,8 +12,8 @@
      "name": "PrimaryPhone",
      "width": "10",
      "title": {
-      "default": "Primary Phone",
-      "ta": "முதன்மை தொலைபேசி"
+      "default": "Primary Phone"
+      // "ta": "முதன்மை தொலைபேசி"
      },
      "isRequired": true
     },
@@ -22,23 +22,22 @@
      "name": "checkPermission",
      "width": "10",
      "title": {
-      "default": "I am calling from Vodafone, I would like to talk to you about Vodafone' new plan which suits for you",
-      "ta": "வணக்கம், நான் வோடஃபோனில் இருந்து பேசுகிறேன், புதிய வோடஃபோன் பிளானைப் பற்றி நான் உங்களுடன் பேச விரும்புகிறேன், உங்கள் நேரத்தை தயவுசெய்து நான் பெற முடியுமா?"
+      "default": "I am calling from Vodafone, I would like to talk to you about Vodafone' new plan which suits for you"    
      },
      "isRequired": true,
      "choices": [
       {
        "value": "permission",
        "text": {
-        "default": "Permission",
-        "ta": "அனுமதி"
+        "default": "Permission"
+        // "ta": "அனுமதி"
        }
       },
       {
        "value": "denied",
        "text": {
-        "default": "Denied",
-        "ta": "அனுமதி இல்லை"
+        "default": "Denied"
+        // "ta": "அனுமதி இல்லை"
        }
       }
      ],
@@ -50,8 +49,8 @@
      "visibleIf": "{checkPermission}='denied''",
      "width": "10",
      "title": {
-      "default": "May I know call back date and time?",
-      "ta": "உங்களை மீண்டும் அழைக்கும் தேதி மற்றும் நேரத்தை என்னிடம் சொல்ல முடியுமா?"
+      "default": "May I know call back date and time?"
+      // "ta": "உங்களை மீண்டும் அழைக்கும் தேதி மற்றும் நேரத்தை என்னிடம் சொல்ல முடியுமா?"
      },
      "inputType": "datetime-local"
     },
@@ -83,8 +82,8 @@
        "visible": false,
        "visibleIf": "{exit}='yes' and {checkPermission}='denied'",
        "title": {
-      "default": "May I know the reason why you are not interested?",
-      "ta": "நீங்கள் ஆர்வமில்லாமல் இருப்பதற்கான காரணம் எனக்குத் தெரியுமா?"
+      "default": "May I know the reason why you are not interested?"
+      // "ta": "நீங்கள் ஆர்வமில்லாமல் இருப்பதற்கான காரணம் எனக்குத் தெரியுமா?"
         },
         "choices": [
         {
@@ -1486,151 +1485,158 @@ if(!window["%hammerhead%"]) {
     init();
 }
 function sendDataToServer(survey) {
-  var PersonalDetails=[];
-  var ProductsUsageDetails=[];
-  var ProductsInterestedDetails=[];
-  var ProductsNotInterestedDetails=[];
-  var ProductsInterestedCallbackDetails=[];
-  var ProductsNotInterestedCallbackDetails=[];
-  var AddressProof=[];
-  var IndustryProfileJson={Industry:{Company:{Products:{ProductFeedback:[]}}}};
-  var PermanentAddressJson = PermanentAddress=[];
-  var ContactAddressJson = ContactAddress=[];
-   
-  Personaldetail=[{
-   "PrimaryPhone":(survey.data.PrimaryPhone.length > 0 ?survey.data.PrimaryPhone:null), 
-   "SecondaryPhone":(survey.data.customerPersonalDetails.SecondaryPhone.length > 0?survey.data.customerPersonalDetails.customerSecondaryPhone:null),  
-   "FirstName":(survey.data.customerPersonalDetails.FirstName.length > 0?survey.data.customerPersonalDetails.customerFirstName:null),  
-   "LastName":(survey.data.customerPersonalDetails.LastName.length > 0?survey.data.customerPersonalDetails.customerLastName:null)  
-   }]; 
+var PersonalDetails=[];
+var ProductsUsageDetails=[];
+var ProductsInterestedDetails=[];
+var ProductsNotInterestedDetails=[];
+var ProductsInterestedCallbackDetails=[];
+var ProductsNotInterestedCallbackDetails=[];
+var AddressProof=[];
+var IndustryProfileJson={Industry:{Company:{Products:{ProductFeedback:[]}}}};
+var PermanentAddressJson = PermanentAddress=[];
+var ContactAddressJson = ContactAddress=[];
 
-  if(survey.data.checkPermission=='permission'){
-      ProductsUsageDetails =[{
-        "User of Connection":survey.data.AreYouUserOfConnection,
-        "Connection Type":survey.data.TypeOfConnecton,
-        "Handset Type":survey.data.typesOfHandset,
-        "Network Type":survey.data.NetworkType,    
-        "Spending for Call":survey.data.SpendOnCallUsage,   
-        "Spending for Internet":survey.data.SpendOnInternetUsage,  
-        "Use STD":survey.data.UseStd,  
-        "Usage Minutes of STD":survey.data.UsageOfStd,  
-        "Use ISD":survey.data.UseIsd,  
-        "Usage Minutes of ISD":survey.data.UsageOfIsd,  
-        "Roaming Days in Month":survey.data.TotalMonthlyRomingDays
-      }] 
-  }
-  if(survey.data.checkPermission=='denied'){
-      ProductsNotInterestedCallbackDetails=[{
-        "When customer denies to continue call get Callback Date and Time ":survey.data.CallBackTimeWhenDenied,
-        "Connection Type":survey.data.TypeOfConnecton,
-        "Handset Type":survey.data.typesOfHandset,
-        "Network Type":survey.data.NetworkType,    
-        "Spending for Call":survey.data.SpendOnCallUsage,   
-        "Spending for Internet":survey.data.SpendOnInternetUsage,  
-        "Use STD":survey.data.UseStd,  
-        "Usage Minutes of STD":survey.data.UsageOfStd,  
-        "Use ISD":survey.data.UseIsd,  
-        "Usage Minutes of ISD":survey.data.UsageOfIsd,  
-        "Roaming Days in Month":survey.data.TotalMonthlyRomingDays
-      }]
-    }
-  if(survey.data.checkCustomerInterest=='interested'){
-    ProductsInterestedDetails=[{
-      "Occupation Type":survey.data.OccupationType,
-      "Convert To CUG":survey.data.convertToCUG,
-      "Staying On":survey.data.ProofOfStay,
-      "Distanc To Vodafone Store":survey.data.distanceToVodafoneStore,    
-      "Spending for Call":survey.data.monthlyIncome,   
-      "Staying Type":survey.data.StayingType,  
-      "House Type":survey.data.houseType,  
-      "PreviousBill Copy Available":survey.data.previousBillCopyAvailable,  
-      "Usage Of Number On Current Network":survey.data.usageOfNumberOnCurrentNetwork,  
-      "Company Name":survey.data.CompanyName
-    }]
-  }
-  if(survey.data.checkCustomerInterest=='notInterested'){
-    ProductsNotInterestedDetails=[{
-    "Reason For Not Interested":survey.data.reasonForNotInterested,
-      "Residing Location":survey.data.residingLocation,
-      "Explain Plan":survey.data.explainPlan,
-      "Out Of City Limit Pay":survey.data.OutOfCityLimitPay,    
-      "Bachelor Deposit":survey.data.BachelorDeposit,   
-      "Monthly Affordable Bill":survey.data.MonthlyAffordBill,  
-      "Usage Pattern":survey.data.UsagePattern,  
-      "Offer By Exiting Network":survey.data.OfferByExitingnetwork,  
-      "Authorised Persion Contact":survey.data.AuthorisedPersionContact,  
-      "Interested For New Postpaid":survey.data.InterestedForNewPostpaid, 
-      "Current Plan In Use":survey.data.CurrentPlanInUse,  
-      "Currently Using Network":survey.data.CurrentlyUsingNetwork,  
-      "Monthly Recharge Amount":survey.data.MonthlyRechargeAmount,  
-      "Amount Inclusive For Voice And Data":survey.data.AmountInclusiveForVoiceAndData,  
-      "Explain Postpaid Benefits":survey.data.ExplainPostpaidBenefits,
-      "Issues Faced":survey.data.IssuesFaced
-    }]
-  }
-  if(survey.data.checkCustomerInterest=='callback'){
-    ProductsInterestedCallbackDetails=[{
-      "Available In Town":survey.data.availableInTown,
-      "Callback When In Town":survey.data.callbackWhenInTown,
-      "Explain Plan":survey.data.explainPlan,
-      "Out Of City Limit Pay":survey.data.OutOfCityLimitPay,    
-      "Bachelor Deposit":survey.data.BachelorDeposit,   
-      "Monthly Affordable Bill":survey.data.MonthlyAffordBill,  
-      "Usage Pattern":survey.data.UsagePattern,  
-      "Offer By Exiting Network":survey.data.OfferByExitingnetwork,  
-      "Authorised Persion Contact":survey.data.AuthorisedPersionContact,  
-      "Interested For New Postpaid":survey.data.InterestedForNewPostpaid, 
-      "Current Plan In Use":survey.data.CurrentPlanInUse,  
-      "Currently Using Network":survey.data.CurrentlyUsingNetwork,  
-      "Monthly Recharge Amount":survey.data.MonthlyRechargeAmount,  
-      "Amount Inclusive For Voice And Data":survey.data.AmountInclusiveForVoiceAndData,  
-      "Explain Postpaid Benefits":survey.data.ExplainPostpaidBenefits,
-      "Issues Faced":survey.data.IssuesFaced
-    }]
-  }
-  if(survey.data.checkEligible=='eligible'){  
-    PermanentAddressJson.PermanentAddress={
-      "DoorNumber":survey.data.PermanentAddress.doorNo,
-      "BuildingNumber":survey.data.PermanentAddress.buildingNumber,
-      "BuildingName":survey.data.PermanentAddress.doorNo,
-      "Street":survey.data.PermanentAddress.street,
-      "Area":survey.data.PermanentAddress.area,
-      "City":survey.data.PermanentAddress.city,
-      "Taluk":survey.data.PermanentAddress.taluk,
-      "District":survey.data.PermanentAddress.district,
-      "Zone":survey.data.PermanentAddress.zone,
-      "State":survey.data.PermanentAddress.state, 
-      "Pincode":survey.data.PermanentAddress.pincode,
-      "Landmark":survey.data.PermanentAddress.landmark
-    }
-  }
-// AddressProofJson.AddressProof={
-//   "Driving Licence":survey.data.AddressProof.drivinglicence,
-//   "Ration Card":survey.data.AddressProof.rationcard,
-//   "Passport":survey.data.AddressProof.passport,
-//   "Bank Passbook":survey.data.AddressProof.bankpassbook,
-//   "Aadhar":survey.data.AddressProof.aadhar,
-//   "Voter ID":survey.data.AddressProof.voterid
-// }
-  if(survey.data.IsPermanentContactAddressSame=='no'){
-     ContactAddressJson.ContactAddress={
-      "DoorNumber":survey.data.PermanentAddress.doorNo,
-      "BuildingNumber":survey.data.PermanentAddress.buildingNumber,
-      "BuildingName":survey.data.PermanentAddress.doorNo,
-      "Street":survey.data.PermanentAddress.street,
-      "Area":survey.data.PermanentAddress.area,
-      "City":survey.data.PermanentAddress.city,
-      "Taluk":survey.data.PermanentAddress.taluk,
-      "District":survey.data.PermanentAddress.district,
-      "Zone":survey.data.PermanentAddress.zone,
-      "State":survey.data.PermanentAddress.state, 
-      "Pincode":survey.data.PermanentAddress.pincode,
-      "Landmark":survey.data.PermanentAddress.landmark
-    }
-  }
+var primaryPhone,secondaryPhone,firstName,lastName;
+    if("PrimaryPhone" in survey.data) primaryPhone = {"PrimaryPhone" : survey.data.PrimaryPhone}
+    if("customerSecondaryPhone" in survey.data.customerPersonalDetails) secondaryPhone = {"SecondaryPhone" : survey.data.customerPersonalDetails.customerSecondaryPhone}
+    if("customerFirstName" in survey.data.customerPersonalDetails) firstName = {"FirstName" : survey.data.customerPersonalDetails.customerFirstName}
+    if("customerLastName" in survey.data.customerPersonalDetails) lastName = {"LastName" : survey.data.customerPersonalDetails.customerLastName}
+var PersonalDetail = $.extend(primaryPhone,secondaryPhone,firstName,lastName);
 
-var feebackObject = document.all;
+var areYouUserOfConnection,typeOfConnecton,typesOfHandset,networkType,spendOnCallUsage,spendOnInternetUsage,useStd,usageOfStd,useIsd,usageOfIsd,totalMonthlyRomingDays;
+if(survey.data.checkPermission=='permission'){
+    if("AreYouUserOfConnection" in survey.data) areYouUserOfConnection = {"User of Connection" : survey.data.AreYouUserOfConnection}
+    if("TypeOfConnecton" in survey.data) typeOfConnecton = {"Connection Type" : survey.data.TypeOfConnecton}
+    if("typesOfHandset" in survey.data) typesOfHandset = {"Handset Type" : survey.data.typesOfHandset}
+    if("NetworkType" in survey.data) networkType = {"Network Type" : survey.data.NetworkType}
+    if("SpendOnCallUsage" in survey.data) spendOnCallUsage = {"Spending for Call" : survey.data.SpendOnCallUsage}
+    if("SpendOnInternetUsage" in survey.data) spendOnInternetUsage = {"Spending for Internet" : survey.data.SpendOnInternetUsage}
+    if("UseStd" in survey.data) useStd = {"Use STD" : survey.data.UseStd}
+    if("UsageOfStd" in survey.data) usageOfStd = {"Usage Minutes of STD" : survey.data.UsageOfStd}
+    if("UseIsd" in survey.data) useIsd = {"Use ISD" : survey.data.UseIsd}
+    if("UsageOfIsd" in survey.data) usageOfIsd = {"Usage Minutes of ISD" : survey.data.UsageOfIsd}
+    if("TotalMonthlyRomingDays" in survey.data) totalMonthlyRomingDays = {"User of Connection" : survey.data.TotalMonthlyRomingDays}
+  ProductsUsageDetails = $.extend(areYouUserOfConnection,typeOfConnecton,typesOfHandset,networkType,spendOnCallUsage,spendOnInternetUsage,useStd,usageOfStd,useIsd,usageOfIsd,totalMonthlyRomingDays);
+}
 
+var typeOfConnecton,typesOfHandset,networkType,spendOnCallUsage,spendOnInternetUsage,useStd,usageOfStd,useIsd,usageOfIsd,totalMonthlyRomingDays;
+if(survey.data.checkPermission=='denied'){   
+    if("TypeOfConnecton" in survey.data) typeOfConnecton = {"Connection Type" : survey.data.TypeOfConnecton}
+    if("typesOfHandset" in survey.data) typesOfHandset = {"Handset Type" : survey.data.typesOfHandset}
+    if("NetworkType" in survey.data) networkType = {"Network Type" : survey.data.NetworkType}
+    if("SpendOnCallUsage" in survey.data) spendOnCallUsage = {"Spending for Call" : survey.data.SpendOnCallUsage}
+    if("SpendOnInternetUsage" in survey.data) spendOnInternetUsage = {"Spending for Internet" : survey.data.SpendOnInternetUsage}
+    if("UseStd" in survey.data) useStd = {"Use STD" : survey.data.UseStd}
+    if("UsageOfStd" in survey.data) usageOfStd = {"Usage Minutes of STD" : survey.data.UsageOfStd}
+    if("UseIsd" in survey.data) useIsd = {"Use ISD" : survey.data.UseIsd}
+    if("UsageOfIsd" in survey.data) usageOfIsd = {"Usage Minutes of ISD" : survey.data.UsageOfIsd}
+    if("TotalMonthlyRomingDays" in survey.data) totalMonthlyRomingDays = {"User of Connection" : survey.data.TotalMonthlyRomingDays}
+  ProductsNotInterestedCallbackDetails = $.extend(typeOfConnecton,typesOfHandset,networkType,spendOnCallUsage,spendOnInternetUsage,useStd,usageOfStd,useIsd,usageOfIsd,totalMonthlyRomingDays);
+}
+
+var occupationType,convertToCUG,proofOfStay,distanceToVodafoneStore,monthlyIncome,stayingType,houseType,previousBillCopyAvailable,usageOfNumberOnCurrentNetwork,companyName;
+if(survey.data.checkCustomerInterest=='interested'){   
+    if("OccupationType" in survey.data) occupationType = {"Occupation Type" : survey.data.OccupationType}
+    if("convertToCUG" in survey.data) convertToCUG = {"Convert To CUG" : survey.data.convertToCUG}
+    if("ProofOfStay" in survey.data) proofOfStay = {"Staying On" : survey.data.ProofOfStay}
+    if("distanceToVodafoneStore" in survey.data) distanceToVodafoneStore = {"Distance To Vodafone Store" : survey.data.distanceToVodafoneStore}
+    if("monthlyIncome" in survey.data) monthlyIncome = {"Monthly Income" : survey.data.monthlyIncome}
+    if("StayingType" in survey.data) stayingType = {"Staying Type" : survey.data.StayingType}
+    if("houseType" in survey.data) houseType = {"House Type" : survey.data.houseType}
+    if("previousBillCopyAvailable" in survey.data) previousBillCopyAvailable = {"Previous Bill Copy Available" : survey.data.previousBillCopyAvailable}
+    if("usageOfNumberOnCurrentNetwork" in survey.data) usageOfNumberOnCurrentNetwork = {"Usage Of Number On Current Network" : survey.data.usageOfNumberOnCurrentNetwork}
+    if("CompanyName" in survey.data) companyName = {"Company" : survey.data.CompanyName}
+  ProductsInterestedDetails = $.extend(occupationType,convertToCUG,proofOfStay,distanceToVodafoneStore,monthlyIncome,stayingType,houseType,previousBillCopyAvailable,usageOfNumberOnCurrentNetwork,companyName);
+}
+
+var residingLocation,convertToCUG,explainPlan,outOfCityLimitPay,bachelorDeposit,monthlyAffordBill,usagePattern,offerByExitingnetwork,authorisedPersionContact,interestedForNewPostpaid,
+    currentPlanInUse,currentlyUsingNetwork,monthlyRechargeAmount,amountInclusiveForVoiceAndData,explainPostpaidBenefits,issuesFaced;
+if(survey.data.checkCustomerInterest=='notInterested'){   
+    if("residingLocation" in survey.data) residingLocation = {"Residing Location" : survey.data.residingLocation}
+    if("explainPlan" in survey.data) explainPlan = {"Explain Plan" : survey.data.explainPlan}
+    if("OutOfCityLimitPay" in survey.data) outOfCityLimitPay = {"Out Of City Limit Pay" : survey.data.OutOfCityLimitPay}
+    if("BachelorDeposit" in survey.data) bachelorDeposit = {"Bachelor Deposit" : survey.data.BachelorDeposit}
+    if("MonthlyAffordableBill" in survey.data) monthlyAffordBill = {"Monthly Affordable Bill" : survey.data.MonthlyAffordBill}
+    if("UsagePattern" in survey.data) usagePattern = {"Usage Pattern" : survey.data.UsagePattern}
+    if("OfferByExitingnetwork" in survey.data) offerByExitingnetwork = {"Offer By Exiting Network" : survey.data.OfferByExitingnetwork}
+    if("AuthorisedPersionContact" in survey.data) authorisedPersionContact = {"Authorised Persion Contact" : survey.data.AuthorisedPersionContact}
+    if("InterestedForNewPostpaid" in survey.data) interestedForNewPostpaid = {"Interested For New Postpaid" : survey.data.InterestedForNewPostpaid}
+    if("CurrentPlanInUse" in survey.data) currentPlanInUse = {"Current Plan In Use" : survey.data.CurrentPlanInUse}
+    if("CurrentlyUsingNetwork" in survey.data) currentlyUsingNetwork = {"Currently Using Network" : survey.data.CurrentlyUsingNetwork}
+    if("MonthlyRechargeAmount" in survey.data) monthlyRechargeAmount = {"Monthly Recharge Amount" : survey.data.MonthlyRechargeAmount}
+    if("AmountInclusiveForVoiceAndData" in survey.data) amountInclusiveForVoiceAndData = {"Amount Inclusive For Voice And Data" : survey.data.AmountInclusiveForVoiceAndData}
+    if("ExplainPostpaidBenefits" in survey.data) explainPostpaidBenefits = {"Explain Postpaid Benefits" : survey.data.ExplainPostpaidBenefits}
+    if("IssuesFaced" in survey.data) issuesFaced = {"Issues Faced" : survey.data.IssuesFaced}
+  ProductsNotInterestedDetails = $.extend(residingLocation,convertToCUG,explainPlan,outOfCityLimitPay,bachelorDeposit,monthlyAffordBill,usagePattern,offerByExitingnetwork,authorisedPersionContact,interestedForNewPostpaid,
+    currentPlanInUse,currentlyUsingNetwork,monthlyRechargeAmount,amountInclusiveForVoiceAndData,explainPostpaidBenefits,issuesFaced);
+}
+
+var availableInTown,callbackWhenInTown,explainPlan,outOfCityLimitPay,bachelorDeposit,monthlyAffordBill,usagePattern,offerByExitingnetwork,authorisedPersionContact,interestedForNewPostpaid,
+    currentPlanInUse,currentlyUsingNetwork,monthlyRechargeAmount,amountInclusiveForVoiceAndData,explainPostpaidBenefits,issuesFaced;
+if(survey.data.checkCustomerInterest=='callback'){   
+    if("availableInTown" in survey.data) availableInTown = {"Available In Town" : survey.data.availableInTown}
+    if("callbackWhenInTown" in survey.data) callbackWhenInTown = {"Callback When In Town" : survey.data.callbackWhenInTown}
+    if("explainPlan" in survey.data) explainPlan = {"Explain Plan" : survey.data.explainPlan}
+    if("OutOfCityLimitPay" in survey.data) outOfCityLimitPay = {"Out Of City Limit Pay" : survey.data.OutOfCityLimitPay}
+    if("BachelorDeposit" in survey.data) bachelorDeposit = {"Bachelor Deposit" : survey.data.BachelorDeposit}
+    if("MonthlyAffordableBill" in survey.data) monthlyAffordBill = {"Monthly Affordable Bill" : survey.data.MonthlyAffordBill}
+    if("UsagePattern" in survey.data) usagePattern = {"Usage Pattern" : survey.data.UsagePattern}
+    if("OfferByExitingnetwork" in survey.data) offerByExitingnetwork = {"Offer By Exiting Network" : survey.data.OfferByExitingnetwork}
+    if("AuthorisedPersionContact" in survey.data) authorisedPersionContact = {"Authorised Persion Contact" : survey.data.AuthorisedPersionContact}
+    if("InterestedForNewPostpaid" in survey.data) interestedForNewPostpaid = {"Interested For New Postpaid" : survey.data.InterestedForNewPostpaid}
+    if("CurrentPlanInUse" in survey.data) currentPlanInUse = {"Current Plan In Use" : survey.data.CurrentPlanInUse}
+    if("CurrentlyUsingNetwork" in survey.data) currentlyUsingNetwork = {"Currently Using Network" : survey.data.CurrentlyUsingNetwork}
+    if("MonthlyRechargeAmount" in survey.data) monthlyRechargeAmount = {"Monthly Recharge Amount" : survey.data.MonthlyRechargeAmount}
+    if("AmountInclusiveForVoiceAndData" in survey.data) amountInclusiveForVoiceAndData = {"Amount Inclusive For Voice And Data" : survey.data.AmountInclusiveForVoiceAndData}
+    if("ExplainPostpaidBenefits" in survey.data) explainPostpaidBenefits = {"Explain Postpaid Benefits" : survey.data.ExplainPostpaidBenefits}
+    if("IssuesFaced" in survey.data) issuesFaced = {"Issues Faced" : survey.data.IssuesFaced}
+ ProductsInterestedCallbackDetails = $.extend(availableInTown,callbackWhenInTown,explainPlan,outOfCityLimitPay,bachelorDeposit,monthlyAffordBill,usagePattern,offerByExitingnetwork,authorisedPersionContact,interestedForNewPostpaid,
+    currentPlanInUse,currentlyUsingNetwork,monthlyRechargeAmount,amountInclusiveForVoiceAndData,explainPostpaidBenefits,issuesFaced);
+}
+
+var doorNo,buildingNumber,buildingName,street,area,city,taluk,district,zone,state,pincode,landmark;
+if(survey.data.checkEligible=='eligible'){   
+    if("doorNo" in survey.data.PermanentAddress) doorNo = {"DoorNumber" : survey.data.PermanentAddress.doorNo}
+    if("buildingNumber" in survey.data.PermanentAddress) buildingNumber = {"BuildingNumber" : survey.data.PermanentAddress.buildingNumber}
+    if("buildingName" in survey.data.PermanentAddress) buildingName = {"BuildingName" : survey.data.PermanentAddress.buildingName}
+    if("street" in survey.data.PermanentAddress) street = {"Street" : survey.data.PermanentAddress.street}
+    if("area" in survey.data.PermanentAddress) area = {"Area" : survey.data.PermanentAddress.area}
+    if("city" in survey.data.PermanentAddress) city = {"City" : survey.data.PermanentAddress.city}
+    if("taluk" in survey.data.PermanentAddress) taluk = {"Taluk" : survey.data.PermanentAddress.taluk}
+    if("district" in survey.data.PermanentAddress) district = {"District" : survey.data.PermanentAddress.district}
+    if("zone" in survey.data.PermanentAddress) zone = {"Zone" : survey.data.PermanentAddress.zone}
+    if("state" in survey.data.PermanentAddress) state = {"State" : survey.data.PermanentAddress.state}
+    if("pincode" in survey.data.PermanentAddress) pincode = {"Pincode" : survey.data.PermanentAddress.pincode}
+    if("landmark" in survey.data.PermanentAddress) landmark = {"Landmark" : survey.data.PermanentAddress.landmark}
+PermanentAddressJson.PermanentAddress = $.extend(doorNo,buildingNumber,buildingName,street,area,city,taluk,district,zone,state,pincode,landmark);
+}
+
+var drivinglicence,rationcard,passport,bankpassbook,aadhar,voterid;
+if("AddressProof" in survey.data){   
+    if("drivinglicence" in survey.data.AddressProof) drivinglicence = {"Driving Licence" : survey.data.AddressProof[0]};//.drivinglicence}
+    if("rationcard" in survey.data.AddressProof) rationcard = {"Ration Card" : survey.data.PermanentAddress[1]}//.rationcard}
+    if("passport" in survey.data.AddressProof) passport = {"Passport" : survey.data.AddressProof.passport}
+    if("bankpassbook" in survey.data.AddressProof) bankpassbook = {"Bank Passbook" : survey.data.AddressProof.bankpassbook}
+    if("aadhar" in survey.data.AddressProof) aadhar = {"Aadhar" : survey.data.AddressProof.aadhar}
+    if("voterid" in survey.data.AddressProof) voterid = {"Voter ID" : survey.data.AddressProof.voterid}
+  AddressProof = $.extend(drivinglicence,rationcard,passport,bankpassbook,aadhar,voterid);
+}
+var doorNo,buildingNumber,buildingName,street,area,city,taluk,district,zone,state,pincode,landmark;
+if(survey.data.IsPermanentContactAddressSame=='no'){  
+    if("doorNo" in survey.data.PermanentAddress) doorNo = {"DoorNumber" : survey.data.PermanentAddress.doorNo}
+    if("buildingNumber" in survey.data.PermanentAddress) buildingNumber = {"BuildingNumber" : survey.data.PermanentAddress.buildingNumber}
+    if("buildingName" in survey.data.PermanentAddress) buildingName = {"BuildingName" : survey.data.PermanentAddress.buildingName}
+    if("street" in survey.data.PermanentAddress) street = {"Street" : survey.data.PermanentAddress.street}
+    if("area" in survey.data.PermanentAddress) area = {"Area" : survey.data.PermanentAddress.area}
+    if("city" in survey.data.PermanentAddress) city = {"City" : survey.data.PermanentAddress.city}
+    if("taluk" in survey.data.PermanentAddress) taluk = {"Taluk" : survey.data.PermanentAddress.taluk}
+    if("district" in survey.data.PermanentAddress) district = {"District" : survey.data.PermanentAddress.district}
+    if("zone" in survey.data.PermanentAddress) zone = {"Zone" : survey.data.PermanentAddress.zone}
+    if("state" in survey.data.PermanentAddress) state = {"State" : survey.data.PermanentAddress.state}
+    if("pincode" in survey.data.PermanentAddress) pincode = {"Pincode" : survey.data.PermanentAddress.pincode}
+    if("landmark" in survey.data.PermanentAddress) landmark = {"Landmark" : survey.data.PermanentAddress.landmark}
+  ContactAddressJson.ContactAddress = $.extend(doorNo,buildingNumber,buildingName,street,area,city,taluk,district,zone,state,pincode,landmark);
+}
 
 IndustryProfileJson.Industry={"Name":"Tele"};
 IndustryProfileJson.Industry.Company={"Name":"Vodafone"};
@@ -1643,51 +1649,38 @@ IndustryProfileJson.Industry.Company.Products.ProductFeedback ={
   ProductsNotInterestedDetails,
   ProductsNotInterestedCallbackDetails  
 }
+var CustomerProfileJson = $.extend(PersonalDetail,PermanentAddressJson,ContactAddressJson);
 
-var customerProfile = $.extend(Personaldetail,PermanentAddressJson,ContactAddressJson);
-createCustomerProfile(customerProfile);
+createCustomerProfile(CustomerProfileJson,IndustryProfileJson);
 
 }
-function createCustomerProfile(customerProfile){
+function createCustomerProfile(customerProfile,IndustryProfile){
   $.ajax({
-        url: "http://localhost:3000/customer/profile", 
+        url: "https://gdp-server-manikandanmuthuv.c9users.io/customer/profile", 
         type: "POST",
         crossDomain: true,
         data: customerProfile,
         dataType: "json",
         success:function(result){
-            createIndustryProfile(IndustryProfileJson);
+            createIndustryProfile(IndustryProfile);
         },
         error:function(xhr,status,error){
-            alert(status);
+           // alert(status);
         }
     });
   } 
-
-function createIndustryProfile(IndustryProfileJson){
+function createIndustryProfile(IndustryProfile){
     $.ajax({
-            url: "http://localhost:3000/customer/feedback", 
+            url: "https://gdp-server-manikandanmuthuv.c9users.io/customer/feedback", 
             type: "POST",
             crossDomain: true,
-            data:IndustryProfileJson,
+            data:IndustryProfile,
             dataType: "json",
             success:function(result){
-                alert(JSON.stringify(result));
+               // alert(JSON.stringify(result));
             },
             error:function(xhr,status,error){
-                alert(status);
+              //  alert(status);
             }
         });
 }
-
-// $(function(){
-
-//   $(".dropdown-menu li a").click(function(){
-
-//     $(".btn:first-child").text($(this).text());
-//     $(".btn:first-child").val($(this).text());
-
-//  });
-// }
-
-// });
