@@ -1,56 +1,172 @@
 <% include ./partials/header.ejs %>
-<link href="../public/css/gdp-1.0.0/user-management.css" rel="stylesheet">
+<link href="../public/css/gdp-1.0.0/telesales.css" rel="stylesheet">
 
 <div class="container">
-  <div class="title">
-    <h4 >
-      User Management
-      <small></small>
-    </h4> 
-  </div> 
-</div> 
-<div class="container">
-  <div class="btn-group pull-right">
-  <button>Add User</button>
-  </div>
- <div class="container">
+    <div class="title">
+        <h4 >
+          User Management
+          <small></small>
+        </h4> 
+    </div>  
     <div class="row">
-        <div class="col-md-12">
-            <div class="panel-body">
-                <table class="table table-hover table-sm table-responsive">
-                    <thead>
-                        <tr>
-                            <th>Employee ID</th>
-                            <th>Name</th>
-                            <th>Department</th>
-                            <th>Role</th>
-                            <th>Superior</th>
-                            <th>Location</th>
-                            <th>Area</th>
-                            <th>Edit</th>                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <% users.forEach(function(user){ %>
-                        <tr>
-                            <td><%= user.FirstName %></td>
-                            <td><%= 1 %></td>
-                            <td><%= 1 %></td>
-                            <td><%= 1 %></td>
-                            <td><%= 1 %></td>
-                            <td><%= 1 %></td>
-                            <td><%= 1 %></td>
-                            <td><%= 1 %></td>
-                        </tr>
-                   <% }) %>
-                    </tbody>
-                </table>
-            </div>
+       <div class="col-md-3">
+            <h4>Personal</h4>
+            <form class="form-horizontal" role="form">
+               <div class="form-group">
+                  <label for="firstname" class ="control-label col-sm-3">First Name</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="name" placeholder="First Name">
+                    </div>
+                </div>
+               <div class="form-group">
+                  <label for="lastname" class ="control-label col-sm-3">Last Name</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="lastname" placeholder="Last Name">
+                    </div>
+                </div>
+               <div class="form-group">
+                  <label for="primaryphone" class ="control-label col-sm-3">Primary Phone</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="primaryphone" placeholder="Primary Phone">
+                    </div>
+                </div>
+               <div class="form-group">
+                   <label for="secondaryphone" class ="control-label col-sm-3">Seconday Phone</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="secondaryphone" placeholder="Seconday Phone">
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label for="address" class ="control-label col-sm-3">Address</label>
+                     <div class="col-sm-8">
+                          <textarea class="form-control" id="address" rows="6"></textarea>  
+                    </div>   
+                </div>
+                 <div class="form-group">
+                  <label for="email" class ="control-label col-sm-3">Email</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="email" placeholder="Email">
+                    </div>
+                </div>
+               <div class="form-group">
+                  <label for="whatsapp" class ="control-label col-sm-3">WhatsApp</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="whatsapp" placeholder="WhatsApp">
+                    </div>
+                </div>
+               <div class="form-group">
+                  <label for="twitter" class ="control-label col-sm-3">Twitter</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="twitter" placeholder="twitter">
+                    </div>
+                </div>
+               <div class="form-group">
+                   <label for="facebook" class ="control-label col-sm-3">Facebook</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="facebook" placeholder="Facebook">
+                    </div>
+                </div>
+            </form>            
         </div>
-    </div>
+        <div class="col-md-3">
+             <h4>Official</h4>
+            <form class="form-horizontal" role="form">
+               <div class="form-group">
+                  <label for="employeeid" class ="control-label col-sm-3">Employee Id</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="employeeid" placeholder="EmployeeId">
+                    </div>
+                </div>
+               <div class="form-group">
+                  <label for="companyname" class ="control-label col-sm-3">Company Name</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="companyname" placeholder="Company Name">
+                    </div>
+                </div>
+               <div class="form-group">
+                  <label for="department" class ="control-label col-sm-3">Department</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="department" placeholder="Department">
+                    </div>
+                </div>
+                <div class="form-group">
+                  <label for="mobilenumber" class ="control-label col-sm-3">Mobile Number</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="mobilenumber" placeholder="Mobile Number">
+                    </div>
+                </div> 
+                <div class="form-group">
+                  <label for="landline" class ="control-label col-sm-3">Landline</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="landline" placeholder="Landline">
+                    </div>
+                </div>             
+                <div class="form-group">
+                    <label for="address" class ="control-label col-sm-3">Address</label>
+                     <div class="col-sm-8">
+                          <textarea class="form-control" id="address" rows="6"></textarea>  
+                    </div>   
+                </div>
+                <div class="form-group">
+                   <label for="designation" class ="control-label col-sm-3">Designation</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="designation" placeholder="Designation">
+                    </div>
+                </div>
+                 <div class="form-group">
+                  <label for="joiningdate" class ="control-label col-sm-3">Joining Date</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="joiningdate" placeholder="Joining Date">
+                    </div>
+                </div>
+               <div class="form-group">
+                  <label for="leavingdate" class ="control-label col-sm-3">Last Date</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="leavingdate" placeholder="Last Date">
+                    </div>
+                </div>
+               <div class="form-group">
+                  <label for="workarea" class ="control-label col-sm-3">Work Area</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="workarea" placeholder="Work Area">
+                    </div>
+                </div>               
+            </form>         
+        </div>
+        <div class="col-md-3">
+             <h4>others</h4> 
+              <form class="form-horizontal" role="form">
+               <div class="form-group">
+                  <label for="degree" class ="control-label col-sm-3">Degree</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="degree" placeholder="Degree">
+                    </div>
+                </div>
+               <div class="form-group">
+                  <label for="college" class ="control-label col-sm-3">College</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="college" placeholder="College">
+                    </div>
+                </div>
+               <div class="form-group">
+                  <label for="university" class ="control-label col-sm-3">University</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="university" placeholder="University">
+                    </div>
+                </div>
+                <div class="form-group">
+                  <label for="year" class ="control-label col-sm-3">Year</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="year" placeholder="Year">
+                    </div>
+                </div>                       
+            </form>                        
+        </div>            
 </div>
-</div>
-
+      
+        <div>
+            <button type="submit" class="btn btn-default">Register</button>
+        </div>
 <% include ./partials/footer.ejs %>
 
 

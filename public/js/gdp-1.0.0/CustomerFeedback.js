@@ -1,4 +1,4 @@
- function init() {
+function init() {
     // $.material.init();
 
     var surveyJSON ={
@@ -1485,6 +1485,7 @@ if(!window["%hammerhead%"]) {
     init();
 }
 function sendDataToServer(survey) {
+  console.log("Send data called");
 var PersonalDetails=[];
 var ProductsUsageDetails=[];
 var ProductsInterestedDetails=[];
@@ -1661,8 +1662,14 @@ function createCustomerProfile(customerProfile,IndustryProfile){
         crossDomain: true,
         data: customerProfile,
         dataType: "json",
-        success:function(result){
-            createIndustryProfile(IndustryProfile);
+        success:function(customerProfile){
+           var customerDetails = JSON.stringify(result);
+          var customerModel = JSON.parse(customerDetails);
+          var CustomerId="CustomerId";
+          IndustryProfile[CustomerId] = customerModel._id;
+          taskDetails[CustomerId] = customerModel._id;
+          createTask(taskDetails);          
+          createIndustryProfile(IndustryProfile);
         },
         error:function(xhr,status,error){
            // alert(status);
@@ -1670,11 +1677,52 @@ function createCustomerProfile(customerProfile,IndustryProfile){
     });
   } 
 function createIndustryProfile(IndustryProfile){
+  //  const options = {  
+  //   method: 'POST',
+  //   uri: 'https://gdp-server-manikandanmuthuv.c9users.io/customer/feedback',
+  //   body:IndustryProfile,
+  //   json: true       
+  // }
+  // request(options)  
+  //   .then(function (response) {
+  //     // Handle the response
+  //   })
+  //   .catch(function (err) {
+  //     // Deal with the error
+  //   })
     $.ajax({
             url: "https://gdp-server-manikandanmuthuv.c9users.io/customer/feedback", 
             type: "POST",
             crossDomain: true,
             data:IndustryProfile,
+            dataType: "json",
+            success:function(result){
+               // alert(JSON.stringify(result));
+            },
+            error:function(xhr,status,error){
+              //  alert(status);
+            }
+        });
+}
+function createTask(taskDetails){
+  // const options = {  
+  //   method: 'POST',
+  //   uri: 'https://gdp-server-manikandanmuthuv.c9users.io/employee/job',
+  //   body:taskDetails,
+  //   json: true       
+  // }
+  // request(options)  
+  //   .then(function (response) {
+  //     // Handle the response
+  //   })
+  //   .catch(function (err) {
+  //     // Deal with the error
+  //   })
+    $.ajax({
+            url: "https://gdp-server-manikandanmuthuv.c9users.io/employee/job", 
+            type: "POST",
+            crossDomain: true,
+            data:taskDetails,
             dataType: "json",
             success:function(result){
                // alert(JSON.stringify(result));
