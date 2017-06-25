@@ -11,8 +11,8 @@ var express 		= require('express'),
     https 			= require("https");
 
 
-var databaseUri = 'mongodb://localhost:27017/gdp';
-//var databaseUri = 'mongodb://gdp-server:gdp-server@ds131512.mlab.com:31512/gdp-server?authMechanism=SCRAM-SHA-1'
+//var databaseUri = 'mongodb://localhost:27017/gdp';
+var databaseUri = 'mongodb://gdp-server:gdp-server@ds131512.mlab.com:31512/gdp-server?authMechanism=SCRAM-SHA-1'
 
 app.options('*', cors()); 
 
