@@ -109,6 +109,41 @@ app.post("/usermanagement",passport.authenticate("local",
 	}),function(req,res){
 });
 
+app.get("/employeemanagement",function(req,res){	
+	var options = {		
+		uri:'https://gdp-server-manikandanmuthuv.c9users.io/employee/profile',
+		method: 'GET',
+		headers: {
+		    'Content-Type': 'application/json'
+		}
+	};
+	request('https://gdp-server-manikandanmuthuv.c9users.io/employee/profile',function(error, response, body){
+	//	request('http://localhost:3001/employee/profile',function(error, response, body){
+		res.render("employeemanagement",{users:JSON.parse(response.body)});
+	});
+			
+});
+app.get("/usermanagement/:Id",function(req,res){	
+	var options = {		
+		uri:'https://gdp-server-manikandanmuthuv.c9users.io/employee/profile/:Id',
+		method: 'GET',
+		headers: {
+		    'Content-Type': 'application/json'
+		}
+	};
+	request(options,function(error, response, body){
+	//	request('http://localhost:3001/employee/profile',function(error, response, body){
+		res.render("usermanagement",{users:JSON.parse(response.body)});
+	});
+			
+});
+
+app.get("/addnewemployee",function(req,res){		
+		res.render("newemployee");
+});
+app.post("/addnewemployee",function(req,res){
+	console.log("add new employee");
+});
 var port = 3001;
 var httpServer = require('http').createServer(app);
 httpServer.listen(port, function() {
@@ -116,3 +151,5 @@ httpServer.listen(port, function() {
 });
 
 module.exports = app;
+
+//<td><a class="btn mini blue-stripe" href="{site_url()}admin/editFront/1">Edit</a></td>

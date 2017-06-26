@@ -4,7 +4,9 @@ body {
   background-color:#e7e7e7 !important;
   font-family: ubuntu;
 }
-
+.titlehead, h4{
+  color: #16A6E5;
+}
 .feedbackcontainer{
   border-top: 6px solid #16A6E5;
   border-left: 1px solid #d9d9d9;
@@ -121,10 +123,14 @@ font-size:2em;
 {
     margin-top: 20px;
     padding: 40px 0px 20px 0px;
-    background-color: #d9d9d9;
+    background-color: #ffffff;
     -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+.account-wall .form-control{
+  background-color: #ffffff;
+  border:1px solid #e7e7e7;
 }
 .login-title
 {
@@ -152,6 +158,67 @@ font-size:2em;
     display: block;
     margin-top: 10px;
 }
+
+.custome-icon {
+  height: 30px;
+  width: 30px;
+}
+.col-md-3{
+  width: 33%;
+  text-align: left;
+  border:1px solid #d9d9d9;
+}
+
+.col-sm-3{
+    position: relative;
+    min-height: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+
+}
+.col-sm-8{
+    position: relative;
+    min-height: 1px;
+    padding-right: 5px;
+    padding-left: 15px;
+
+}
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 100;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 1px 1px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #d9d9d9;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+select.btn.btn-default{
+  color:16A6E5;
+  border:#d9d9d9;
+}
+h5{
+  font-family:ubuntu;
+  font-size:14px;
+}
+
 table {
   table-layout: flexible;
   width: 100%;
@@ -174,7 +241,21 @@ thead th:nth-child(3) {
 thead th:nth-child(4) {
   width: 10%;
 }
+thead th:nth-child(5) {
+  width: 10%;
+}
 
+thead th:nth-child(6) {
+  width: 10%;
+}
+
+thead th:nth-child(7) {
+  width: 15%;
+}
+
+thead th:nth-child(8) {
+  width: 10%;
+}
 th, td {
   padding: 20px;
 }

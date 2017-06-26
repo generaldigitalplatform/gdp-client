@@ -1,5 +1,4 @@
 function init() {
-    // $.material.init();
 
     var surveyJSON ={
  "completedHtml": "<p><h4>Thank you for completing customer feedback</h4>",
