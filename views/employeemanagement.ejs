@@ -22,7 +22,7 @@
                 <table class="table table-hover table-sm table-responsive">
                     <thead>
                         <tr>
-                            <th>Employee ID</th>
+                            <th>EmployeeID</th>
                             <th>Name</th>
                             <th>Department</th>
                             <th>Role</th>
@@ -44,7 +44,7 @@
                     <tbody>
                     <% users.forEach(function(user){ %>
                         <tr>
-                            <td><%= user.EmployeeId %></td>
+                            <td><%= user.WorkInfo[0].EmployeeId %></td>
                             <td><%= user.FirstName %></td>
                             <td><%= user.WorkInfo[0].Department %></td>
                             <td><%= user.WorkInfo[0].Role %></td>

@@ -1,178 +1,586 @@
 <% include ./partials/header.ejs %>
-<link href="../public/css/gdp-1.0.0/telesales.css" rel="stylesheet">
+<link href="../public/css/gdp-1.0.0/user-management.css" rel="stylesheet">
 <script src="../public/js/gdp-1.0.0/employeeManagement.js"></script>
-
 <div class="container">
-    <div class="title">
-        <h4 >
+    <div class="titlehead">
+        <h4>
           User Management
           <small></small>
         </h4> 
     </div>      
     <div class="btn-group pull-right">
       <a href="/employeemanagement" class="btn btn-default">Cancel</a>
-      <a type="submit" form="newemployee" href="/addnewemployee" class="btn btn-default">Save</a>
-                  
+      <button form="newemployee" type="submit" class="btn btn-default"><a href="/addnewemployee"></a>Save</button>                  
     </div>
-
+</div>
+<div class="container">
+  <form id="newemployee" class="form-horizontal" role="form" action="/addnewemployee" method="post">
     <div class="row">
        <div class="col-md-3">
-            <h4>Personal</h4>
-            <form id="newemployee" class="form-horizontal" role="form" action="/addnewemployee" method="post">
+            <h4 class="categoryheader">Personal</h4>
+            <fieldset>
                <div class="form-group">
                   <label for="firstname" class ="control-label col-sm-3">First Name</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="name" placeholder="First Name">
+                      <input type="text" class="form-control" id="name" name="FirstName">
                     </div>
                 </div>
                <div class="form-group">
                   <label for="lastname" class ="control-label col-sm-3">Last Name</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="lastname" placeholder="Last Name">
+                      <input type="text" class="form-control" id="lastname" name="LastName">
                     </div>
                 </div>
                <div class="form-group">
                   <label for="primaryphone" class ="control-label col-sm-3">Primary Phone</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="primaryphone" placeholder="Primary Phone">
+                      <input type="text" class="form-control" id="primaryphone" name="PrimaryPhone">
                     </div>
                 </div>
                <div class="form-group">
                    <label for="secondaryphone" class ="control-label col-sm-3">Seconday Phone</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="secondaryphone" placeholder="Seconday Phone">
+                      <input type="text" class="form-control" id="secondaryphone" name="SecondayPhone">
                     </div>
                 </div>
                  <div class="form-group">
-                    <label for="address" class ="control-label col-sm-3">Address</label>
-                     <div class="col-sm-8">
-                          <textarea class="form-control" id="address" rows="6"></textarea>  
-                    </div>   
+                    <h5> <strong>Contact Address </strong></h5>                   
+                    <label for="doorno" class ="control-label col-sm-3">DoorNo</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="doorno" name="DoorNo">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="buildingno" class ="control-label col-sm-3">BuildingNo</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" id="buildingno" name="BuildingNo">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="buildingname" class ="control-label col-sm-3">BuildingName</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="buildingname" name="BuildingName">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="street" class ="control-label col-sm-3">Street</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="street" name="Street">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="city" class ="control-label col-sm-3">City</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="city" name="City">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="taluk" class ="control-label col-sm-3">Taluk</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="taluk" name="Taluk">
+                    </div> 
+                  </div>
+                  <div class="form-group">               
+                    <label for="district" class ="control-label col-sm-3">District</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="district" name="District">
+                    </div>
+                  </div>
+                <div class="form-group">
+                       <label for="pincode" class ="control-label col-sm-3">Pincode</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="pincode" name="Pincode">
+                    </div>
                 </div>
+                <div class="form-group"> 
+                       <label for="state" class ="control-label col-sm-3">State</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="state" name="State">
+                    </div>                  
+                  </div>
+                <div class="form-group">
+                    <h5> <strong>Permanent Address </strong> </h5>                   
+                    <label for="doorno" class ="control-label col-sm-3">DoorNo</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="doorno" name="DoorNo">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="buildingno" class ="control-label col-sm-3">BuildingNo</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" id="buildingno" name="BuildingNo">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="buildingname" class ="control-label col-sm-3">BuildingName</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="buildingname" name="BuildingName">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="street" class ="control-label col-sm-3">Street</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="street" name="Street">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="city" class ="control-label col-sm-3">City</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="city" name="City">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="taluk" class ="control-label col-sm-3">Taluk</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="taluk" name="Taluk">
+                    </div> 
+                  </div>
+                  <div class="form-group">               
+                    <label for="district" class ="control-label col-sm-3">District</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="district" name="District">
+                    </div>
+                  </div>
+                <div class="form-group">
+                       <label for="pincode" class ="control-label col-sm-3">Pincode</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="pincode" name="Pincode">
+                    </div>
+                </div>
+                <div class="form-group"> 
+                       <label for="state" class ="control-label col-sm-3">State</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="state" name="State">
+                    </div>                  
+                  </div>                  
                  <div class="form-group">
+                 <h5> <strong>Social Communication </strong> </h5>
                   <label for="email" class ="control-label col-sm-3">Email</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="email" placeholder="Email">
+                      <input type="text" class="form-control" id="email" name="Email">
                     </div>
                 </div>
                <div class="form-group">
                   <label for="whatsapp" class ="control-label col-sm-3">WhatsApp</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="whatsapp" placeholder="WhatsApp">
+                      <input type="text" class="form-control" id="whatsapp" name="SocialCommunication[WhatsApp]">
                     </div>
                 </div>
                <div class="form-group">
                   <label for="twitter" class ="control-label col-sm-3">Twitter</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="twitter" placeholder="twitter">
+                      <input type="text" class="form-control" id="twitter" name="SocialCommunication[twitter]">
                     </div>
                 </div>
                <div class="form-group">
                    <label for="facebook" class ="control-label col-sm-3">Facebook</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="facebook" placeholder="Facebook">
+                      <input type="text" class="form-control" id="facebook" name="SocialCommunication[Facebook]">
                     </div>
                 </div>
-            </form>            
+            </fieldset>
         </div>
         <div class="col-md-3">
-             <h4>Official</h4>
-            <form class="form-horizontal" role="form">
+             <h4 class="categoryheader">Work</h4>
                <div class="form-group">
                   <label for="employeeid" class ="control-label col-sm-3">Employee Id</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="employeeid" placeholder="EmployeeId">
+                      <input type="text" class="form-control" id="employeeid" name="WorkInfo[EmployeeId]">
                     </div>
                 </div>
                <div class="form-group">
                   <label for="companyname" class ="control-label col-sm-3">Company Name</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="companyname" placeholder="Company Name">
+                      <input type="text" class="form-control" id="companyname" name="WorkInfo[Company Name]">
                     </div>
                 </div>
                <div class="form-group">
                   <label for="department" class ="control-label col-sm-3">Department</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="department" placeholder="Department">
+                      <input type="text" class="form-control" id="department" name="WorkInfo[Department]">
+                    </div>
+                </div>
+                <div class="form-group">
+                  <label for="department" class ="control-label col-sm-3">Role</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="department" name="WorkInfo[Role]">
+                    </div>
+                </div>
+                   <div class="form-group">
+                  <label for="department" class ="control-label col-sm-3">Manager</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="department" name="WorkInfo[Manager]">
                     </div>
                 </div>
                 <div class="form-group">
                   <label for="mobilenumber" class ="control-label col-sm-3">Mobile Number</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="mobilenumber" placeholder="Mobile Number">
+                      <input type="text" class="form-control" id="mobilenumber" name="WorkInfo[MobileNumber]">
                     </div>
                 </div> 
                 <div class="form-group">
                   <label for="landline" class ="control-label col-sm-3">Landline</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="landline" placeholder="Landline">
+                      <input type="text" class="form-control" id="landline" name="WorkInfo[Landline]">
                     </div>
-                </div>             
+                </div>
+                  <div class="form-group">
+                  <label for="workarea" class ="control-label col-sm-3">WorkLocation</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="workarea" name="WorkArea[WorkLocation]">
+                    </div>
+                </div> 
+               <div class="form-group">
+                  <label for="workarea" class ="control-label col-sm-3">WorkArea</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="workarea" name="WorkArea[WorkArea]">
+                    </div>
+                </div>              
                 <div class="form-group">
                     <label for="address" class ="control-label col-sm-3">Address</label>
                      <div class="col-sm-8">
                           <textarea class="form-control" id="address" rows="6"></textarea>  
                     </div>   
-                </div>
-                <div class="form-group">
-                   <label for="designation" class ="control-label col-sm-3">Designation</label>
-                    <div class="col-sm-8">
-                      <input type="text" class="form-control" id="designation" placeholder="Designation">
-                    </div>
-                </div>
+                </div> 
                  <div class="form-group">
-                  <label for="joiningdate" class ="control-label col-sm-3">Joining Date</label>
+                  <label for="joiningdate" class ="control-label col-sm-3">JoiningDate</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="joiningdate" placeholder="Joining Date">
+                      <input type="text" class="form-control" id="joiningdate" name="WorkInfo[JoiningDate]">
                     </div>
                 </div>
                <div class="form-group">
-                  <label for="leavingdate" class ="control-label col-sm-3">Last Date</label>
+                  <label for="leavingdate" class ="control-label col-sm-3">LastDate</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="leavingdate" placeholder="Last Date">
+                      <input type="text" class="form-control" id="leavingdate" name="WorkInfo[LastDate]">
                     </div>
                 </div>
-               <div class="form-group">
-                  <label for="workarea" class ="control-label col-sm-3">Work Area</label>
-                    <div class="col-sm-8">
-                      <input type="text" class="form-control" id="workarea" placeholder="Work Area">
-                    </div>
-                </div>               
-            </form>         
+                
         </div>
         <div class="col-md-3">
-             <h4>others</h4> 
-              <form class="form-horizontal" role="form">
+             <h4 class="categoryheader">Eucation</h4>
                <div class="form-group">
                   <label for="degree" class ="control-label col-sm-3">Degree</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="degree" placeholder="Degree">
+                      <input type="text" class="form-control" id="degree" name="EducationDetails[Degree]">
                     </div>
                 </div>
                <div class="form-group">
                   <label for="college" class ="control-label col-sm-3">College</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="college" placeholder="College">
+                      <input type="text" class="form-control" id="college" name="EducationDetails[College]">
                     </div>
                 </div>
                <div class="form-group">
                   <label for="university" class ="control-label col-sm-3">University</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="university" placeholder="University">
+                      <input type="text" class="form-control" id="university" name="EducationDetails[University]">
                     </div>
                 </div>
                 <div class="form-group">
                   <label for="year" class ="control-label col-sm-3">Year</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="year" placeholder="Year">
+                      <input type="text" class="form-control" id="year" name="EducationDetails[Year]">
                     </div>
-                </div>  
-                <button class="btn btn-primary btn-block" type="submit">Save</button>                   
-            </form>                        
-        </div>            
+                </div>   
+        </div>
+      <div>
+    </form>            
 </div>      
    
 <% include ./partials/footer.ejs %>
 
 
 
+<% /*
+<div class="container">
+    <div class="page-header">
+        <h4>Employee Management</span></h4>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+            <div class="panel with-nav-tabs panel-default">
+                <div class="panel-heading">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab1default" data-toggle="tab">Personal</a></li>
+                            <li><a href="#tab2default" data-toggle="tab">Work</a></li>
+                            <li><a href="#tab3default" data-toggle="tab">Education</a></li>                            
+                        </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="tab1default">
+
+              <div class="form-group">
+                  <label for="firstname" class ="control-label col-sm-3">First Name</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="name" name="FirstName">
+                    </div>
+              </div>
+               <div class="form-group">
+                  <label for="lastname" class ="control-label col-sm-3">Last Name</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="lastname" name="LastName">
+                    </div>
+                </div>
+               <div class="form-group">
+                  <label for="primaryphone" class ="control-label col-sm-3">Primary Phone</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="primaryphone" name="PrimaryPhone">
+                    </div>
+                </div>
+               <div class="form-group">
+                   <label for="secondaryphone" class ="control-label col-sm-3">Seconday Phone</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="secondaryphone" name="SecondayPhone">
+                    </div>
+                </div>
+                 <div class="form-group">
+                <div><label> <strong>Contact Address </strong> </label></div>                
+                    <label for="doorno" class ="control-label col-sm-3">DoorNo</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="doorno" name="DoorNo">
+                    </div>
+                </div>
+                  <div class="form-group">
+                      <label for="buildingno" class ="control-label col-sm-3">BuildingNo</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" id="buildingno" name="BuildingNo">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="buildingname" class ="control-label col-sm-3">BuildingName</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="buildingname" name="BuildingName">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="street" class ="control-label col-sm-3">Street</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="street" name="Street">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="city" class ="control-label col-sm-3">City</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="city" name="City">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="taluk" class ="control-label col-sm-3">Taluk</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="taluk" name="Taluk">
+                    </div> 
+                  </div>
+                  <div class="form-group">               
+                    <label for="district" class ="control-label col-sm-3">District</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="district" name="District">
+                    </div>
+                  </div>
+                <div class="form-group">
+                       <label for="pincode" class ="control-label col-sm-3">Pincode</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="pincode" name="Pincode">
+                    </div>
+                </div>
+                <div class="form-group"> 
+                       <label for="state" class ="control-label col-sm-3">State</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="state" name="State">
+                    </div>                  
+                  </div>
+                <div class="form-group">
+                  <div><label> <strong>Permanent Address </strong> </label></div>                 
+                    <label for="doorno" class ="control-label col-sm-3">DoorNo</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="doorno" name="DoorNo">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="buildingno" class ="control-label col-sm-3">BuildingNo</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" id="buildingno" name="BuildingNo">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="buildingname" class ="control-label col-sm-3">BuildingName</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="buildingname" name="BuildingName">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="street" class ="control-label col-sm-3">Street</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="street" name="Street">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="city" class ="control-label col-sm-3">City</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="city" name="City">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="taluk" class ="control-label col-sm-3">Taluk</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="taluk" name="Taluk">
+                    </div> 
+                  </div>
+                  <div class="form-group">               
+                    <label for="district" class ="control-label col-sm-3">District</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="district" name="District">
+                    </div>
+                  </div>
+                <div class="form-group">
+                       <label for="pincode" class ="control-label col-sm-3">Pincode</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="pincode" name="Pincode">
+                    </div>
+                </div>
+                <div class="form-group"> 
+                       <label for="state" class ="control-label col-sm-3">State</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="state" name="State">
+                    </div>                  
+                  </div>                  
+                 <div class="form-group">
+                 <div><label> <strong>Social Communication </strong> </label></div>
+                  <label for="email" class ="control-label col-sm-3">Email</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="email" name="Email">
+                    </div>
+                </div>
+               <div class="form-group">
+                  <label for="whatsapp" class ="control-label col-sm-3">WhatsApp</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="whatsapp" name="SocialCommunication[WhatsApp]">
+                    </div>
+                </div>
+               <div class="form-group">
+                  <label for="twitter" class ="control-label col-sm-3">Twitter</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="twitter" name="SocialCommunication[twitter]">
+                    </div>
+                </div>
+               <div class="form-group">
+                   <label for="facebook" class ="control-label col-sm-3">Facebook</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="facebook" name="SocialCommunication[Facebook]">
+                    </div>
+                </div>
+
+            </div>
+                        <div class="tab-pane fade" id="tab2default">
+
+
+                          <div class="form-group">
+                  <label for="employeeid" class ="control-label col-sm-3">Employee Id</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="employeeid" name="WorkInfo[EmployeeId]">
+                    </div>
+                </div>
+               <div class="form-group">
+                  <label for="companyname" class ="control-label col-sm-3">Company Name</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="companyname" name="WorkInfo[Company Name]">
+                    </div>
+                </div>
+               <div class="form-group">
+                  <label for="department" class ="control-label col-sm-3">Department</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="department" name="WorkInfo[Department]">
+                    </div>
+                </div>
+                <div class="form-group">
+                  <label for="department" class ="control-label col-sm-3">Role</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="department" name="WorkInfo[Role]">
+                    </div>
+                </div>
+                   <div class="form-group">
+                  <label for="department" class ="control-label col-sm-3">Manager</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="department" name="WorkInfo[Manager]">
+                    </div>
+                </div>
+                <div class="form-group">
+                  <label for="mobilenumber" class ="control-label col-sm-3">Mobile Number</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="mobilenumber" name="WorkInfo[MobileNumber]">
+                    </div>
+                </div> 
+                <div class="form-group">
+                  <label for="landline" class ="control-label col-sm-3">Landline</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="landline" name="WorkInfo[Landline]">
+                    </div>
+                </div>
+                  <div class="form-group">
+                  <label for="workarea" class ="control-label col-sm-3">WorkLocation</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="workarea" name="WorkArea[WorkLocation]">
+                    </div>
+                </div> 
+               <div class="form-group">
+                  <label for="workarea" class ="control-label col-sm-3">WorkArea</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="workarea" name="WorkArea[WorkArea]">
+                    </div>
+                </div>              
+                <div class="form-group">
+                    <label for="address" class ="control-label col-sm-3">Address</label>
+                     <div class="col-sm-8">
+                          <textarea class="form-control" id="address" rows="6"></textarea>  
+                    </div>   
+                </div> 
+                 <div class="form-group">
+                  <label for="joiningdate" class ="control-label col-sm-3">JoiningDate</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="joiningdate" name="WorkInfo[JoiningDate]">
+                    </div>
+                </div>
+               <div class="form-group">
+                  <label for="leavingdate" class ="control-label col-sm-3">LastDate</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="leavingdate" name="WorkInfo[LastDate]">
+                    </div>
+                </div>
+
+
+                        </div>
+                        <div class="tab-pane fade" id="tab3default">
+
+                            <div class="form-group">
+                  <label for="degree" class ="control-label col-sm-3">Degree</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="degree" name="EducationDetails[Degree]">
+                    </div>
+                </div>
+               <div class="form-group">
+                  <label for="college" class ="control-label col-sm-3">College</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="college" name="EducationDetails[College]">
+                    </div>
+                </div>
+               <div class="form-group">
+                  <label for="university" class ="control-label col-sm-3">University</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="university" name="EducationDetails[University]">
+                    </div>
+                </div>
+                <div class="form-group">
+                  <label for="year" class ="control-label col-sm-3">Year</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="year" name="EducationDetails[Year]">
+                    </div>
+                </div>   
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+</div>
+*/ %>
