@@ -12,7 +12,8 @@ var express = require('express');
 var router = express.Router(),
 	signinRoutes = express.Router(),
 	customerfeedbackRoutes = express.Router(),
-	employeeRoutes = express.Router();
+	employeeRoutes = express.Router(),
+	taskRoutes = express.Router();
 
 
 
@@ -99,13 +100,13 @@ employeeRoutes.post("/usermanagement",passport.authenticate("local",
 
 employeeRoutes.get("/employeemanagement",function(req,res){	
 	var options = {		
-		uri:'https://gdp-server-manikandanmuthuv.c9users.io/employee/profile',
+		uri:'https://gdp-server-manikandanmuthuv.c9users.io/api/employee/profile',
 		method: 'GET',
 		headers: {
 		    'Content-Type': 'application/json'
 		}
 	};
-	request('https://gdp-server-manikandanmuthuv.c9users.io/employee/profile',function(error, response, body){
+	request('https://gdp-server-manikandanmuthuv.c9users.io/api/employee/profile',function(error, response, body){
 	//	request('http://localhost:3001/employee/profile',function(error, response, body){
 		res.render("employeemanagement",{users:JSON.parse(response.body)});
 	});
@@ -113,15 +114,64 @@ employeeRoutes.get("/employeemanagement",function(req,res){
 });
 employeeRoutes.get("/usermanagement/:Id",function(req,res){	
 	var options = {		
-		uri:'https://gdp-server-manikandanmuthuv.c9users.io/employee/profile/:Id',
+		uri:'https://gdp-server-manikandanmuthuv.c9users.io/api/employee/profile/:Id',
 		method: 'GET',
 		headers: {
 		    'Content-Type': 'application/json'
 		}
 	};
 	request(options,function(error, response, body){
-	//	request('http://localhost:3001/employee/profile',function(error, response, body){
 		res.render("usermanagement",{users:JSON.parse(response.body)});
+	});
+			
+});
+
+router.use('/',taskRoutes);
+
+taskRoutes.get("/taskmanagement",function(req,res){	
+	var taskreq = {		
+		uri:'https://gdp-server-manikandanmuthuv.c9users.io/api/employee/job',
+		method: 'GET',
+		headers: {
+		    'Content-Type': 'application/json'
+		}
+	};
+
+	request(taskreq,function(error, response, body){
+
+		 this.length = 4;
+         this.timestamp = +new Date;
+         
+         var getRandomInt = function( min, max ) {
+            return Math.floor( Math.random() * ( max - min + 1 ) ) + min;
+         }
+         
+         var ts = this.timestamp.toString();
+         var parts = ts.split( "" ).reverse();
+         var id = "";
+         
+         for( var i = 0; i < this.length; ++i ) {
+            var index = getRandomInt( 0, parts.length - 1 );
+            id += parts[index];  
+         }
+         
+         return id;
+
+
+		//res.render("taskmanagement",{tasks:JSON.parse(response.body)});
+	});
+			
+});
+taskRoutes.get("/taskmanagement/:Id",function(req,res){	
+	var options = {		
+		uri:'https://gdp-server-manikandanmuthuv.c9users.io/api/employee/profile/:Id',
+		method: 'GET',
+		headers: {
+		    'Content-Type': 'application/json'
+		}
+	};
+	request(options,function(error, response, body){
+		res.render("taskmanagement",{users:JSON.parse(response.body)});
 	});
 			
 });
@@ -134,15 +184,16 @@ employeeRoutes.post("/addnewemployee",function(req,res){
 	headers:{
 		    'Content-Type': 'application/json'
 		},	
-		uri:'https://gdp-server-manikandanmuthuv.c9users.io/employee/profile',
+		uri:'https://gdp-server-manikandanmuthuv.c9users.io/api/employee/profile',
 		method: 'POST',
 		form:req.body		
 	};
 	request(options,function(error, response, body){
-	//	request('http://localhost:3001/employee/profile',function(error, response, body){
 		res.render("newemployee");
 	});
 });
+
+
 
 
 app.use('/',router);

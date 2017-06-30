@@ -1,1415 +1,1415 @@
 function init() {
 
     var surveyJSON ={
- "completedHtml": "<p><h4>Thank you for completing customer feedback</h4>",
- "pages": [
+ completedHtml: "<p><h4>Thank you for completing customer feedback</h4>",
+ pages: [
   {
-   "elements": [
+   elements: [
     {
-     "type": "text",
-     "isRequired": true,
-     "name": "PrimaryPhone",
-     "title": "Primary Phone",
-     "width": "10"
+     type: "text",
+     name: "PrimaryPhone",
+     width: "10",
+     title: "Primary Phone",
+     isRequired: true
     },
     {
-     "type": "radiogroup",
-     "choices": [
+     type: "radiogroup",
+     choices: [
       {
-       "value": "permission",
-       "text": "Permission"
+       value: "permission",
+       text: "Permission"
       },
       {
-       "value": "denied",
-       "text": "Denied"
+       value: "denied",
+       text: "Denied"
       }
      ],
-     "colCount": 0,
-     "isRequired": true,
-     "name": "checkPermission",
-     "title": "I am calling from Vodafone, I would like to talk to you about Vodafone' new plan which suits for you",
-     "width": "10"
+     colCount: 0,
+     isRequired: true,
+     name: "checkPermission",
+     title: "I am calling from Vodafone, I would like to talk to you about Vodafone' new plan which suits for you",
+     width: "10"
     },
     {
-     "type": "text",
-     "inputType": "datetime-local",
-     "name": "deniedCallbackDateTime",
-     "title": "May I know call back date and time?",
-     "visible": false,
-     "visibleIf": "{checkPermission}='denied''",
-     "width": "10"
+     type: "text",
+     name: "deniedCallbackDateTime",
+     visible: false,
+     visibleIf: "{checkPermission}='denied''",
+     width: "10",
+     title: "May I know call back date and time?",
+     inputType: "datetime-local"
     },
     {
-     "type": "radiogroup",
-     "choices": [
+     type: "radiogroup",
+     choices: [
       {
-       "value": "yes",
-       "text": "YES"
+       value: "yes",
+       text: "YES"
       },
       {
-       "value": "no",
-       "text": "NO"
+       value: "no",
+       text: "NO"
       }
      ],
-     "colCount": 0,
-     "name": "exit",
-     "title": "EXIT CALL?",
-     "visible": false,
-     "visibleIf": "{checkPermission}='denied'",
-     "width": "10"
+     colCount: 0,
+     name: "exit",
+     title: "EXIT CALL?",
+     visible: false,
+     visibleIf: "{checkPermission}='denied'",
+     width: "10"
     },
     {
-     "type": "panel",
-     "elements": [
+     type: "panel",
+     name: "NotInterestedReasons",
+     elements: [
       {
-       "type": "radiogroup",
-       "choices": [
+       type: "radiogroup",
+       choices: [
         {
-         "value": "happyWithOtherNetwork",
-         "text": {
-          "default": "Happy with other Network",
-          "ta": "பிற நெட்வொர்க் கவரேஜ் மூலம் மகிழ்ச்சி"
+         value: "happyWithOtherNetwork",
+         text: {
+          default: "Happy with other Network",
+          ta: "பிற நெட்வொர்க் கவரேஜ் மூலம் மகிழ்ச்சி"
          }
         },
         {
-         "value": "notHappyWithSuggestPlan",
-         "text": "Not happy with the suggested plan"
+         value: "notHappyWithSuggestPlan",
+         text: "Not happy with the suggested plan"
         },
         {
-         "value": "notReadyToPayDeposit",
-         "text": "Not ready to pay the Deposit"
+         value: "notReadyToPayDeposit",
+         text: "Not ready to pay the Deposit"
         },
         {
-         "value": "abilityToMakePayment",
-         "text": "Ability to make payment"
+         value: "abilityToMakePayment",
+         text: "Ability to make payment"
         },
         {
-         "value": "happyWithCurrentNetworkRetentionPlan",
-         "text": "Happy with the current networks's retention plan"
+         value: "happyWithCurrentNetworkRetentionPlan",
+         text: "Happy with the current networks's retention plan"
         },
         {
-         "value": "companyLinkedConnection",
-         "text": "Company linked connections"
+         value: "companyLinkedConnection",
+         text: "Company linked connections"
         },
         {
-         "value": "happyWithExistingNetworkOffer",
-         "text": "Happy with the existing network's offer"
+         value: "happyWithExistingNetworkOffer",
+         text: "Happy with the existing network's offer"
         },
         {
-         "value": "happyWithPrepaid",
-         "text": "Happy with prepaid"
+         value: "happyWithPrepaid",
+         text: "Happy with prepaid"
         },
         {
-         "value": "previousBadExpInPostpaid",
-         "text": "Previous bad experience in Postpaid"
+         value: "previousBadExpInPostpaid",
+         text: "Previous bad experience in Postpaid"
         },
         {
-         "value": "others",
-         "text": "Others"
+         value: "others",
+         text: "Others"
         }
        ],
-       "colCount": 2,
-       "name": "reasonForNotInterested",
-       "title": "May I know the reason why you are not interested?",
-       "visible": false,
-       "visibleIf": "{exit}='yes' and {checkPermission}='denied'"
+       colCount: 2,
+       name: "reasonForNotInterested",
+       title: "May I know the reason why you are not interested?",
+       visible: false,
+       visibleIf: "{exit}='yes' and {checkPermission}='denied'"
       },
       {
-       "type": "multipletext",
-       "colCount": 2,
-       "items": [
+       type: "multipletext",
+       colCount: 2,
+       items: [
         {
-         "name": "location",
-         "title": "Location"
+         name: "location",
+         title: "Location"
         },
         {
-         "name": "area",
-         "title": "Area"
+         name: "area",
+         title: "Area"
         },
         {
-         "name": "city",
-         "title": "City"
+         name: "city",
+         title: "City"
         },
         {
-         "name": "zone",
-         "title": "Zone"
+         name: "zone",
+         title: "Zone"
         },
         {
-         "name": "state",
-         "title": "State"
+         name: "state",
+         title: "State"
         }
        ],
-       "name": "residingLocationAndArea",
-       "title": "Can you tell me the location & area in which you are residing now ?",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='happyWithOtherNetwork'",
-       "width": "10"
+       name: "residingLocationAndArea",
+       title: "Can you tell me the location & area in which you are residing now ?",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='happyWithOtherNetwork'",
+       width: "10"
       },
       {
-       "type": "radiogroup",
-       "choices": [
+       type: "radiogroup",
+       choices: [
         {
-         "value": "2g",
-         "text": "2G"
+         value: "2g",
+         text: "2G"
         },
         {
-         "value": "3g",
-         "text": "3G"
+         value: "3g",
+         text: "3G"
         },
         {
-         "value": "4g",
-         "text": "4G"
+         value: "4g",
+         text: "4G"
         }
        ],
-       "colCount": 0,
-       "name": "whatNetworkUsing",
-       "title": "May I know whether you are using 2G/3G/4G?",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='happyWithOtherNetwork'",
-       "width": "10"
+       colCount: 0,
+       name: "whatNetworkUsing",
+       title: "May I know whether you are using 2G/3G/4G?",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='happyWithOtherNetwork'",
+       width: "10"
       },
       {
-       "type": "text",
-       "name": "suggestedPlan",
-       "title": "Based on your usage we have suggested this plan, \nif you are not satisfied with this can we suggest some other plan?\nif yes need to explain some other plan",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='notHappyWithSuggestPlan'",
-       "width": "10"
+       type: "text",
+       name: "suggestedPlan",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='notHappyWithSuggestPlan'",
+       width: "10",
+       title: "Based on your usage we have suggested this plan, \nif you are not satisfied with this can we suggest some other plan?\nif yes need to explain some other plan"
       },
       {
-       "type": "text",
-       "name": "outOfCityLimit",
-       "title": "OCL - As your area is Out of City Limit, so Rs.______ is mandate ",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='notReadyToPayDeposit'",
-       "width": "10"
+       type: "text",
+       name: "outOfCityLimit",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='notReadyToPayDeposit'",
+       width: "10",
+       title: "OCL - As your area is Out of City Limit, so Rs.______ is mandate "
       },
       {
-       "type": "text",
-       "name": "bachelorDeposit",
-       "title": "If Bachelor - Bachelor deposit is mandate, by paying the deposit, the credit limit will be increased",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='notReadyToPayDeposit'",
-       "width": "10"
+       type: "text",
+       name: "bachelorDeposit",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='notReadyToPayDeposit'",
+       width: "10",
+       title: "If Bachelor - Bachelor deposit is mandate, by paying the deposit, the credit limit will be increased"
       },
       {
-       "type": "text",
-       "name": "affordableMonthlyBill",
-       "title": "May I know your affordability for your monthly bill?",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='abilityToMakePayment'",
-       "width": "10"
+       type: "text",
+       name: "affordableMonthlyBill",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='abilityToMakePayment'",
+       width: "10",
+       title: "May I know your affordability for your monthly bill?"
       },
       {
-       "type": "text",
-       "name": "usagePattern",
-       "title": "May I know your usage pattern - Voice, SMS & Data?, suggest the plan based on the usage",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='abilityToMakePayment'",
-       "width": "10"
+       type: "text",
+       name: "usagePattern",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='abilityToMakePayment'",
+       width: "10",
+       title: "May I know your usage pattern - Voice, SMS & Data?, suggest the plan based on the usage"
       },
       {
-       "type": "text",
-       "name": "offerbyExistingNetwork",
-       "title": "What was the offer provided by existing network?",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='happyWithCurrentNetworkRetentionPlan'",
-       "width": "10"
+       type: "text",
+       name: "offerbyExistingNetwork",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='happyWithCurrentNetworkRetentionPlan'",
+       width: "10",
+       title: "What was the offer provided by existing network?"
       },
       {
-       "type": "text",
-       "name": "authPersonContactNumber",
-       "title": "Can I have your authorised Person's contact number to discuss about the Vodafone postpaid offers",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='companyLinkedConnection'",
-       "width": "10"
+       type: "text",
+       name: "authPersonContactNumber",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='companyLinkedConnection'",
+       width: "10",
+       title: "Can I have your authorised Person's contact number to discuss about the Vodafone postpaid offers"
       },
       {
-       "type": "text",
-       "name": "interestedToTakeNewConnection",
-       "title": "Are you interested to take new postpaid connnection for your personal purpose?",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='happyWithCurrentNetworkRetentionPlan'",
-       "width": "10"
+       type: "text",
+       name: "interestedToTakeNewConnection",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='happyWithCurrentNetworkRetentionPlan'",
+       width: "10",
+       title: "Are you interested to take new postpaid connnection for your personal purpose?"
       },
       {
-       "type": "multipletext",
-       "colCount": 2,
-       "items": [
+       type: "multipletext",
+       colCount: 2,
+       items: [
         {
-         "name": "currentPlan",
-         "title": "Current Plan"
+         name: "currentPlan",
+         title: "Current Plan"
         },
         {
-         "name": "currentNetwork",
-         "title": "Current Network"
+         name: "currentNetwork",
+         title: "Current Network"
         }
        ],
-       "name": "currentPlanAndNetwork",
-       "title": "What is the current plan your are using and its network?",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='happyWithExistingNetworkOffer'",
-       "width": "10"
+       name: "currentPlanAndNetwork",
+       title: "What is the current plan your are using and its network?",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='happyWithExistingNetworkOffer'",
+       width: "10"
       },
       {
-       "type": "text",
-       "name": "rechargePerMonth",
-       "title": "How much you are spending per month for your recharge",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='happyWithPrepaid'",
-       "width": "10"
+       type: "text",
+       name: "rechargePerMonth",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='happyWithPrepaid'",
+       width: "10",
+       title: "How much you are spending per month for your recharge"
       },
       {
-       "type": "radiogroup",
-       "choices": [
+       type: "radiogroup",
+       choices: [
         {
-         "value": "yesq",
-         "text": "YES"
+         value: "yesq",
+         text: "YES"
         },
         {
-         "value": "no",
-         "text": "NO"
+         value: "no",
+         text: "NO"
         }
        ],
-       "colCount": 0,
-       "name": "amountIncludeVoiceAndData",
-       "title": "Is the amount inclusive of Voice & Data",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='happyWithPrepaid'",
-       "width": "10"
+       colCount: 0,
+       name: "amountIncludeVoiceAndData",
+       title: "Is the amount inclusive of Voice & Data",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='happyWithPrepaid'",
+       width: "10"
       },
       {
-       "type": "text",
-       "name": "postpaidBenefits",
-       "title": "If you have taken the postpaid connection you need not worry about the frequent recharge (need to explain the benefits of postpaid based on the profile/profession)",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='happyWithPrepaid'",
-       "width": "10"
+       type: "text",
+       name: "postpaidBenefits",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='happyWithPrepaid'",
+       width: "10",
+       title: "If you have taken the postpaid connection you need not worry about the frequent recharge (need to explain the benefits of postpaid based on the profile/profession)"
       },
       {
-       "type": "text",
-       "name": "IssueFacedWithPostpaid",
-       "title": "May I know what was the issue you have faced?",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='previousBadExpInPostpaid'",
-       "width": "10"
+       type: "text",
+       name: "IssueFacedWithPostpaid",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='previousBadExpInPostpaid'",
+       width: "10",
+       title: "May I know what was the issue you have faced?"
       },
       {
-       "type": "text",
-       "name": "others",
-       "title": "Others",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='others'",
-       "width": "10"
+       type: "text",
+       name: "others",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='others'",
+       width: "10",
+       title: "Others"
       }
      ],
-     "name": "NotInterestedReasons",
-     "title": "Reason for Not Interested",
-     "visible": false,
-     "visibleIf": "{exit}='yes'"
+     visible: false,
+     visibleIf: "{exit}='yes'",
+     title: "Reason for Not Interested"
     }
    ],
-   "name": "Greetings",
-   "navigationButtonsVisibility": "show",
-   "title": "Greetings!!!"
+   name: "Greetings",
+   navigationButtonsVisibility: "show",
+   title: "Greetings!!!"
   },
   {
-   "elements": [
+   elements: [
     {
-     "type": "multipletext",
-     "itemSize": 20,
-     "items": [
+     type: "multipletext",
+     itemSize: 20,
+     items: [
       {
-       "name": "customerFirstName",
-       "title": "First Name"
+       name: "customerFirstName",
+       title: "First Name"
       },
       {
-       "name": "customerLastName",
-       "title": "Last Name"
+       name: "customerLastName",
+       title: "Last Name"
       },
       {
-       "name": "customerSecondaryPhone",
-       "title": "Secondary Phone"
+       name: "customerSecondaryPhone",
+       title: "Secondary Phone"
       }
      ],
-     "name": "customerPersonalDetails",
-     "title": "Sir/Madam, May I know your Name and Secondary Phone number?",
-     "width": "10"
+     name: "customerPersonalDetails",
+     title: "Sir/Madam, May I know your Name and Secondary Phone number?",
+     width: "10"
     },
     {
-     "type": "radiogroup",
-     "choices": [
+     type: "radiogroup",
+     choices: [
       {
-       "value": "yes",
-       "text": "Yes"
+       value: "yes",
+       text: "Yes"
       },
       {
-       "value": "no",
-       "text": "No"
+       value: "no",
+       text: "No"
       }
      ],
-     "colCount": 0,
-     "name": "AreYouUserOfConnection",
-     "title": "Are you the user of the connection?",
-     "width": "10"
+     colCount: 0,
+     name: "AreYouUserOfConnection",
+     title: "Are you the user of the connection?",
+     width: "10"
     },
     {
-     "type": "radiogroup",
-     "choices": [
+     type: "radiogroup",
+     choices: [
       {
-       "value": "prepaid",
-       "text": "Pre Paid"
+       value: "prepaid",
+       text: "Pre Paid"
       },
       {
-       "value": "postpaid",
-       "text": "Post Paid"
+       value: "postpaid",
+       text: "Post Paid"
       }
      ],
-     "colCount": 0,
-     "name": "TypeOfConnecton",
-     "title": "Are you using a prepaid number or postpaid?",
-     "width": "10"
+     colCount: 0,
+     name: "TypeOfConnecton",
+     title: "Are you using a prepaid number or postpaid?",
+     width: "10"
     },
     {
-     "type": "radiogroup",
-     "choices": [
+     type: "radiogroup",
+     choices: [
       {
-       "value": "3g",
-       "text": "3G"
+       value: "3g",
+       text: "3G"
       },
       {
-       "value": "4g",
-       "text": "4G"
+       value: "4g",
+       text: "4G"
       }
      ],
-     "colCount": 0,
-     "name": "typesOfHandset",
-     "title": "Are you using a 3G Handset or a 4G handset?",
-     "width": "10"
+     colCount: 0,
+     name: "typesOfHandset",
+     title: "Are you using a 3G Handset or a 4G handset?",
+     width: "10"
     },
     {
-     "type": "radiogroup",
-     "choices": [
+     type: "radiogroup",
+     choices: [
       {
-       "value": "vodafone",
-       "text": "Vodafone"
+       value: "vodafone",
+       text: "Vodafone"
       },
       {
-       "value": "airtel",
-       "text": "Airtel"
+       value: "airtel",
+       text: "Airtel"
       },
       {
-       "value": "bsnl",
-       "text": "BSNL"
+       value: "bsnl",
+       text: "BSNL"
       },
       {
-       "value": "idea",
-       "text": "IDEA"
+       value: "idea",
+       text: "IDEA"
       },
       {
-       "value": "aircel",
-       "text": "Aircel"
+       value: "aircel",
+       text: "Aircel"
       },
       {
-       "value": "jio",
-       "text": "Jio"
+       value: "jio",
+       text: "Jio"
       }
      ],
-     "colCount": 0,
-     "name": "NetworkType",
-     "title": "May I know which network you are using?",
-     "width": "10"
+     colCount: 0,
+     name: "NetworkType",
+     title: "May I know which network you are using?",
+     width: "10"
     },
     {
-     "type": "text",
-     "name": "SpendOnCallUsage",
-     "title": "How much do you spend for your mobile phone usage in a month?",
-     "width": "10"
+     type: "text",
+     name: "SpendOnCallUsage",
+     width: "10",
+     title: "How much do you spend for your mobile phone usage in a month?"
     },
     {
-     "type": "text",
-     "name": "SpendOnInternetUsage",
-     "title": "May I know How much Internet do you use?",
-     "width": "10"
+     type: "text",
+     name: "SpendOnInternetUsage",
+     width: "10",
+     title: "May I know How much Internet do you use?"
     },
     {
-     "type": "radiogroup",
-     "choices": [
+     type: "radiogroup",
+     choices: [
       {
-       "value": "yes",
-       "text": "YES"
+       value: "yes",
+       text: "YES"
       },
       {
-       "value": "no",
-       "text": "NO"
+       value: "no",
+       text: "NO"
       }
      ],
-     "colCount": 0,
-     "name": "UseStd",
-     "title": "Do you use STD?",
-     "width": "10"
+     colCount: 0,
+     name: "UseStd",
+     title: "Do you use STD?",
+     width: "10"
     },
     {
-     "type": "text",
-     "name": "UsageOfStd",
-     "startWithNewLine": false,
-     "title": "Approximately, How many minutes do you use?",
-     "visible": false,
-     "visibleIf": "{UseStd}='yes'",
-     "width": "10"
+     type: "text",
+     name: "UsageOfStd",
+     visible: false,
+     visibleIf: "{UseStd}='yes'",
+     width: "10",
+     startWithNewLine: false,
+     title: "Approximately, How many minutes do you use?"
     },
     {
-     "type": "radiogroup",
-     "choices": [
+     type: "radiogroup",
+     choices: [
       {
-       "value": "yes",
-       "text": "YES"
+       value: "yes",
+       text: "YES"
       },
       {
-       "value": "no",
-       "text": "NO"
+       value: "no",
+       text: "NO"
       }
      ],
-     "colCount": 0,
-     "name": "UseIsd",
-     "title": "Do you use ISD?",
-     "width": "10"
+     colCount: 0,
+     name: "UseIsd",
+     title: "Do you use ISD?",
+     width: "10"
     },
     {
-     "type": "text",
-     "name": "UsageOfIsd",
-     "startWithNewLine": false,
-     "title": "Approximately, How many minutes do you use?",
-     "visible": false,
-     "visibleIf": "{UseIsd}='yes'",
-     "width": "10"
+     type: "text",
+     name: "UsageOfIsd",
+     visible: false,
+     visibleIf: "{UseIsd}='yes'",
+     width: "10",
+     startWithNewLine: false,
+     title: "Approximately, How many minutes do you use?"
     },
     {
-     "type": "text",
-     "name": "TotalMonthlyRomingDays",
-     "startWithNewLine": false,
-     "title": "How many days in a month you will be in Roaming?",
-     "visible": false,
-     "visibleIf": "{useIsd}='yes'",
-     "width": "10"
+     type: "text",
+     name: "TotalMonthlyRomingDays",
+     visible: false,
+     visibleIf: "{useIsd}='yes'",
+     width: "10",
+     startWithNewLine: false,
+     title: "How many days in a month you will be in Roaming?"
     },
     {
-     "type": "radiogroup",
-     "choices": [
+     type: "radiogroup",
+     choices: [
       {
-       "value": "yes",
-       "text": "YES"
+       value: "yes",
+       text: "YES"
       },
       {
-       "value": "no",
-       "text": "NO"
+       value: "no",
+       text: "NO"
       }
      ],
-     "colCount": 0,
-     "name": "exit",
-     "title": "EXIT CALL?",
-     "width": "10"
+     colCount: 0,
+     name: "exit",
+     title: "EXIT CALL?",
+     width: "10"
     }
    ],
-   "innerIndent": 3,
-   "name": "Basics",
-   "navigationButtonsVisibility": "show"
+   innerIndent: 3,
+   name: "Basics",
+   navigationButtonsVisibility: "show"
   },
   {
-   "elements": [
+   elements: [
     {
-     "type": "html",
-     "name": "customerBasicData",
-     "html": "<h5>Customer Basic Data</h5>\n"
+     type: "html",
+     name: "customerBasicData",
+     html: "<h5>Customer Basic Data</h5>\n"
     },
     {
-     "type": "radiogroup",
-     "choices": [
+     type: "radiogroup",
+     choices: [
       {
-       "value": "interested",
-       "text": "Interested"
+       value: "interested",
+       text: "Interested"
       },
       {
-       "value": "notInterested",
-       "text": "Not Interested"
+       value: "notInterested",
+       text: "Not Interested"
       },
       {
-       "value": "callback",
-       "text": "Callback"
+       value: "callback",
+       text: "Callback"
       }
      ],
-     "colCount": 0,
-     "name": "checkCustomerInterest",
-     "title": "check whether the customer is interested/not interested/call back?"
+     colCount: 0,
+     name: "checkCustomerInterest",
+     title: "check whether the customer is interested/not interested/call back?"
     },
     {
-     "type": "radiogroup",
-     "choices": [
+     type: "radiogroup",
+     choices: [
       {
-       "value": "yes",
-       "text": "YES"
+       value: "yes",
+       text: "YES"
       },
       {
-       "value": "no",
-       "text": "NO"
+       value: "no",
+       text: "NO"
       }
      ],
-     "colCount": 0,
-     "name": "exit",
-     "title": "EXIT CALL?",
-     "visible": false,
-     "visibleIf": "{checkPermission}='denied'",
-     "width": "10"
+     colCount: 0,
+     name: "exit",
+     title: "EXIT CALL?",
+     visible: false,
+     visibleIf: "{checkPermission}='denied'",
+     width: "10"
     }
    ],
-   "innerIndent": 3,
-   "name": "ProductPitch",
-   "navigationButtonsVisibility": "show",
-   "title": "Product Best Fit Plan Pitch"
+   innerIndent: 3,
+   name: "ProductPitch",
+   navigationButtonsVisibility: "show",
+   title: "Product Best Fit Plan Pitch"
   },
   {
-   "elements": [
+   elements: [
     {
-     "type": "radiogroup",
-     "choices": [
+     type: "radiogroup",
+     choices: [
       {
-       "value": "salaried",
-       "text": "Salaried"
+       value: "salaried",
+       text: "Salaried"
       },
       {
-       "value": "professional",
-       "text": "Professional"
+       value: "professional",
+       text: "Professional"
       },
       {
-       "value": "ownBusiness",
-       "text": "Own Business"
+       value: "ownBusiness",
+       text: "Own Business"
       },
       {
-       "value": "agriculture",
-       "text": "Agriculture"
+       value: "agriculture",
+       text: "Agriculture"
       },
       {
-       "value": "retired",
-       "text": "Retired"
+       value: "retired",
+       text: "Retired"
       },
       {
-       "value": "student",
-       "text": "Student"
+       value: "student",
+       text: "Student"
       },
       {
-       "value": "housewife",
-       "text": "House Wife"
+       value: "housewife",
+       text: "House Wife"
       },
       {
-       "value": "others",
-       "text": "Others"
+       value: "others",
+       text: "Others"
       }
      ],
-     "colCount": 4,
-     "name": "OccupationType",
-     "title": "May I know your occupation?",
-     "width": "10"
+     colCount: 4,
+     name: "OccupationType",
+     title: "May I know your occupation?",
+     width: "10"
     },
     {
-     "type": "radiogroup",
-     "choices": [
+     type: "radiogroup",
+     choices: [
       {
-       "value": "yes",
-       "text": "Yes"
+       value: "yes",
+       text: "Yes"
       },
       {
-       "value": "no",
-       "text": "No"
+       value: "no",
+       text: "No"
       }
      ],
-     "colCount": 0,
-     "name": "convertToCUG",
-     "title": "Do you use any other number which you can change to vodafone postpaid and make CUG?",
-     "width": "10"
+     colCount: 0,
+     name: "convertToCUG",
+     title: "Do you use any other number which you can change to vodafone postpaid and make CUG?",
+     width: "10"
     },
     {
-     "type": "radiogroup",
-     "choices": [
+     type: "radiogroup",
+     choices: [
       {
-       "value": "currentAddress",
-       "text": "Current Address"
+       value: "currentAddress",
+       text: "Current Address"
       },
       {
-       "value": "differentAddress",
-       "text": "Different Address"
+       value: "differentAddress",
+       text: "Different Address"
       }
      ],
-     "colCount": 0,
-     "name": "ProofOfStay",
-     "title": "Does your proof contains the current address or different address?",
-     "width": "10"
+     colCount: 0,
+     name: "ProofOfStay",
+     title: "Does your proof contains the current address or different address?",
+     width: "10"
     },
     {
-     "type": "text",
-     "name": "distanceToVodafoneStore",
-     "title": "What is the distance between your residence and Vodafone store?",
-     "width": "10"
+     type: "text",
+     name: "distanceToVodafoneStore",
+     width: "10",
+     title: "What is the distance between your residence and Vodafone store?"
     },
     {
-     "type": "text",
-     "name": "monthlyIncome",
-     "title": "May I know your current monthly income?",
-     "width": "10"
+     type: "text",
+     name: "monthlyIncome",
+     width: "10",
+     title: "May I know your current monthly income?"
     },
     {
-     "type": "radiogroup",
-     "choices": [
+     type: "radiogroup",
+     choices: [
       {
-       "value": "familyStay",
-       "text": "Family Stay"
+       value: "familyStay",
+       text: "Family Stay"
       },
       {
-       "value": "bachelorStay",
-       "text": "Bachelor Stay"
+       value: "bachelorStay",
+       text: "Bachelor Stay"
       }
      ],
-     "colCount": 0,
-     "name": "StayingType",
-     "title": "May I know whether you are staying with your family or in bachelor stay?",
-     "width": "10"
+     colCount: 0,
+     name: "StayingType",
+     title: "May I know whether you are staying with your family or in bachelor stay?",
+     width: "10"
     },
     {
-     "type": "radiogroup",
-     "choices": [
+     type: "radiogroup",
+     choices: [
       {
-       "value": "concreteHouse",
-       "text": "Concrete House"
+       value: "concreteHouse",
+       text: "Concrete House"
       },
       {
-       "value": "hutHouse",
-       "text": "Hut House"
+       value: "hutHouse",
+       text: "Hut House"
       }
      ],
-     "colCount": 0,
-     "name": "houseType",
-     "title": "Are you living in a concrete builing or a hut house?",
-     "width": "10"
+     colCount: 0,
+     name: "houseType",
+     title: "Are you living in a concrete builing or a hut house?",
+     width: "10"
     },
     {
-     "type": "radiogroup",
-     "choices": [
+     type: "radiogroup",
+     choices: [
       {
-       "value": "yes",
-       "text": "Yes"
+       value: "yes",
+       text: "Yes"
       },
       {
-       "value": "no",
-       "text": "No"
+       value: "no",
+       text: "No"
       }
      ],
-     "colCount": 0,
-     "name": "previousBillCopyAvailable",
-     "title": "Can I get your previous bill copy?",
-     "width": "10"
+     colCount: 0,
+     name: "previousBillCopyAvailable",
+     title: "Can I get your previous bill copy?",
+     width: "10"
     },
     {
-     "type": "text",
-     "name": "usageOfNumberOnCurrentNetwork",
-     "title": "May I know how long you are using this number with your current Network?",
-     "width": "10"
+     type: "text",
+     name: "usageOfNumberOnCurrentNetwork",
+     width: "10",
+     title: "May I know how long you are using this number with your current Network?"
     },
     {
-     "type": "text",
-     "name": "CompanyName",
-     "title": "May I  know your company name?",
-     "width": "10"
+     type: "text",
+     name: "CompanyName",
+     width: "10",
+     title: "May I  know your company name?"
     },
     {
-     "type": "radiogroup",
-     "choices": [
+     type: "radiogroup",
+     choices: [
       {
-       "value": "yes",
-       "text": "YES"
+       value: "yes",
+       text: "YES"
       },
       {
-       "value": "no",
-       "text": "NO"
+       value: "no",
+       text: "NO"
       }
      ],
-     "colCount": 0,
-     "name": "exit",
-     "title": "EXIT CALL?",
-     "width": "10"
+     colCount: 0,
+     name: "exit",
+     title: "EXIT CALL?",
+     width: "10"
     }
    ],
-   "name": "Interested",
-   "navigationButtonsVisibility": "show",
-   "title": "Intrested",
-   "visible": false,
-   "visibleIf": "{checkCustomerInterest}='interested'"
+   name: "Interested",
+   navigationButtonsVisibility: "show",
+   title: "Intrested",
+   visible: false,
+   visibleIf: "{checkCustomerInterest}='interested'"
   },
   {
-   "elements": [
+   elements: [
     {
-     "type": "radiogroup",
-     "choices": [
+     type: "radiogroup",
+     choices: [
       {
-       "value": "eligible",
-       "text": "Eligible"
+       value: "eligible",
+       text: "Eligible"
       },
       {
-       "value": "noteligible",
-       "text": "Not Eligible"
+       value: "noteligible",
+       text: "Not Eligible"
       }
      ],
-     "colCount": 0,
-     "name": "checkEligible",
-     "title": "Check whether the customer is eligible? "
+     colCount: 0,
+     name: "checkEligible",
+     title: "Check whether the customer is eligible? "
     }
    ],
-   "name": "EvaluateCustomer",
-   "visible": false,
-   "visibleIf": "{checkCustomerInterest}='interested'"
+   name: "EvaluateCustomer",
+   visible: false,
+   visibleIf: "{checkCustomerInterest}='interested'"
   },
   {
-   "elements": [
+   elements: [
     {
-     "type": "multipletext",
-     "colCount": 3,
-     "itemSize": 30,
-     "items": [
+     type: "multipletext",
+     colCount: 3,
+     itemSize: 30,
+     items: [
       {
-       "name": "doorNo",
-       "title": "Door Number"
+       name: "doorNo",
+       title: "Door Number"
       },
       {
-       "name": "buildingNumber",
-       "title": "Building Number"
+       name: "buildingNumber",
+       title: "Building Number"
       },
       {
-       "name": "street",
-       "title": "Street"
+       name: "street",
+       title: "Street"
       },
       {
-       "name": "area",
-       "title": "Area"
+       name: "area",
+       title: "Area"
       },
       {
-       "name": "city",
-       "title": "City"
+       name: "city",
+       title: "City"
       },
       {
-       "name": "taluk",
-       "title": "Taluk"
+       name: "taluk",
+       title: "Taluk"
       },
       {
-       "name": "district",
-       "title": "District"
+       name: "district",
+       title: "District"
       },
       {
-       "name": "zone",
-       "title": "Zone/Circle"
+       name: "zone",
+       title: "Zone/Circle"
       },
       {
-       "name": "state",
-       "title": "State"
+       name: "state",
+       title: "State"
       },
       {
-       "name": "pincode",
-       "title": "Pincode"
+       name: "pincode",
+       title: "Pincode"
       },
       {
-       "name": "landmark",
-       "title": "LandMark"
+       name: "landmark",
+       title: "LandMark"
       }
      ],
-     "name": "PermanentAddress",
-     "title": "May I know your full address  with Landmark?",
-     "width": "10"
+     name: "PermanentAddress",
+     title: "May I know your full address  with Landmark?",
+     width: "10"
     },
     {
-     "type": "checkbox",
-     "name": "AddressProof",
-     "width": "10",
-     "title": "May I know What is the ID and Address Proof you have? ",
-     "choices": [
+     type: "checkbox",
+     name: "AddressProof",
+     width: "10",
+     title: "May I know What is the ID and Address Proof you have? ",
+     choices: [
       {
-       "value": "drivinglicence",
-       "text": "Driving Licence"
+       value: "drivinglicence",
+       text: "Driving Licence"
       },
       {
-       "value": "rationcard",
-       "text": "Ration Card"
+       value: "rationcard",
+       text: "Ration Card"
       },
       {
-       "value": "passport",
-       "text": "Passport"
+       value: "passport",
+       text: "Passport"
       },
       {
-       "value": "bankpassbook",
-       "text": "Bank Passbook"
+       value: "bankpassbook",
+       text: "Bank Passbook"
       },
       {
-       "value": "aadhar",
-       "text": "Aadhar "
+       value: "aadhar",
+       text: "Aadhar "
       },
       {
-       "value": "voterid",
-       "text": "Voter ID"
+       value: "voterid",
+       text: "Voter ID"
       }
      ],
-     "colCount": 2
+     colCount: 2
     },
     {
-     "type": "radiogroup",
-     "choices": [
+     type: "radiogroup",
+     choices: [
       {
-       "value": "yes",
-       "text": "Yes"
+       value: "yes",
+       text: "Yes"
       },
       {
-       "value": "no",
-       "text": "No"
+       value: "no",
+       text: "No"
       }
      ],
-     "colCount": 0,
-     "name": "IsPermanentContactAddressSame",
-     "title": "Is the address you have mentioned is the address to meet you in person?",
-     "width": "10"
+     colCount: 0,
+     name: "IsPermanentContactAddressSame",
+     title: "Is the address you have mentioned is the address to meet you in person?",
+     width: "10"
     },
     {
-     "type": "multipletext",
-     "colCount": 2,
-     "itemSize": 30,
-     "items": [
+     type: "multipletext",
+     colCount: 2,
+     itemSize: 30,
+     items: [
       {
-       "name": "doorNo",
-       "title": "Door Number"
+       name: "doorNo",
+       title: "Door Number"
       },
       {
-       "name": "buildingNumber",
-       "title": "Building Number"
+       name: "buildingNumber",
+       title: "Building Number"
       },
       {
-       "name": "street",
-       "title": "Street"
+       name: "street",
+       title: "Street"
       },
       {
-       "name": "area",
-       "title": "Area"
+       name: "area",
+       title: "Area"
       },
       {
-       "name": "city",
-       "title": "City"
+       name: "city",
+       title: "City"
       },
       {
-       "name": "taluk",
-       "title": "Taluk"
+       name: "taluk",
+       title: "Taluk"
       },
       {
-       "name": "district",
-       "title": "District"
+       name: "district",
+       title: "District"
       },
       {
-       "name": "state",
-       "title": "State"
+       name: "state",
+       title: "State"
       },
       {
-       "name": "landMark",
-       "title": "LandMark"
+       name: "landMark",
+       title: "LandMark"
       },
       {
-       "name": "pinCode",
-       "title": "Pincode"
+       name: "pinCode",
+       title: "Pincode"
       }
      ],
-     "name": "ContactAddress",
-     "title": "Please share the Contact Address",
-     "visible": false,
-     "visibleIf": "{IsPermanentMeetingAddressSame}='no'",
-     "width": "10"
+     name: "ContactAddress",
+     title: "Please share the Contact Address",
+     visible: false,
+     visibleIf: "{IsPermanentContactAddressSame}='no'",
+     width: "10"
     },
     {
-     "type": "text",
-     "inputType": "datetime-local",
-     "name": "meetingDateTime",
-     "title": "May I know the Date and time when our executive can meet you?",
-     "width": "10"
+     type: "text",
+     name: "meetingDateTime",
+     width: "10",
+     title: "May I know the Date and time when our executive can meet you?",
+     inputType: "datetime-local"
     },
     {
-     "type": "text",
-     "name": "numberOfConnectionReq",
-     "title": "How many connections do you require?",
-     "width": "10"
+     type: "text",
+     name: "numberOfConnectionReq",
+     width: "10",
+     title: "How many connections do you require?"
     },
     {
-     "type": "radiogroup",
-     "choices": [
+     type: "radiogroup",
+     choices: [
       {
-       "value": "yes",
-       "text": "YES"
+       value: "yes",
+       text: "YES"
       },
       {
-       "value": "no",
-       "text": "NO"
+       value: "no",
+       text: "NO"
       }
      ],
-     "colCount": 0,
-     "name": "exit",
-     "title": "EXIT CALL",
-     "width": "10"
+     colCount: 0,
+     name: "exit",
+     title: "EXIT CALL",
+     width: "10"
     }
    ],
-   "name": "EligibleCustomer",
-   "title": "Eligible Customer",
-   "visible": false,
-   "visibleIf": "{checkEligible}='eligible'"
+   name: "EligibleCustomer",
+   title: "Eligible Customer",
+   visible: false,
+   visibleIf: "{checkEligible}='eligible'"
   },
   {
-   "elements": [
+   elements: [
     {
-     "type": "radiogroup",
-     "choices": [
+     type: "radiogroup",
+     choices: [
       {
-       "value": "outOfStation",
-       "text": "Out of station"
+       value: "outOfStation",
+       text: "Out of station"
       },
       {
-       "value": "noProof",
-       "text": "No Proof currently"
+       value: "noProof",
+       text: "No Proof currently"
       },
       {
-       "value": "haveTocheck",
-       "text": "Have to decide checking with family and Friends"
+       value: "haveTocheck",
+       text: "Have to decide checking with family and Friends"
       },
       {
-       "value": "haveToArrangeDeposit",
-       "text": "Have to arrange deposit amount"
+       value: "haveToArrangeDeposit",
+       text: "Have to arrange deposit amount"
       },
       {
-       "value": "busy",
-       "text": "Currently Busy"
+       value: "busy",
+       text: "Currently Busy"
       },
       {
-       "value": "needtimeToDecide",
-       "text": "Need time to decide"
+       value: "needtimeToDecide",
+       text: "Need time to decide"
       },
       {
-       "value": "activateAfterCompleteBalance",
-       "text": "Will activate once the current balance get completed"
+       value: "activateAfterCompleteBalance",
+       text: "Will activate once the current balance get completed"
       },
       {
-       "value": "afterBCPlanCompleted",
-       "text": "MNP Customer will change once the BC gets completed"
+       value: "afterBCPlanCompleted",
+       text: "MNP Customer will change once the BC gets completed"
       },
       {
-       "value": "afterDataOfferCompleted",
-       "text": "MNP Customer wil change once the data offer is completed"
+       value: "afterDataOfferCompleted",
+       text: "MNP Customer wil change once the data offer is completed"
       },
       {
-       "value": "others",
-       "text": "Others"
+       value: "others",
+       text: "Others"
       }
      ],
-     "colCount": 2,
-     "name": "ifDecideAndCallback",
-     "title": "If Decide and Call back",
-     "width": "10"
+     colCount: 2,
+     name: "ifDecideAndCallback",
+     title: "If Decide and Call back",
+     width: "10"
     },
     {
-     "type": "text",
-     "name": "availableInTown",
-     "title": "When will you be available in the home town",
-     "visible": false,
-     "visibleIf": "{ifDecideAndCallback}='outOfStation'",
-     "width": "10"
+     type: "text",
+     name: "availableInTown",
+     visible: false,
+     visibleIf: "{ifDecideAndCallback}='outOfStation'",
+     width: "10",
+     title: "When will you be available in the home town"
     },
     {
-     "type": "text",
-     "inputType": "datetime-local",
-     "name": "callbackWhenInTown",
-     "startWithNewLine": false,
-     "title": "Get the call back Date & time",
-     "visible": false,
-     "visibleIf": "{ifDecideAndCallback}='outOfStation'",
-     "width": "10"
+     type: "text",
+     name: "callbackWhenInTown",
+     visible: false,
+     visibleIf: "{ifDecideAndCallback}='outOfStation'",
+     width: "10",
+     startWithNewLine: false,
+     title: "Get the call back Date & time",
+     inputType: "datetime-local"
     },
     {
-     "type": "radiogroup",
-     "choices": [
+     type: "radiogroup",
+     choices: [
       {
-       "value": "yes",
-       "text": "Yes"
+       value: "yes",
+       text: "Yes"
       },
       {
-       "value": "no",
-       "text": "No"
+       value: "no",
+       text: "No"
       }
      ],
-     "colCount": 0,
-     "name": "canArrangeNecessaryProof",
-     "title": "Can you able to arrange the necessary proof?",
-     "visible": false,
-     "visibleIf": "{ifDecideAndCallback}='noProof'",
-     "width": "10"
+     colCount: 0,
+     name: "canArrangeNecessaryProof",
+     title: "Can you able to arrange the necessary proof?",
+     visible: false,
+     visibleIf: "{ifDecideAndCallback}='noProof'",
+     width: "10"
     },
     {
-     "type": "text",
-     "inputType": "datetime-local",
-     "name": "callbackWhenProofReady",
-     "startWithNewLine": false,
-     "title": "Get Call back date & time",
-     "visible": false,
-     "visibleIf": "{canArrangeNecessaryProof}='yes'",
-     "width": "10"
+     type: "text",
+     name: "callbackWhenProofReady",
+     visible: false,
+     visibleIf: "{canArrangeNecessaryProof}='yes'",
+     width: "10",
+     startWithNewLine: false,
+     title: "Get Call back date & time",
+     inputType: "datetime-local"
     },
     {
-     "type": "text",
-     "name": "necessaryOfHavingProof",
-     "title": "Explain the customer about the necessity of proof & close the call",
-     "visible": false,
-     "visibleIf": "{canArrangeNecessaryProof}='no'",
-     "width": "10"
+     type: "text",
+     name: "necessaryOfHavingProof",
+     visible: false,
+     visibleIf: "{canArrangeNecessaryProof}='no'",
+     width: "10",
+     title: "Explain the customer about the necessity of proof & close the call"
     },
     {
-     "type": "text",
-     "inputType": "datetime-local",
-     "name": "question23",
-     "title": "Get the call back Date & time",
-     "visible": false,
-     "visibleIf": "{ifDecideAndCallback}=4",
-     "width": "10"
+     type: "text",
+     name: "question23",
+     visible: false,
+     visibleIf: "{ifDecideAndCallback}=4",
+     width: "10",
+     title: "Get the call back Date & time",
+     inputType: "datetime-local"
     },
     {
-     "type": "text",
-     "name": "question24",
-     "title": "Based on the customer's situation close the call ",
-     "visible": false,
-     "visibleIf": "{ifDecideAndCallback}=5",
-     "width": "10"
+     type: "text",
+     name: "question24",
+     visible: false,
+     visibleIf: "{ifDecideAndCallback}=5",
+     width: "10",
+     title: "Based on the customer's situation close the call "
     },
     {
-     "type": "text",
-     "inputType": "datetime-local",
-     "name": "question25",
-     "title": "If possible get the Call back time",
-     "visible": false,
-     "visibleIf": "{ifDecideAndCallback}=5",
-     "width": "10"
+     type: "text",
+     name: "question25",
+     visible: false,
+     visibleIf: "{ifDecideAndCallback}=5",
+     width: "10",
+     title: "If possible get the Call back time",
+     inputType: "datetime-local"
     },
     {
-     "type": "text",
-     "inputType": "datetime-local",
-     "name": "question26",
-     "title": "When can get back to you, get the call back date & time",
-     "visible": false,
-     "visibleIf": "{ifDecideAndCallback}=6",
-     "width": "10"
+     type: "text",
+     name: "question26",
+     visible: false,
+     visibleIf: "{ifDecideAndCallback}=6",
+     width: "10",
+     title: "When can get back to you, get the call back date & time",
+     inputType: "datetime-local"
     },
     {
-     "type": "text",
-     "name": "question27",
-     "title": "Convince the customer that he can able to carry forward the balance with the postpaid i.e, the amount will be credited with the first month bill",
-     "visible": false,
-     "visibleIf": "{ifDecideAndCallback}=7",
-     "width": "10"
+     type: "text",
+     name: "question27",
+     visible: false,
+     visibleIf: "{ifDecideAndCallback}=7",
+     width: "10",
+     title: "Convince the customer that he can able to carry forward the balance with the postpaid i.e, the amount will be credited with the first month bill"
     },
     {
-     "type": "text",
-     "inputType": "datetime-local",
-     "name": "question28",
-     "title": "Collect the Bill date & payment date , fix a time to call back the customer",
-     "visible": false,
-     "visibleIf": "{ifDecideAndCallback}=8",
-     "width": "10"
+     type: "text",
+     name: "question28",
+     visible: false,
+     visibleIf: "{ifDecideAndCallback}=8",
+     width: "10",
+     title: "Collect the Bill date & payment date , fix a time to call back the customer",
+     inputType: "datetime-local"
     },
     {
-     "type": "text",
-     "inputType": "datetime-local",
-     "name": "question29",
-     "title": "When can get back to you, get the call back date & time",
-     "visible": false,
-     "visibleIf": "{ifDecideAndCallback}=9",
-     "width": "10"
+     type: "text",
+     name: "question29",
+     visible: false,
+     visibleIf: "{ifDecideAndCallback}=9",
+     width: "10",
+     title: "When can get back to you, get the call back date & time",
+     inputType: "datetime-local"
     },
     {
-     "type": "radiogroup",
-     "choices": [
+     type: "radiogroup",
+     choices: [
       {
-       "value": "yes",
-       "text": "YES"
+       value: "yes",
+       text: "YES"
       },
       {
-       "value": "no",
-       "text": "NO"
+       value: "no",
+       text: "NO"
       }
      ],
-     "colCount": 0,
-     "name": "exit",
-     "title": "EXIT CALL?",
-     "width": "10"
+     colCount: 0,
+     name: "exit",
+     title: "EXIT CALL?",
+     width: "10"
     }
    ],
-   "innerIndent": 3,
-   "name": "DecideAndCallback",
-   "navigationButtonsVisibility": "show",
-   "title": "DecideAndCallback",
-   "visible": false,
-   "visibleIf": "{checkCustomerInterest}='callback'"
+   innerIndent: 3,
+   name: "DecideAndCallback",
+   navigationButtonsVisibility: "show",
+   title: "DecideAndCallback",
+   visible: false,
+   visibleIf: "{checkCustomerInterest}='callback'"
   },
   {
-   "elements": [
+   elements: [
     {
-     "type": "panel",
-     "elements": [
+     type: "panel",
+     elements: [
       {
-       "type": "radiogroup",
-       "choices": [
+       type: "radiogroup",
+       choices: [
         {
-         "value": "happyWithOtherNetwork",
-         "text": "Happy with other network Coverage"
+         value: "happyWithOtherNetwork",
+         text: "Happy with other network Coverage"
         },
         {
-         "value": "notHappyWithSuggestPlan",
-         "text": "Not happy with the suggested plan"
+         value: "notHappyWithSuggestPlan",
+         text: "Not happy with the suggested plan"
         },
         {
-         "value": "notReadyToPayDeposit",
-         "text": "Not ready to pay the Deposit"
+         value: "notReadyToPayDeposit",
+         text: "Not ready to pay the Deposit"
         },
         {
-         "value": "abilityToMakePayment",
-         "text": "Ability to make payment"
+         value: "abilityToMakePayment",
+         text: "Ability to make payment"
         },
         {
-         "value": "happyWithCurrentNetworkRetentionPlan",
-         "text": "Happy with the current networks's retention plan"
+         value: "happyWithCurrentNetworkRetentionPlan",
+         text: "Happy with the current networks's retention plan"
         },
         {
-         "value": "companyLinkedConnection",
-         "text": "Company linked connections"
+         value: "companyLinkedConnection",
+         text: "Company linked connections"
         },
         {
-         "value": "happyWithExistingNetworkOffer",
-         "text": "Happy with the existing network's offer"
+         value: "happyWithExistingNetworkOffer",
+         text: "Happy with the existing network's offer"
         },
         {
-         "value": "happyWithPrepaid",
-         "text": "Happy with prepaid"
+         value: "happyWithPrepaid",
+         text: "Happy with prepaid"
         },
         {
-         "value": "previousBadExpInPostpaid",
-         "text": "Previous bad experience in Postpaid"
+         value: "previousBadExpInPostpaid",
+         text: "Previous bad experience in Postpaid"
         },
         {
-         "value": "others",
-         "text": "Others"
+         value: "others",
+         text: "Others"
         }
        ],
-       "colCount": 2,
-       "name": "reasonForNotInterested",
-       "title": "May I know the reason why you are not interested?"
+       colCount: 2,
+       name: "reasonForNotInterested",
+       title: "May I know the reason why you are not interested?"
       },
       {
-       "type": "multipletext",
-       "colCount": 2,
-       "items": [
+       type: "multipletext",
+       colCount: 2,
+       items: [
         {
-         "name": "location",
-         "title": "Location"
+         name: "location",
+         title: "Location"
         },
         {
-         "name": "area",
-         "title": "Area"
+         name: "area",
+         title: "Area"
         },
         {
-         "name": "city",
-         "title": "City"
+         name: "city",
+         title: "City"
         },
         {
-         "name": "zone",
-         "title": "Zone"
+         name: "zone",
+         title: "Zone"
         },
         {
-         "name": "state",
-         "title": "State"
+         name: "state",
+         title: "State"
         }
        ],
-       "name": "residingLocationAndArea",
-       "title": "Can you tell me the location & area in which you are residing now ?",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='happyWithOtherNetwork'",
-       "width": "10"
+       name: "residingLocationAndArea",
+       title: "Can you tell me the location & area in which you are residing now ?",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='happyWithOtherNetwork'",
+       width: "10"
       },
       {
-       "type": "radiogroup",
-       "choices": [
+       type: "radiogroup",
+       choices: [
         {
-         "value": "2g",
-         "text": "2G"
+         value: "2g",
+         text: "2G"
         },
         {
-         "value": "3g",
-         "text": "3G"
+         value: "3g",
+         text: "3G"
         },
         {
-         "value": "4g",
-         "text": "4G"
+         value: "4g",
+         text: "4G"
         }
        ],
-       "colCount": 0,
-       "name": "whatNetworkUsing",
-       "title": "May I know whether you are using 2G/3G/4G?",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='happyWithOtherNetwork'",
-       "width": "10"
+       colCount: 0,
+       name: "whatNetworkUsing",
+       title: "May I know whether you are using 2G/3G/4G?",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='happyWithOtherNetwork'",
+       width: "10"
       },
       {
-       "type": "text",
-       "name": "notHappyWithSuggestPlan",
-       "title": "Based on your usage we have suggested this plan, \nif you are not satisfied with this can we suggest some other plan?\nif yes need to explain some other plan",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='notHappyWithSuggestPlan'",
-       "width": "10"
+       type: "text",
+       name: "notHappyWithSuggestPlan",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='notHappyWithSuggestPlan'",
+       width: "10",
+       title: "Based on your usage we have suggested this plan, \nif you are not satisfied with this can we suggest some other plan?\nif yes need to explain some other plan"
       },
       {
-       "type": "text",
-       "name": "outOfCityLimit",
-       "title": "OCL - As your area is Out of City Limit, so Rs.______ is mandate ",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='notReadyToPayDeposit'",
-       "width": "10"
+       type: "text",
+       name: "outOfCityLimit",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='notReadyToPayDeposit'",
+       width: "10",
+       title: "OCL - As your area is Out of City Limit, so Rs.______ is mandate "
       },
       {
-       "type": "text",
-       "name": "bachelorDeposit",
-       "title": "If Bachelor - Bachelor deposit is mandate, by paying the deposit, the credit limit will be increased",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='notReadyToPayDeposit'",
-       "width": "10"
+       type: "text",
+       name: "bachelorDeposit",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='notReadyToPayDeposit'",
+       width: "10",
+       title: "If Bachelor - Bachelor deposit is mandate, by paying the deposit, the credit limit will be increased"
       },
       {
-       "type": "text",
-       "name": "others",
-       "title": "May I know your affordability for your monthly bill?",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='abilityToMakePayment'",
-       "width": "10"
+       type: "text",
+       name: "others",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='abilityToMakePayment'",
+       width: "10",
+       title: "May I know your affordability for your monthly bill?"
       },
       {
-       "type": "text",
-       "name": "MonthlyBillAffordability",
-       "title": "May I know your usage pattern - Voice, SMS & Data?, suggest the plan based on the usage",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='abilityToMakePayment'",
-       "width": "10"
+       type: "text",
+       name: "MonthlyBillAffordability",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='abilityToMakePayment'",
+       width: "10",
+       title: "May I know your usage pattern - Voice, SMS & Data?, suggest the plan based on the usage"
       },
       {
-       "type": "text",
-       "name": "offerbyExistingNetwork",
-       "title": "What was the offer provided by existing network?",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='happyWithCurrentNetworkRetentionPlan'",
-       "width": "10"
+       type: "text",
+       name: "offerbyExistingNetwork",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='happyWithCurrentNetworkRetentionPlan'",
+       width: "10",
+       title: "What was the offer provided by existing network?"
       },
       {
-       "type": "text",
-       "name": "authPersonContactNumber",
-       "title": "Can I have your authorised Person's contact number to discuss about the Vodafone postpaid offers",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='companyLinkedConnection'",
-       "width": "10"
+       type: "text",
+       name: "authPersonContactNumber",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='companyLinkedConnection'",
+       width: "10",
+       title: "Can I have your authorised Person's contact number to discuss about the Vodafone postpaid offers"
       },
       {
-       "type": "text",
-       "name": "interestedToTakeNewConnection",
-       "title": "Are you interested to take new postpaid connnection for your personal purpose?",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='happyWithCurrentNetworkRetentionPlan'",
-       "width": "10"
+       type: "text",
+       name: "interestedToTakeNewConnection",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='happyWithCurrentNetworkRetentionPlan'",
+       width: "10",
+       title: "Are you interested to take new postpaid connnection for your personal purpose?"
       },
       {
-       "type": "multipletext",
-       "colCount": 2,
-       "items": [
+       type: "multipletext",
+       colCount: 2,
+       items: [
         {
-         "name": "currentPlan",
-         "title": "Current Plan"
+         name: "currentPlan",
+         title: "Current Plan"
         },
         {
-         "name": "currentNetwork",
-         "title": "Current Network"
+         name: "currentNetwork",
+         title: "Current Network"
         }
        ],
-       "name": "currentPlanAndNetwork",
-       "title": "What is the current plan your are using and its network?",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='happyWithExistingNetworkOffer'",
-       "width": "10"
+       name: "currentPlanAndNetwork",
+       title: "What is the current plan your are using and its network?",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='happyWithExistingNetworkOffer'",
+       width: "10"
       },
       {
-       "type": "text",
-       "name": "rechargePerMonth",
-       "title": "How much you are spening per month for your recharge",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='happyWithPrepaid'",
-       "width": "10"
+       type: "text",
+       name: "rechargePerMonth",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='happyWithPrepaid'",
+       width: "10",
+       title: "How much you are spening per month for your recharge"
       },
       {
-       "type": "radiogroup",
-       "choices": [
+       type: "radiogroup",
+       choices: [
         {
-         "value": "yesq",
-         "text": "YES"
+         value: "yesq",
+         text: "YES"
         },
         {
-         "value": "no",
-         "text": "NO"
+         value: "no",
+         text: "NO"
         }
        ],
-       "colCount": 0,
-       "name": "amountIncludeVoiceAndData",
-       "title": "Is the amount inclusive of Voice & Data",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='happyWithPrepaid'",
-       "width": "10"
+       colCount: 0,
+       name: "amountIncludeVoiceAndData",
+       title: "Is the amount inclusive of Voice & Data",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='happyWithPrepaid'",
+       width: "10"
       },
       {
-       "type": "text",
-       "name": "suggestedPlan",
-       "title": "If you have taken the postpaid connection you need not worry about the frequent recharge (need to explain the benefits of postpaid based on the profile/profession)",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='happyWithPrepaid'",
-       "width": "10"
+       type: "text",
+       name: "suggestedPlan",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='happyWithPrepaid'",
+       width: "10",
+       title: "If you have taken the postpaid connection you need not worry about the frequent recharge (need to explain the benefits of postpaid based on the profile/profession)"
       },
       {
-       "type": "text",
-       "name": "IssueFacedWithPostpaid",
-       "title": "May I know what was the issue you have faced?",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='previousBadExpInPostpaid'",
-       "width": "10"
+       type: "text",
+       name: "IssueFacedWithPostpaid",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='previousBadExpInPostpaid'",
+       width: "10",
+       title: "May I know what was the issue you have faced?"
       },
       {
-       "type": "text",
-       "name": "question11",
-       "title": "Others",
-       "visible": false,
-       "visibleIf": "{reasonForNotInterested}='others'",
-       "width": "10"
+       type: "text",
+       name: "question11",
+       visible: false,
+       visibleIf: "{reasonForNotInterested}='others'",
+       width: "10",
+       title: "Others"
       }
      ],
-     "title": "Reason for Not Interested"
+     title: "Reason for Not Interested"
     }
    ],
-   "name": "NotInterested",
-   "visible": false,
-   "visibleIf": "{checkCustomerInterest}='notInterested'"
+   name: "NotInterested",
+   visible: false,
+   visibleIf: "{checkCustomerInterest}='notInterested'"
   }
  ],
- "showProgressBar": "top",
- "showQuestionNumbers": "off",
- "triggers": [
+ showProgressBar: "top",
+ showQuestionNumbers: "off",
+ triggers: [
   {
-   "type": "complete",
-   "operator": "equal",
-   "value": "yes",
-   "name": "exit"
+   type: "complete",
+   operator: "equal",
+   value: "yes",
+   name: "exit"
   }
  ]
 };
@@ -1618,7 +1618,22 @@ function collectPermanentAddress(data){
   if("state" in data.PermanentAddress) state = {"State" : data.PermanentAddress.state}
   if("pincode" in data.PermanentAddress) pincode = {"Pincode" : data.PermanentAddress.pincode}
   if("landmark" in data.PermanentAddress) landmark = {"Landmark" : data.PermanentAddress.landmark}
-  return PermanentAddressJson.PermanentAddress = $.extend(doorNo,buildingNumber,buildingName,street,area,city,taluk,district,zone,state,pincode,landmark);
+  return PermanentAddress = $.extend(doorNo,buildingNumber,buildingName,street,area,city,taluk,district,zone,state,pincode,landmark);
+}
+function collectContactAddress(data){
+  var doorNo,buildingNumber,buildingName,street,area,city,taluk,district,zone,state,pincode,landmark;
+  if("doorNo" in data.PermanentAddress) doorNo = {"DoorNumber" : data.ContactAddress.doorNo}
+  if("buildingNumber" in data.ContactAddress) buildingNumber = {"BuildingNumber" : data.ContactAddress.buildingNumber}
+  if("buildingName" in data.ContactAddress) buildingName = {"BuildingName" : data.ContactAddress.buildingName}
+  if("street" in data.ContactAddress) street = {"Street" : data.ContactAddress.street}
+  if("area" in data.ContactAddress) area = {"Area" : data.ContactAddress.area}
+  if("city" in data.ContactAddress) city = {"City" : data.ContactAddress.city}
+  if("taluk" in data.ContactAddress) taluk = {"Taluk" : data.ContactAddress.taluk}
+  if("district" in data.ContactAddress) district = {"District" : data.ContactAddress.district}
+  if("state" in data.ContactAddress) state = {"State" : data.ContactAddress.state}
+  if("pincode" in data.ContactAddress) pincode = {"Pincode" : data.ContactAddress.pincode}
+  if("landmark" in data.ContactAddress) landmark = {"Landmark" : data.ContactAddress.landmark}
+  return ContactAddress = $.extend(doorNo,buildingNumber,buildingName,street,area,city,taluk,district,zone,state,pincode,landmark);
 }
 function collectAddressProof(data){
   var drivinglicence,rationcard,passport,bankpassbook,aadhar,voterid;  
@@ -1683,6 +1698,7 @@ var AddressProof=[];
 var ProductFeedbackJson={Industry:{Company:{Products:{ProductFeedback:[]}}}};
 var PermanentAddressJson = PermanentAddress=[];
 var ContactAddressJson = ContactAddress=[];
+var JobDetailsjson = JobDetails=[];
 
 var primaryPhone,secondaryPhone,firstName,lastName;
     if("PrimaryPhone" in survey.data) primaryPhone = {"PrimaryPhone" : survey.data.PrimaryPhone}
@@ -1733,14 +1749,18 @@ if("AddressProof" in survey.data){
 var doorNo,buildingNumber,buildingName,street,area,city,taluk,district,zone,state,pincode,landmark;
 if("IsPermanentContactAddressSame" in survey.data){
   if("no"==survey.data.IsPermanentContactAddressSame){  
-    ContactAddressJson.ContactAddress = collectPermanentAddress(survey.data);
+    ContactAddressJson.ContactAddress = collectContactAddress(survey.data);
   }
 }   
 
 var JobDateTime;
 if("meetingDateTime" in survey.data) JobDateTime = {"JobDateTime" : survey.data.meetingDateTime};
 
-var JobDetails ={
+var JobId = TaskIdGenerator();
+JobDetailsjson={
+  "JobId":JobId
+}
+JobDetailsjson.JobDetails={
   JobTitle:"",
   JobDescription:"",
   JobStatus:"Unassigned",
@@ -1763,7 +1783,7 @@ ProductFeedbackJson.Industry.Company.Products.ProductFeedback ={
 }
 var CustomerProfileJson = $.extend(PersonalDetail,PermanentAddressJson,ContactAddressJson);
 
-createCustomerProfile(JobDetails,CustomerProfileJson,ProductFeedbackJson);
+createCustomerProfile(JobDetailsjson,CustomerProfileJson,ProductFeedbackJson);
 
 }
 function createCustomerProfile(jobDetails,customerProfile,productFeedback){
@@ -1801,7 +1821,7 @@ function createProductFeedback(productFeedback){
   //     // Deal with the error
   //   })
     $.ajax({
-            url: "https://gdp-server-manikandanmuthuv.c9users.io/customer/feedback", 
+            url: "https://gdp-server-manikandanmuthuv.c9users.io/api/customer/feedback", 
             type: "POST",
             crossDomain: true,
             data:productFeedback,
@@ -1829,7 +1849,7 @@ function createTask(taskDetails){
   //     // Deal with the error
   //   })
     $.ajax({
-            url: "https://gdp-server-manikandanmuthuv.c9users.io/employee/job", 
+            url: "https://gdp-server-manikandanmuthuv.c9users.io/api/employee/job", 
             type: "POST",
             crossDomain: true,
             data:taskDetails,
@@ -1841,4 +1861,25 @@ function createTask(taskDetails){
               //  alert(status);
             }
         });
+}
+
+function TaskIdGenerator() {
+     
+    this.length = 4;
+    this.timestamp = +new Date;
+
+    var getRandomInt = function( min, max ) {
+    return Math.floor( Math.random() * ( max - min + 1 ) ) + min;
+    }
+
+    var ts = this.timestamp.toString();
+    var parts = ts.split( "" ).reverse();
+    var id = "";
+
+    for( var i = 0; i < this.length; ++i ) {
+    var index = getRandomInt( 0, parts.length - 1 );
+    id += parts[index];  
+    }     
+    return id;       
+         
 }
