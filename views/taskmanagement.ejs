@@ -21,7 +21,7 @@
                             <th>Task ID</th>
                             <th>Customer Name</th>
                             <th>Mobile Number</th>
-                            <th>Task Tytpe</th>
+                            <th>Task Type</th>
                             <th>Description</th>
                             <th>Time</th>
                             <th>Location</th>
@@ -45,17 +45,17 @@
                     <tbody>
                     <% tasks.forEach(function(task){ %>
                         <tr>
-                            <td><%= task.JobId %></td>
-                            <td><%= task.CustomerDetails[0].Name %></td>
-                            <td><%= task.CustomerDetails[0].ContactNumber %></td>
-                            <td><%= task.JobDetails[0].JobTitle %></td>
-                            <td><%= task.JobDetails[0].JobTitle %></td>
-                            <td><%= task.JobDetails[0].JobDateTime %></td>
-                            <td><%= task.JobDetails[0].JobLocation %></td>
-                            <td><%= task.JobDetails[0].JobStatus %></td>
-                            <td><%= task.EmployeeDetails[0].Id + "_" + task.EmployeeDetails[0].Name%></td>
-                            <td><a href="http://localhost:3001/usermanagement"><span class="glyphicon glyphicon-edit"></span></a> </td>
+                        <td><%= task.JobId %></td>
+                        <td><%= task.CustomerDetails["FirstName"] %></td>
+                        <td><%= task.CustomerDetails["PrimaryPhone"] %></td>
+                        <td><%= task.TaskType %></td>
+                        <td><%= task.TaskDescription %></td>          
+                        <td><%= task.JobDateTime %></td>          
+                        <td><%= task.JobLocation %></td>          
+                        <td><%= task.JobStatus %></td>                    
+                        <td><a href="http://localhost:3001/usermanagement"><span class="glyphicon glyphicon-edit"></span></a> </td>
                         </tr>
+              
                    <% }) %>
                     </tbody>
                 </table>

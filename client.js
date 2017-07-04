@@ -8,7 +8,9 @@ var express 		= require('express'),
 	User			= require('./models/user'),
 	request			= require('request'),
  	http 			= require("http"),
-    https 			= require("https");
+    https 			= require("https"),
+    cookieParser	= require('cookie-parser'),
+    connectFlash	= require('connect-flash');
 
 var routers = require('./routes/routes');
 
@@ -19,6 +21,8 @@ app.options('*', cors());
 
 mongoose.connect(databaseUri);
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(cookieParser());
+app.use(connectFlash());
 app.set("view engine","ejs");
 app.use(express.static(__dirname));
 

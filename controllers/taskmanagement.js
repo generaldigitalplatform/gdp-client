@@ -44,26 +44,6 @@ $(document).ready(function(){
     });
 });
 
-function TaskIdGenerator() {
-     
-    this.length = 4;
-    this.timestamp = +new Date;
-
-    var getRandomInt = function( min, max ) {
-    return Math.floor( Math.random() * ( max - min + 1 ) ) + min;
-    }
-
-    var ts = this.timestamp.toString();
-    var parts = ts.split( "" ).reverse();
-    var id = "";
-
-    for( var i = 0; i < this.length; ++i ) {
-    var index = getRandomInt( 0, parts.length - 1 );
-    id += parts[index];  
-    }     
-    return id;       
-         
-}
 function AddNewEmployee(){
     alert("Added employee called");
 }
