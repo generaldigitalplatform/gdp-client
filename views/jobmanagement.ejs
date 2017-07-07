@@ -10,7 +10,13 @@
       <small></small>
     </h4> 
   </div> 
-</div> 
+</div>
+<div class="btn-group pull-right">
+   <a href="/registerfieldforce" class="btn btn-default">Add FieldForce</a> 
+</div>
+<div class="btn-group pull-right">
+   <a href="/registerfieldforce" class="btn btn-default">Create Job</a> 
+</div>  
  <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -43,20 +49,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <% tasks.forEach(function(task){ %>
-                        <tr>
-                        <td><%= task.JobId %></td>
-                        <td><%= task.CustomerDetails["FirstName"] %></td>
-                        <td><%= task.CustomerDetails["PrimaryPhone"] %></td>
-                        <td><%= task.TaskType %></td>
-                        <td><%= task.TaskDescription %></td>          
-                        <td><%= task.JobDateTime %></td>          
-                        <td><%= task.JobLocation %></td>          
-                        <td><%= task.JobStatus %></td>                    
-                        <td><a href="http://localhost:3001/usermanagement"><span class="glyphicon glyphicon-edit"></span></a> </td>
-                        </tr>
-              
-                   <% }) %>
+                  
                     </tbody>
                 </table>
             </div>

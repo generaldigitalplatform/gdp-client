@@ -1,0 +1,29 @@
+<% include ./partials/header.ejs %>
+<link href="../public/css/gdp-1.0.0/fieldforce.css" rel="stylesheet">
+
+ <div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <h4 class="text-center login-title">Create Job</h4>
+            <div class="account-wall">        
+                <form class="form-signin" action="/createjob" method="post">
+                <% if (locals.messages) { %>                
+                <div class="flash"><%= messages.msg %></div>           
+                <% } %>
+                <input type="text" class="form-control" name="job" placeholder="Job" required>
+                <input type="text" class="form-control" name="jobdescription" placeholder="Job Description" required autofocus>
+                <input type="text" class="form-control" name="jobdatetime" placeholder="Job DateTime" required>
+                <input type="text" class="form-control" name="joblocation" placeholder="Job Location" required>
+                <input type="text" class="form-control" name="customername" placeholder="Customer Name" required>
+                <input type="text" class="form-control" name="customerphone" placeholder="Customer Phone" required>
+                <input type="text" class="form-control" name="customeraddress" placeholder="Customer Address" required>
+                <div>
+                <button class="btn btn-primary btn-block" type="submit">
+                    Register</button>
+                </div>                              
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<% include ./partials/footer.ejs %>

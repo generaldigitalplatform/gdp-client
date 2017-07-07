@@ -4,28 +4,41 @@ function init() {
  completedHtml: "<p><h4>Thank you for completing customer feedback</h4>",
  pages: [
   {
+   name: "Greetings",
    elements: [
     {
      type: "text",
      isRequired: true,
      name: "PrimaryPhone",
-     title: "Primary Phone",
+     title: {
+     	"default":"Primary Phone",
+     	"ta":"முதன்மை தொலைபேசி"
+     },
      width: "10"
     },
     {
      type: "radiogroup",
      name: "checkPermission",
      width: "10",
-     title: "I am calling from Vodafone, I would like to talk to you about Vodafone' new plan which suits for you",
+     title:{
+     "default":"I am calling from Vodafone, I would like to talk to you about Vodafone' new plan which suits for you",
+     "ta":"சார், நான் வோடஃபோனில் இருந்து போன் செய்கிறேன்,நான் உங்களிடம் பேசலாமா?"
+ 	},
      isRequired: true,
      choices: [
       {
        value: "permission",
-       text: "Permission"
+       text: {
+       	"default":"Permission",
+       	 "ta":"அனுமதி வழங்கப்பட்டது"
+       }
       },
       {
        value: "denied",
-       text: "Denied"
+       text: {
+       	"default":"Denied",
+       	 "ta":"அனுமதி வழங்கப்படவில்லை"
+       }
       }
      ],
      colCount: 0
@@ -34,7 +47,10 @@ function init() {
      type: "text",
      inputType: "datetime-local",
      name: "deniedCallbackDateTime",
-     title: "May I know call back date and time?",
+     title:{
+      "default":"May I know call back date and time?",
+      "ta":"சார், நான் உங்களுக்கு எப்போ திரும்ப கூப்பிடலாங்க?"
+  	},
      visible: false,
      visibleIf: "{checkPermission}='denied''",
      width: "10"
@@ -60,6 +76,7 @@ function init() {
     },
     {
      type: "panel",
+     name: "NotInterestedReasons",
      elements: [
       {
        type: "radiogroup",
@@ -303,17 +320,16 @@ function init() {
        width: "10"
       }
      ],
-     name: "NotInterestedReasons",
-     title: "Reason for Not Interested",
      visible: false,
-     visibleIf: "{exit}='yes'"
+     visibleIf: "{exit}='yes'",
+     title: "Reason for Not Interested"
     }
    ],
-   name: "Greetings",
-   navigationButtonsVisibility: "show",
-   title: "Greetings!!!"
+   title: "Greetings!!!",
+   navigationButtonsVisibility: "show"
   },
   {
+   name: "Basics",
    elements: [
     {
      type: "multipletext",
@@ -512,15 +528,15 @@ function init() {
     }
    ],
    innerIndent: 3,
-   name: "Basics",
    navigationButtonsVisibility: "show"
   },
   {
+   name: "ProductPitch",
    elements: [
     {
      type: "html",
      name: "customerBasicData",
-     html: "<h5>Customer Basic Data</h5>\n"
+     html: "<h3>Explain Customer about Product Best Fit based on customer Basic Data</h3>\n"
     },
     {
      type: "radiogroup",
@@ -562,12 +578,12 @@ function init() {
      colCount: 0
     }
    ],
+   title: "Product Best Fit Plan Pitch",
    innerIndent: 3,
-   name: "ProductPitch",
-   navigationButtonsVisibility: "show",
-   title: "Product Best Fit Plan Pitch"
+   navigationButtonsVisibility: "show"
   },
   {
+   name: "Interested",
    elements: [
     {
      type: "radiogroup",
@@ -737,13 +753,13 @@ function init() {
      colCount: 0
     }
    ],
-   name: "Interested",
-   navigationButtonsVisibility: "show",
-   title: "Intrested",
    visible: false,
-   visibleIf: "{checkCustomerInterest}='interested'"
+   visibleIf: "{checkCustomerInterest}='interested'",
+   title: "Intrested",
+   navigationButtonsVisibility: "show"
   },
   {
+   name: "EvaluateCustomer",
    elements: [
     {
      type: "radiogroup",
@@ -762,11 +778,11 @@ function init() {
      colCount: 0
     }
    ],
-   name: "EvaluateCustomer",
    visible: false,
    visibleIf: "{checkCustomerInterest}='interested'"
   },
   {
+   name: "EligibleCustomer",
    elements: [
     {
      type: "multipletext",
@@ -948,12 +964,12 @@ function init() {
      colCount: 0
     }
    ],
-   name: "EligibleCustomer",
-   title: "Eligible Customer",
    visible: false,
-   visibleIf: "{checkEligible}='eligible'"
+   visibleIf: "{checkEligible}='eligible'",
+   title: "Eligible Customer"
   },
   {
+   name: "DecideAndCallback",
    elements: [
     {
      type: "radiogroup",
@@ -1138,14 +1154,14 @@ function init() {
      colCount: 0
     }
    ],
-   innerIndent: 3,
-   name: "DecideAndCallback",
-   navigationButtonsVisibility: "show",
-   title: "DecideAndCallback",
    visible: false,
-   visibleIf: "{checkCustomerInterest}='callback'"
+   visibleIf: "{checkCustomerInterest}='callback'",
+   title: "DecideAndCallback",
+   innerIndent: 3,
+   navigationButtonsVisibility: "show"
   },
   {
+   name: "NotInterested",
    elements: [
     {
      type: "panel",
@@ -1390,11 +1406,11 @@ function init() {
      title: "Reason for Not Interested"
     }
    ],
-   name: "NotInterested",
    visible: false,
    visibleIf: "{checkCustomerInterest}='notInterested'"
   },
   {
+   name: "ScheduleMeeting",
    elements: [
     {
      type: "text",
@@ -1405,31 +1421,30 @@ function init() {
     },
     {
      type: "panel",
+     name: "jobDetails",
      elements: [
       {
        type: "dropdown",
+       name: "JobTitle",
+       width: "25",
+       title: "Job Title",
        choices: [
         "NewConnection",
         "CUG",
         "PreToPost"
-       ],
-       name: "JobTitle",
-       title: "Job Title",
-       width: "25"
+       ]
       },
       {
        type: "text",
        name: "JobDescription",
-       size: "55",
+       size: 55,
        title: "Job Description",
        width: "10"
       }
      ],
-     name: "jobDetails",
      title: "JobDetails"
     }
-   ],
-   name: "ScheduleMeeting"
+   ]
   }
  ],
  showProgressBar: "top",
@@ -1666,14 +1681,35 @@ function collectContactAddress(data){
   return ContactAddress = $.extend(doorNo,buildingNumber,buildingName,street,area,city,taluk,district,zone,state,pincode,landmark);
 }
 function collectAddressProof(data){
-  var drivinglicence,rationcard,passport,bankpassbook,aadhar,voterid;  
-  if("drivinglicence" in data.AddressProof) drivinglicence = {"DrivingLicence" : data.AddressProof[0]};//.drivinglicence}
-  if("rationcard" in data.AddressProof) rationcard = {"RationCard" : data.PermanentAddress[1]}//.rationcard}
-  if("passport" in data.AddressProof) passport = {"Passport" : data.AddressProof.passport}
-  if("bankpassbook" in data.AddressProof) bankpassbook = {"BankPassbook" : data.AddressProof.bankpassbook}
-  if("aadhar" in data.AddressProof) aadhar = {"Aadhar" : data.AddressProof.aadhar}
-  if("voterid" in data.AddressProof) voterid = {"VoterID" : data.AddressProof.voterid}
-  return AddressProof = $.extend(drivinglicence,rationcard,passport,bankpassbook,aadhar,voterid);
+  var drivinglicence,rationcard,passport,bankpassbook,aadhar,voterid; 
+  for(var key in data.AddressProof){
+    var value = data.AddressProof[key];
+    if(value == "drivinglicence"){
+      drivinglicence = {"DrivingLicence": value}
+    }
+    if(value == "rationcard"){
+      rationcard = {"RationCard": value}
+    }
+    if(value == "passport"){
+      passport = {"Passport": value}
+    }
+    if(value == "bankpassbook"){
+      bankpassbook = {"BankPassbook": value}
+    }
+    if(value == "aadhar"){
+      aadhar = {"AadharId": value}
+    }
+    if(value == "voterid"){
+      voterid = {"VoterId": value}
+    }    
+  }  
+  // if("0" in data.AddressProof) drivinglicence = {"DrivingLicence" : data.AddressProof[0]} //drivinglicence
+  // if("1" in data.AddressProof) rationcard = {"RationCard" : data.AddressProof[1]}//.rationcard}
+  // if("2" in data.AddressProof) passport = {"Passport" : data.AddressProof[2]} //passport
+  // if("3" in data.AddressProof) bankpassbook = {"BankPassbook" : data.AddressProof[3]} //bankpassbook
+  // if("4" in data.AddressProof) aadhar = {"Aadhar" : data.AddressProof[4]} //aadhar
+  // if("5" in data.AddressProof) voterid = {"VoterID" : data.AddressProof[5]} //voterid
+   return AddressProof = $.extend(drivinglicence,rationcard,passport,bankpassbook,aadhar,voterid);
 }
 function collectDecideAndCallbackReasons(data){
   if("outOfStation"==data.ifDecideAndCallback){
@@ -1716,8 +1752,8 @@ function collectDecideAndCallbackReasons(data){
 }
 var jobId,jobDateTime,jobTitle,jobDescription,jobStatus,JobDetails,jobCreatedTime,jobLocation,JobDetailsJson;
 function getJobDetails(data){
-	var currentdate = new Date(); 
-	var datetime = currentdate.getDate() + "/"
+  var currentdate = new Date(); 
+  var datetime = currentdate.getDate() + "/"
                 + (currentdate.getMonth()+1)  + "/" 
                 + currentdate.getFullYear() + " @ "  
                 + currentdate.getHours() + ":"  
@@ -1744,8 +1780,8 @@ var ProductsDeniedCallbackDetails=[];
 var ProductsDecidesCallbackDetails=[];
 var ProductsInterestedCallbackDetails=[];
 var ProductsNotInterestedCallbackDetails=[];
-var AddressProof=[];
-var ProductFeedbackJson={Product:{Industry:{Company:{ProductFeedback:[]}}}};
+var AddressProofJson=AddressProof=[];
+var ProductFeedbackJson={Feedback:{Industry:{Company:{Product:{ProductFeedback:[]}}}}};
 var PermanentAddressJson = PermanentAddress=[];
 var ContactAddressJson = ContactAddress=[];
 var JobDetailsjson = JobDetails=[];
@@ -1795,7 +1831,7 @@ if("checkEligible" in survey.data){
   }
 }
 if("AddressProof" in survey.data){   
-   AddressProof = collectAddressProof(survey.data);
+   AddressProofJson.AddressProof = collectAddressProof(survey.data);
 }
 var doorNo,buildingNumber,buildingName,street,area,city,taluk,district,zone,state,pincode,landmark;
 if("IsPermanentContactAddressSame" in survey.data){
@@ -1829,11 +1865,11 @@ if("meetingDateTime" in survey.data)
 // }
 
 
-ProductFeedbackJson.Product={"Name":"PreToPost"};
-ProductFeedbackJson.Product.Industry={"Name":"Tele"};
-ProductFeedbackJson.Product.Industry.Company={"Name":"Vodafone"};
+ProductFeedbackJson.Feedback.Industry={"Name":"Tele"};
+ProductFeedbackJson.Feedback.Industry.Company={"Name":"Vodafone"};
+ProductFeedbackJson.Feedback.Industry.Company.Product={"Name":"PreToPost"};
 
-ProductFeedbackJson.Product.Industry.Company.ProductFeedback ={
+ProductFeedbackJson.Feedback.Industry.Company.Product.ProductFeedback ={
   ProductsDeniedCallbackDetails,
   ProductsDecidesCallbackDetails,
   ProductsUsageDetails,
@@ -1843,7 +1879,7 @@ ProductFeedbackJson.Product.Industry.Company.ProductFeedback ={
   ProductsNotInterestedCallbackDetails  
 }
 
-var CustomerProfile = $.extend(PersonalDetail,PermanentAddressJson,ContactAddressJson);
+var CustomerProfile = $.extend(PersonalDetail,PermanentAddressJson,ContactAddressJson,AddressProofJson);
 CustomerProfileJson= {
  CustomerProfile
 }

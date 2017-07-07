@@ -1,0 +1,29 @@
+<% include ./partials/header.ejs %>
+<link href="../public/css/gdp-1.0.0/fieldforce.css" rel="stylesheet">
+
+ <div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <h4 class="text-center login-title">Register FieldForce</h4>
+            <div class="account-wall">        
+                <form class="form-signin" action="/registerfieldforce" method="post">
+                <% if (locals.messages) { %>                
+                <div class="flash"><%= messages.msg %></div>           
+                <% } %>
+                <input type="text" class="form-control" name="employeeid" placeholder="EmployeeID" required>
+                <input type="text" class="form-control" name="firstname" placeholder="Firstname" required autofocus>
+                <input type="text" class="form-control" name="lastname" placeholder="Lastname" required>
+                <input type="text" class="form-control" name="primaryphone" placeholder="Primary Phone" required>
+                <input type="text" class="form-control" name="secondaryphone" placeholder="Secondary Phone" required>
+                <input type="text" class="form-control" name="worklocations" placeholder="Work Locations" required>
+                <input type="text" class="form-control" name="workpincodes" placeholder="Locations Pincodes" required>
+                <div>
+                <button class="btn btn-primary btn-block" type="submit">
+                    Register</button>
+                </div>                              
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<% include ./partials/footer.ejs %>

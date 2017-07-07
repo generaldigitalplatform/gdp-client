@@ -76,7 +76,6 @@ font-size:2em;
     left: auto;
     right: 0;
 }
-
 .form-signin
 {
     max-width: 330px;
@@ -131,6 +130,7 @@ font-size:2em;
 .account-wall .form-control{
   background-color: #ffffff;
   border:1px solid #e7e7e7;
+  padding: 5 5;
 }
 .login-title
 {
@@ -168,12 +168,15 @@ font-size:2em;
   text-align: left;
   border:1px solid #d9d9d9;
 }
+.no-space-break{
+    white-space:nowrap;
 
-.col-sm-3{
+  }
+label.col-sm-2.control-label{
     position: relative;
     min-height: 0px;
     padding-right: 0px;
-    padding-left: 0px;
+    padding-left: 5px;
 
 }
 .col-sm-8{
@@ -191,7 +194,7 @@ label {
 }
 .form-control {
     display: block;
-    width: 100%;
+    width: 75%;
     height: 34px;
     padding: 1px 1px;
     font-size: 14px;
