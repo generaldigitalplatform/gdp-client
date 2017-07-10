@@ -5,6 +5,6 @@ module.exports = {
 	'protected':'https://gdp-server-manikandanmuthuv.c9users.io/api/auth/protected',
 	'customerprofile':'https://gdp-server-manikandanmuthuv.c9users.io/api/customer/profile',
 	'customerfeedback':'https://gdp-server-manikandanmuthuv.c9users.io/api/customer/feedback',
-	'job':'https://gdp-server-manikandanmuthuv.c9users.io/api/employee/job',
+	'job':'https://gdp-server-manikandanmuthuv.c9users.io/api/employee/job/1',
 	'registerfieldforce':'https://gdp-server-manikandanmuthuv.c9users.io/api/employee/fieldforce',
 }

@@ -1,12 +1,12 @@
 <% include ./partials/header.ejs %>
-<link href="../public/css/gdp-1.0.0/user-management.css" rel="stylesheet">
+<link href="../public/css/gdp-1.0.0/jobmanagement.css" rel="stylesheet">
 <script src="../controllers/taskmanagement.js"></script>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 
 <div class="container">
   <div class="title">
     <h4 >
-      Task Management
+      Job Management
       <small></small>
     </h4> 
   </div> 
@@ -24,15 +24,15 @@
                 <table class="table table-hover table-sm table-responsive">
                     <thead>
                         <tr>
-                            <th>Task ID</th>
-                            <th>Customer Name</th>
-                            <th>Mobile Number</th>
-                            <th>Task Type</th>
-                            <th>Description</th>
-                            <th>Time</th>
-                            <th>Location</th>
-                            <th>Status</th>
-                            <th>Responsibility</th>
+                            <th><div>Job</div><div>ID</div></th>
+                            <th>Job</th>
+                            <th><div>Job</div><div>Description</div></th>
+                            <th><div>Job</div><div>Time</div></th>
+                            <th><div>Customer</div><div>Name</div></th>
+                            <th><div>Customer</div><div>Number</div></th>
+                            <th><div>Customer</div><div>Address</div></th>         
+                            <th><div>Job</div><div>Status</div></th>
+                            <th>Executive</th>
                             <th>Edit</th>                            
                         </tr>
                         <tr class="filters">
@@ -49,7 +49,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                  
+                    <% jobs.forEach(function(job){ %>
+                        <% job.forEach(function(jo){ %>
+                        <tr>                        
+                            <td><%= jo.JobDetails[0].JobId %></td>
+                            <td><%= jo.JobDetails[0].JobTitle %></td>
+                            <td><%= jo.JobDetails[0].JobDescription %></td>
+                            <td><%= jo.JobDetails[0].JobScheduledTime %></td>
+                            <td><%= jo.CustomerDetails[0].FirstName %></td>
+                            <td><%= jo.CustomerDetails[0].PrimaryPhone %></td>
+                            <td><%= jo.CustomerDetails[0].Address %></td>
+                            <td><%= jo.JobDetails[0].JobStatus %></td>    
+                            <td><%= jo.JobDetails[0].JobStatus %></td>                   
+                            <td><a href="http://localhost:3001/usermanagement"><span class="glyphicon glyphicon-edit"></span></a> </td>
+                         <% }) %>
+                        </tr>
+                   <% }) %>
                     </tbody>
                 </table>
             </div>

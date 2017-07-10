@@ -2,7 +2,7 @@ body {
   padding-top: 10px;
   padding-bottom: 0px;
   background-color:#e7e7e7 !important;
-  font-family: ubuntu;
+  font-family: ubuntu !important;
 }
 .titlehead, h4{
   color: #16A6E5;
@@ -47,12 +47,7 @@ font-size:2em;
   background-color: #d9d9d9;
   border:1px solid #e7e7e7;
 }
-.progress{
-  background-color: #d9d9d9;
-}
-.progress-bar{
-  background-color: #16A6E5;
-}
+
 .btn{
   background-color: #16A6E5;
   border-color:#16A6E5;
@@ -87,26 +82,6 @@ font-size:2em;
 .custome-icon {
   height: 30px;
   width: 30px;
-}
-.col-md-3{
-  width: auto;
-  text-align: left;
-
-}
-.col-sm-3{
-    position: relative;
-    min-height: 0px;
-    padding-right: 0px;
-    padding-left: 0px;
-
-}
-.col-sm-8{
-    position: relative;
-    min-height: 1px;
-    padding-right: 5px;
-    padding-left: 15px;
-    border:4px;
-
 }
 label {
     display: inline-block;
