@@ -1898,7 +1898,7 @@ $.ajax({
 }
 function createCustomerProfile(jobDetails,customerProfile,productFeedback){
   $.ajax({
-        url: "https://gdp-server-manikandanmuthuv.c9users.io/customer/profile", 
+        url: "https://gdp-test-server.herokuapp.com/customer/profile", 
         type: "POST",
         crossDomain: true,
         data: customerProfile,
@@ -1920,7 +1920,7 @@ function createCustomerProfile(jobDetails,customerProfile,productFeedback){
   } 
 function createProductFeedback(productFeedback){
     $.ajax({
-            url: "https://gdp-server-manikandanmuthuv.c9users.io/api/customer/feedback", 
+            url: "https://gdp-test-server.herokuapp.com/api/customer/feedback", 
             type: "POST",
             crossDomain: true,
             data:productFeedback,
@@ -1935,7 +1935,7 @@ function createProductFeedback(productFeedback){
 }
 function createTask(taskDetails){
     $.ajax({
-            url: "https://gdp-server-manikandanmuthuv.c9users.io/api/employee/job", 
+            url: "https://gdp-test-server.herokuapp.com/api/employee/job", 
             type: "POST",
             crossDomain: true,
             data:taskDetails,
