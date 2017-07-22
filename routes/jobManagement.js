@@ -6,21 +6,19 @@ var express 	= require('express'),
 var config		= require('../config/database'),
 	util		= require('../util/util');
 
+
 module.exports = function(app){	
 
 	router.use('/',jobManagementRoutes);
 
-	// jobManagementRoutes.get("/jobmanagement",function(req,res){
-	// res.render("jobmanagement");
-	// });
+	jobManagementRoutes.get("/jobmanagement",function(req,res){
+	
+	var token = req.cookies.auth;
 
-	jobManagementRoutes.get("/jobmanagement",function(req,res){ 
 	var options = {		
 		uri:config.job,
 		method: 'GET',
-		headers: {
-		'Content-Type': 'application/json'
-		}		
+		headers: {'Content-Type': 'application/json',"Authorization": token}		
 	}
 
 	request(options,function(error, response, body){
@@ -35,6 +33,11 @@ module.exports = function(app){
 			//Object.keys(resdata).map(function() { jobs })
 			res.render("jobmanagement",{jobs});
 		};
+		if(body=='Unauthorized'){
+				req.flash("msg","You are Unauthorized view Job Management.");
+                res.locals.messages = req.flash();		
+				return res.render("login", {message:"You are Unauthorized view Job Management."});				
+			}
 	});
 });
 	jobManagementRoutes.post("/jobmanagement",function(req,res){ 

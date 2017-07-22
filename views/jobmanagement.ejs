@@ -4,34 +4,40 @@
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 
 <div class="container">
-  <div class="title">
-    <h4 >
-      Job Management
-      <small></small>
-    </h4> 
-  </div> 
+    <div class="title">
+        <h4 >
+          Job Management
+          <small></small>
+        </h4> 
+    </div> 
 </div>
-<div class="btn-group pull-right">
-   <a href="/registerfieldforce" class="btn btn-default">Add FieldForce</a> 
+<div class="container">
+    <div>
+        <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
+        Create Job
+        </button>
+    </div>
+    <div>
+        <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#addFieldForceModal">
+        Add Field Force
+        </button>
+    </div> 
 </div>
-<div class="btn-group pull-right">
-   <a href="/registerfieldforce" class="btn btn-default">Create Job</a> 
-</div>  
- <div class="container">
+<div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="panel-body filterable">
-                <table class="table table-hover table-sm table-responsive">
+                <table class="table table-hover table-sm table-responsive" id="jobmanagement">
                     <thead>
                         <tr>
                             <th><div>Job</div><div>ID</div></th>
-                            <th>Job</th>
+                            <th><div>Job</div><div>Title</div></th>                       
                             <th><div>Job</div><div>Description</div></th>
                             <th><div>Job</div><div>Time</div></th>
+                            <th><div>Job</div><div>Status</div></th>
                             <th><div>Customer</div><div>Name</div></th>
                             <th><div>Customer</div><div>Number</div></th>
-                            <th><div>Customer</div><div>Address</div></th>         
-                            <th><div>Job</div><div>Status</div></th>
+                            <th><div>Customer</div><div>Address</div></th> 
                             <th>Executive</th>
                             <th>Edit</th>                            
                         </tr>
@@ -45,24 +51,24 @@
                             <th><input type="text" class="form-control" placeholder=""></th>
                             <th><input type="text" class="form-control" placeholder=""></th>
                             <th><input type="text" class="form-control" placeholder=""></th>
-                            <th><input type="text" class="form-control" placeholder=""></th>
-                        </tr>
+                          </tr>
                     </thead>
                     <tbody>
-                    <% jobs.forEach(function(job){ %>
-                        <% job.forEach(function(jo){ %>
+                    <% jobs.forEach(function(job){ %> 
+                     <% job.forEach(function(jo){ %>                    
                         <tr>                        
-                            <td><%= jo.JobDetails[0].JobId %></td>
-                            <td><%= jo.JobDetails[0].JobTitle %></td>
-                            <td><%= jo.JobDetails[0].JobDescription %></td>
-                            <td><%= jo.JobDetails[0].JobScheduledTime %></td>
-                            <td><%= jo.CustomerDetails[0].FirstName %></td>
-                            <td><%= jo.CustomerDetails[0].PrimaryPhone %></td>
-                            <td><%= jo.CustomerDetails[0].Address %></td>
-                            <td><%= jo.JobDetails[0].JobStatus %></td>    
-                            <td><%= jo.JobDetails[0].JobStatus %></td>                   
+                            <td><%= jo.JobId %></td>
+                            <td><%= jo.JobTitle %></td>
+                            <td><%= jo.JobDescription %></td>
+                            <td><%= new Date(jo.JobScheduledTime).toLocaleString() %></td> 
+                            <td class="Status"><%= jo.JobStatus %></td>                                        
+                            <td><%= jo.CustomerDetails.FirstName %></td>
+                            <td><%= jo.CustomerDetails.PrimaryPhone %></td>
+                            <td><%= jo.CustomerDetails.Address %></td>                              
+                            <td><%= jo.EmployeeDetails.EmployeeId +"_"+jo.EmployeeDetails.FirstName %></td>                   
                             <td><a href="http://localhost:3001/usermanagement"><span class="glyphicon glyphicon-edit"></span></a> </td>
-                         <% }) %>
+
+                      <% }) %>
                         </tr>
                    <% }) %>
                     </tbody>
@@ -72,8 +78,148 @@
     </div>
 </div>
 </div>
+<!-- Create Job Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">Create New Job</h4>
+        </div>
+        <div class="modal-body">
+            <section class="contactformhorizontal">
+                <div class="container">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="form-horizontal">
+                          <div class="form-group col-sm-3">
+                                <div class="form-group">
+                                  <label class="control-label col-sm-6 required" for="job">Job Title:</label>
+                                  <div class="col-sm-6">
+                                    <input class="form-control" type="text" id="job">
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <label class="control-label col-sm-6 required" for="jobDescription">Job Description:</label>
+                                  <div class="col-sm-6">
+                                    <input class="form-control" type="text" id="jobDescription">
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <label class="control-label col-sm-6 required" for="jobTime">Job Time</label>
+                                  <div class="col-sm-6">
+                                    <input class="form-control" type="text" id="jobTime">
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <label class="control-label col-sm-6 required" for="jobLocation">Job Location</label>
+                                  <div class="col-sm-6">
+                                    <input class="form-control" type="text" id="jobLocation">
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <label class="control-label col-sm-6 required" for="customername">Customer Name</label>
+                                  <div class="col-sm-6">
+                                    <input class="form-control" type="text" id="customername">
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <label class="control-label col-sm-6 required" for="customerphone">Customr Phone</label>
+                                  <div class="col-sm-6">
+                                    <input class="form-control" type="text" id="customerphone">
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                <label class="control-label col-sm-6 required" for="customeraddress">Customer Address:</label>
+                                <div class="col-sm-6">
+                                  <textarea id="yourMessage" class="form-control" id="customeraddress" rows="6"></textarea>
+                                </div>
+                              </div>            
+                          </div>                         
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </section> 
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+  </div>
+</div>          
+
+<!-- Add Field Force Modal -->
+<div class="modal fade" id="addFieldForceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">Add Field Force</h4>
+        </div>
+        <div class="modal-body">
+            <section class="contactformhorizontal">
+                <div class="container">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="form-horizontal">
+                            <div class="form-group col-sm-3">
+                                <div class="form-group">
+                                      <label class="control-label col-sm-6 required" for="empid">Employee ID:</label>
+                                      <div class="col-sm-6">
+                                        <input class="form-control" type="text" id="empid">
+                                      </div>
+                                </div>
+                                <div class="form-group">
+                                      <label class="control-label col-sm-6 required" for="firstName">First Name:</label>
+                                      <div class="col-sm-6">
+                                        <input class="form-control" type="text" id="firstName">
+                                      </div>
+                                </div>
+                                <div class="form-group">
+                                      <label class="control-label col-sm-6 required" for="lastName">Last Name</label>
+                                      <div class="col-sm-6">
+                                        <input class="form-control" type="text" id="lastName">
+                                      </div>
+                                </div>
+                                <div class="form-group">
+                                      <label class="control-label col-sm-6 required" for="primaryphone">Primary Phone</label>
+                                      <div class="col-sm-6">
+                                        <input class="form-control" type="text" id="primaryphone">
+                                      </div>
+                                </div>
+                                <div class="form-group">
+                                      <label class="control-label col-sm-6 required" for="secondaryphone">Secondary Phone</label>
+                                      <div class="col-sm-6">
+                                        <input class="form-control" type="text" id="secondaryphone">
+                                      </div>
+                                </div>                                
+                                <div class="form-group">
+                                      <label class="control-label col-sm-6 required" for="worklocation">Work Location</label>
+                                      <div class="col-sm-6">
+                                        <input class="form-control" type="text" id="worklocation">
+                                      </div>
+                                </div>
+                                 <div class="form-group">
+                                      <label class="control-label col-sm-6 required" for="workpincodes">Work Pincodes</label>
+                                      <div class="col-sm-6">
+                                        <input class="form-control" type="text" id="workpincodes">
+                                      </div>
+                                </div>         
+                          </div>                         
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </section> 
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+  </div>
+</div>        
 
 <% include ./partials/footer.ejs %>
-
-
-

@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel-body filterable">
+                <table class="table table-hover table-sm table-responsive" id="jobmanagement">
+                    <thead>
+                        <tr>
+                            <th><div>Job</div><div>ID</div></th>
+                            <th><div>Job</div><div>Title</div></th>                       
+                            <th><div>Job</div><div>Description</div></th>
+                            <th><div>Job</div><div>Time</div></th>
+                            <th><div>Job</div><div>Status</div></th>
+                            <th><div>Customer</div><div>Name</div></th>
+                            <th><div>Customer</div><div>Number</div></th>
+                            <th><div>Customer</div><div>Address</div></th> 
+                            <th>Executive</th>
+                            <th>Edit</th>                            
+                        </tr>
+                        <tr class="filters">
+                            <th><input type="text" class="form-control" placeholder=""></th>
+                            <th><input type="text" class="form-control" placeholder=""></th>
+                            <th><input type="text" class="form-control" placeholder=""></th>
+                            <th><input type="text" class="form-control" placeholder=""></th>
+                            <th><input type="text" class="form-control" placeholder=""></th>
+                            <th><input type="text" class="form-control" placeholder=""></th>
+                            <th><input type="text" class="form-control" placeholder=""></th>
+                            <th><input type="text" class="form-control" placeholder=""></th>
+                            <th><input type="text" class="form-control" placeholder=""></th>
+                          </tr>
+                    </thead>
+                    <tbody>
+                    <% jobs.forEach(function(job){ %> 
+                     <% job.forEach(function(jo){ %>                    
+                        <tr>                        
+                            <td><%= jo.JobId %></td>
+                            <td><%= jo.JobTitle %></td>
+                            <td><%= jo.JobDescription %></td>
+                            <td><%= new Date(jo.JobScheduledTime).toLocaleString() %></td> 
+                            <td class="Status"><%= jo.JobStatus %></td>                                        
+                            <td><%= jo.CustomerDetails.FirstName %></td>
+                            <td><%= jo.CustomerDetails.PrimaryPhone %></td>
+                            <td><%= jo.CustomerDetails.Address %></td>                              
+                            <td><%= jo.EmployeeDetails.EmployeeId +"_"+jo.EmployeeDetails.FirstName %></td>                   
+                            <td><a href="http://localhost:3001/usermanagement"><span class="glyphicon glyphicon-edit"></span></a> </td>
+
+                      <% }) %>
+                        </tr>
+                   <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

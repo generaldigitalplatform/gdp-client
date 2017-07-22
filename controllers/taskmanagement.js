@@ -44,6 +44,16 @@ $(document).ready(function(){
     });
 });
 
+$(document).ready(function(){
+    $("#jobmanagement td.Status:contains('Unassigned')").css('background-color','#00ff7f');
+    $("#jobmanagement td.Status:contains('Assigned')").css('background-color','#00ff7f');
+    $("#jobmanagement td.Status:contains('Started')").css('background-color','#00ff7f');
+    $("#jobmanagement td.Status:contains('Pending')").css('background-color','#fee8a3');
+    $("#jobmanagement td.Status:contains('Cancelled')").css('background-color','#fee8a3');
+    $("#jobmanagement td.Status:contains('Completed')").css('background-color','#00ff7f');
+    $("#jobmanagement td.Status:contains('Rescheduled')").css('background-color','#00aad2');    
+});
+
 function AddNewEmployee(){
     alert("Added employee called");
 }

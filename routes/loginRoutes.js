@@ -31,24 +31,24 @@ module.exports = function(app){
 			if(!util.verifyJson(body)){			
 				var body = JSON.parse(body);
 				if("token" in body){			
-					console.log("login successfully");
-					username = body.user.employeeId + "_" + body.user.firstname;
+					console.log("login successfully");					
+					res.cookie('employee',body.user.employeeid + "_" + body.user.firstname);
 					res.cookie('auth',body.token);
 					res.redirect("/telesales");
 				}			
 				if("error" in body){
 				 	if(body["error"]=='Login failed. Please try again.'){
-				 	req.flash("msg","Error Occured");
+				 	req.flash("msg","Login Failed. If you are not registered yet, please register and login again");
 	                res.locals.messages = req.flash();			
 					console.log("Login failed. Please try again.");
-					return res.render("register", {message:"Login failed. Please try again."});
+					return res.render("register", {message:"Login Failed. Please enter the valid email and password. If you are not registered yet, please register and login again"});
 					}
 				}
 			}
 			if(body=='Unauthorized'){
-				req.flash("msg","Login failed. Please try again.");
+				req.flash("msg","Login Failed. You are Unauthorized to login. If not registered yet, please register and login");
                 res.locals.messages = req.flash();		
-				return res.render("login", {message:"Login failed. Please try again."});				
+				return res.render("login", {message:"Login Failed. You are Unauthorized to login. If you are not registered yet, please register and login"});				
 			}
 		});
 	});

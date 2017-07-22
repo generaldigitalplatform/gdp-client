@@ -15,6 +15,6 @@ module.exports = {
 	'protected':'https://gdp-test-server.herokuapp.com/api/auth/protected',
 	'customerprofile':'https://gdp-test-server.herokuapp.com/api/customer/profile',
 	'customerfeedback':'https://gdp-test-server.herokuapp.com/api/customer/feedback',
-	'job':'https://gdp-test-server.herokuapp.com/api/employee/job/1',
+	'job':'https://gdp-test-server.herokuapp.com/api/employee/job',
 	'registerfieldforce':'https://gdp-test-server.herokuapp.com/api/employee/fieldforce',
 }

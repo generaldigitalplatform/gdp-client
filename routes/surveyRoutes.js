@@ -7,15 +7,16 @@ var config		= require('../config/database'),
 	util		= require('../util/util');
 
 module.exports = function(app){	
-var username;
+
 router.use('/',surveyRoutes);
 surveyRoutes.post("/savesurvey",function(req,res){	
 	
 var token = req.cookies.auth;
+var employee = req.cookies.employee;
 		
 if("CustomerProfile" in req.body){
 	var CustomerProfile = req.body.CustomerProfile;
-	CustomerProfile["CreatedBy"] = username;
+	CustomerProfile["CreatedBy"] = employee;
 	var cusprofile = {		
 		uri:config.customerprofile,
 		method: 'POST',
@@ -28,7 +29,8 @@ if("CustomerProfile" in req.body){
 		 	var customerId = customerModel._id
 		 	if("Feedback" in req.body){
 			 	var ProductFeedback = req.body.Feedback;
-			 	ProductFeedback["CustomerId"] = customerId;    
+			 	ProductFeedback["CustomerId"] = customerId; 
+			 	ProductFeedback["CollectedBy"] = employee;     
 				var cussurvey = {		
 					uri:config.customerfeedback,
 					method: 'POST',
