@@ -15,7 +15,11 @@ var routers = require('./routes/routes'),
 	surveyRoutes = require('./routes/surveyRoutes');
 	config = require('./config/database'),
 	fieldforceRoutes = require('./routes/fieldforceRoutes'),
-	jobManagementRoutes = require('./routes/jobManagement')
+	jobManagementRoutes = require('./routes/jobManagementRoutes'),
+	createJobRoutes = require('./routes/createJobRoutes');
+	reportsRoutes = require('./routes/reportsRoutes');
+
+	// jobManagementController = require('./controllers/JobManagementController');
 //var databaseUri = 'mongodb://localhost:27017/gdp';
 //var databaseUri = 'mongodb://gdp-server:gdp-server@ds131512.mlab.com:31512/gdp-server?authMechanism=SCRAM-SHA-1'
 
@@ -25,7 +29,13 @@ app.options('*', cors());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(cookieParser());
 app.use(connectFlash());
+app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
+
+
 app.set("view engine","ejs");
+app.locals.rmWhitespace = true;
+
+
 app.use(express.static(__dirname));
 
 app.use(require('express-session')({
@@ -43,8 +53,8 @@ passport.deserializeUser(User.deserializeUser());
 
 var port = 3001;
 var httpServer = require('http').createServer(app);
-//httpServer.listen(process.env.PORT,process.env.IP, function() {
-httpServer.listen(port, function() {
+httpServer.listen(process.env.PORT,process.env.IP, function() {
+//httpServer.listen(port, function() {
     console.log('gdmp-client running on port ' + process.env.PORT + '.');
 });
 
@@ -54,6 +64,9 @@ customerfeedbackRoutes(app);
 surveyRoutes(app);
 fieldforceRoutes(app);
 jobManagementRoutes(app);
+createJobRoutes(app);
+reportsRoutes(app);
+// jobManagementController(app);
 
 routers(app);
 

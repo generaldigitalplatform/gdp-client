@@ -4,9 +4,23 @@ body {
   background-color:#e7e7e7 !important;
   font-family: ubuntu !important;
 }
+body.model-open {
+  padding-top: 10px;
+  padding-bottom: 0px;
+  background-color:#e7e7e7 !important;
+  font-family: ubuntu !important;
+  font-size: :14px;
+}
+/*.modal-backdrop  { 
+   background-color: #e7e7e7; 
+}*/
+/*#myModal.modal-backdrop {background-color: #e7e7e7;}
+*/
 .titlehead, h4{
   color: #16A6E5;
 }
+.modal .modal-dialog .modal-content{  background-color: #e7e7e7; }
+
 .container {
     padding-right: 2px;
     padding-left: 2px;
@@ -81,10 +95,18 @@ font-size:2em;
   height: 30px;
   width: 30px;
 }
+#inputtext {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #16A6E5;
+    outline:none;
+    box-shadow:none;
+}
 label {
     display: inline-block;
     max-width: 100%;
     margin-bottom: 5px;
+    font-size: 14px;
     font-weight: 100;
 }
 margin-left: auto;
@@ -98,11 +120,18 @@ h5{
 }
 .table>tbody>tr>td{
   font-size:12px;
-  text-align: center;
+  text-align: left;
+  width:auto;
 }
 .table>thead>tr>th{
   font-size:12px;
   text-align: center;
+  width:auto;
+}
+.table td.fit, 
+.table th.fit {
+    white-space: nowrap;
+    width: 1%;
 }
 .jobmanagement{
   
@@ -110,7 +139,84 @@ h5{
 .form-control{
     display: block;
     width: 200%;
+    background-color: #e7e7e7;
 }
+
+  .row {
+      margin-bottom: 20px;
+    }
+
+    pre {
+      margin-top: 0;
+    }
+
+    .button.button-small {
+        height: 30px;
+        line-height: 30px;
+        padding: 0px 10px;
+    }
+
+    td input[type=text], td select {
+      width: 100%;
+      height: 40px;
+      margin: 0;
+      padding: 2px 2px;
+      background-color: #e7e7e7;
+    }
+
+    th:last-child {
+      text-align: right;
+    }
+
+    td:last-child {
+        text-align: right;
+    }
+
+    td:last-child .button {
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        padding: 0px;
+        margin-bottom: 0px;
+        margin-right: 5px;
+        background-color: #FFF;
+    }
+
+    td:last-child .button .fa {
+        line-height: 30px;
+        width: 30px;
+    }
+
+
+
+
+td.number {
+  text-align: right;
+  font-weight: bold;
+  padding-right: 5px;
+  white-space: nowrap;
+}
+
+td.number.nan {
+  font-weight: normal;
+  color: #AAA;
+}
+
+th.number {
+  text-align: right;
+}
+
+td.boolean {
+  text-align: center;
+}
+
+th.boolean {
+  text-align: center;
+}
+    
+/*.verticalLine{
+  border-right: solid 2px #d9d9d9;
+}*/
 <% /*
 .form-control {
     display: block;

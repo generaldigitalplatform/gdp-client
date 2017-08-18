@@ -9,17 +9,30 @@
     <meta name="author" content="">
  <!--    <link rel="icon" href="../../favicon.ico"> -->
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+   
 
     <script src="../../public/js/jQuery-3.2.1/jquery-3.2.1.min.js"></script>
     <script src="../../public/js/bootstrap-3.3.7/bootstrap.min.js"></script>
 <!--     <script src="../public/js/bootstrap-v4.0.0/tether.min.js"></script> -->
     <script src="../../public/js/surveyjs-0.12.16/survey.jquery.js"></script>
-    
+    <script src="../../public/js/table-edits/jquery.tabledit.js"></script>
+   <!--  <script src="../../public/js/table-edits/mindmup-editabletable.js"></script> -->
+  <script src="../../public/js/datetimepicker/jquery.datetimepicker.js"></script> 
+    <script src="../../public/js/datetimepicker/bootstrap-datetimepicker.min.js"></script> 
+   <script src="../../public/js/chart/highcharts/highcharts.js"></script>
+    <script src="../../public/js/chart/highcharts/exporting.js"></script>
+        <script src="../../public/js/chart/highcharts/data.js"></script>
 
 
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+ -->
+
+
+    <link href="../../public/css/bootstrap-3.3.7/bootstrap-datetimepicker.css" rel="stylesheet">
     <link href="../../public/css/bootstrap-3.3.7/bootstrap.min.css" rel="stylesheet">
     <link href="../../public/css/surveyjs-0.12.16/survey.css" type="text/css" rel="stylesheet" />
     <link href="../../public/css/bootstrap-3.3.7/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.oesmith.co.uk/morris-0.5.1.css">
 
   </head>
 
@@ -54,3 +67,147 @@
         </div>
       </div>
     </nav>
+
+<% /*
+<script>
+window.onerror = function(errorMsg) {
+  $('#console').html($('#console').html()+'<br>'+errorMsg)
+}
+
+$.datetimepicker.setLocale('en');
+
+$('#datetimepicker_format').datetimepicker({value:'2015/04/15 05:03', format: $("#datetimepicker_format_value").val()});
+console.log($('#datetimepicker_format').datetimepicker('getValue'));
+
+$("#datetimepicker_format_change").on("click", function(e){
+  $("#datetimepicker_format").data('xdsoft_datetimepicker').setOptions({format: $("#datetimepicker_format_value").val()});
+});
+$("#datetimepicker_format_locale").on("change", function(e){
+  $.datetimepicker.setLocale($(e.currentTarget).val());
+});
+
+$('#datetimepicker').datetimepicker({
+dayOfWeekStart : 1,
+lang:'en',
+disabledDates:['1986/01/08','1986/01/09','1986/01/10'],
+startDate:  '1986/01/05'
+});
+$('#datetimepicker').datetimepicker({value:'2015/04/15 05:03',step:10});
+
+$('.some_class').datetimepicker();
+
+$('#default_datetimepicker').datetimepicker({
+  formatTime:'H:i',
+  formatDate:'d.m.Y',
+  //defaultDate:'8.12.1986', // it's my birthday
+  defaultDate:'+03.01.1970', // it's my birthday
+  defaultTime:'10:00',
+  timepickerScrollbar:false
+});
+
+$('#datetimepicker10').datetimepicker({
+  step:5,
+  inline:true
+});
+$('#datetimepicker_mask').datetimepicker({
+  mask:'9999/19/39 29:59'
+});
+
+$('#datetimepicker1').datetimepicker({
+  datepicker:false,
+  format:'H:i',
+  step:5
+});
+$('#datetimepicker2').datetimepicker({
+  yearOffset:222,
+  lang:'ch',
+  timepicker:false,
+  format:'d/m/Y',
+  formatDate:'Y/m/d',
+  minDate:'-1970/01/02', // yesterday is minimum date
+  maxDate:'+1970/01/02' // and tommorow is maximum date calendar
+});
+$('#datetimepicker3').datetimepicker({
+  inline:true
+});
+$('#datetimepicker4').datetimepicker();
+$('#open').click(function(){
+  $('#datetimepicker4').datetimepicker('show');
+});
+$('#close').click(function(){
+  $('#datetimepicker4').datetimepicker('hide');
+});
+$('#reset').click(function(){
+  $('#datetimepicker4').datetimepicker('reset');
+});
+$('#datetimepicker5').datetimepicker({
+  datepicker:false,
+  allowTimes:['12:00','13:00','15:00','17:00','17:05','17:20','19:00','20:00'],
+  step:5
+});
+$('#datetimepicker6').datetimepicker();
+$('#destroy').click(function(){
+  if( $('#datetimepicker6').data('xdsoft_datetimepicker') ){
+    $('#datetimepicker6').datetimepicker('destroy');
+    this.value = 'create';
+  }else{
+    $('#datetimepicker6').datetimepicker();
+    this.value = 'destroy';
+  }
+});
+var logic = function( currentDateTime ){
+  if (currentDateTime && currentDateTime.getDay() == 6){
+    this.setOptions({
+      minTime:'11:00'
+    });
+  }else
+    this.setOptions({
+      minTime:'8:00'
+    });
+};
+$('#datetimepicker7').datetimepicker({
+  onChangeDateTime:logic,
+  onShow:logic
+});
+$('#datetimepicker8').datetimepicker({
+  onGenerate:function( ct ){
+    $(this).find('.xdsoft_date')
+      .toggleClass('xdsoft_disabled');
+  },
+  minDate:'-1970/01/2',
+  maxDate:'+1970/01/2',
+  timepicker:false
+});
+$('#datetimepicker9').datetimepicker({
+  onGenerate:function( ct ){
+    $(this).find('.xdsoft_date.xdsoft_weekend')
+      .addClass('xdsoft_disabled');
+  },
+  weekends:['01.01.2014','02.01.2014','03.01.2014','04.01.2014','05.01.2014','06.01.2014'],
+  timepicker:false
+});
+var dateToDisable = new Date();
+  dateToDisable.setDate(dateToDisable.getDate() + 2);
+$('#datetimepicker11').datetimepicker({
+  beforeShowDay: function(date) {
+    if (date.getMonth() == dateToDisable.getMonth() && date.getDate() == dateToDisable.getDate()) {
+      return [false, ""]
+    }
+
+    return [true, ""];
+  }
+});
+$('#datetimepicker12').datetimepicker({
+  beforeShowDay: function(date) {
+    if (date.getMonth() == dateToDisable.getMonth() && date.getDate() == dateToDisable.getDate()) {
+      return [true, "custom-date-style"];
+    }
+
+    return [true, ""];
+  }
+});
+$('#datetimepicker_dark').datetimepicker({theme:'dark'})
+
+
+</script>
+*/ %>

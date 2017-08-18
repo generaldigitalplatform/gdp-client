@@ -3,6 +3,17 @@
 <script src="../controllers/taskmanagement.js"></script>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 
+ <style>
+            body { font-family:'lucida grande', tahoma, verdana, arial, sans-serif; font-size:11px; }
+            h1 { font-size: 15px; }
+            a { color: #548dc4; text-decoration: none; }
+            a:hover { text-decoration: underline; }
+            table.testgrid { border-collapse: collapse; border: 1px solid #CCB; width: 800px; }
+            table.testgrid td, table.testgrid th { padding: 5px; border: 1px solid #E0E0E0; }
+            table.testgrid th { background: #E5E5E5; text-align: left; }
+            input.invalid { background: red; color: #FDFDFD; }
+        </style>
+
 <div class="container">
     <div class="title">
         <h4 >
@@ -21,8 +32,10 @@
         <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#addFieldForceModal">
         Add Field Force
         </button>
-    </div> 
+    </div>
 </div>
+
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -30,44 +43,116 @@
                 <table class="table table-hover table-sm table-responsive" id="jobmanagement">
                     <thead>
                         <tr>
-                            <th><div>Job</div><div>ID</div></th>
-                            <th><div>Job</div><div>Title</div></th>                       
-                            <th><div>Job</div><div>Description</div></th>
-                            <th><div>Job</div><div>Time</div></th>
-                            <th><div>Job</div><div>Status</div></th>
-                            <th><div>Customer</div><div>Name</div></th>
-                            <th><div>Customer</div><div>Number</div></th>
-                            <th><div>Customer</div><div>Address</div></th> 
-                            <th>Executive</th>
-                            <th>Edit</th>                            
+                            <th class="editablegrid-JobId" data-title="JobId" style="width:5%"><div>Job</div><div>ID</div></th>                          
+                            <th style="width:20%"><div>Job</div><div>Description</div></th>
+                            <th style="width:10%"><div>Job</div><div>Location</div></th>
+                            <th style="width:20%"><div>Job</div><div>Time</div></th>
+                            <th style="width:8%" class="verticalLine"><div>Job</div><div>Status</div></th>
+                            <th style="width:8%"><div>Customer</div><div>Name</div></th>
+                            <th style="width:8%"><div>Customer</div><div>Number</div></th>
+                            <th style="width:20%" class="verticalLine"><div>Customer</div><div>Address</div></th> 
+                            <th style="width:6%"><div>Field</div><div>Force</div></th>
+                            <th><div>Edit</div></th>
+
                         </tr>
                         <tr class="filters">
-                            <th><input type="text" class="form-control" placeholder=""></th>
-                            <th><input type="text" class="form-control" placeholder=""></th>
-                            <th><input type="text" class="form-control" placeholder=""></th>
-                            <th><input type="text" class="form-control" placeholder=""></th>
-                            <th><input type="text" class="form-control" placeholder=""></th>
-                            <th><input type="text" class="form-control" placeholder=""></th>
-                            <th><input type="text" class="form-control" placeholder=""></th>
-                            <th><input type="text" class="form-control" placeholder=""></th>
-                            <th><input type="text" class="form-control" placeholder=""></th>
+                            <th><input type="text" class="form-control" placeholder="filter"></th>
+                            <th><input type="text" class="form-control" placeholder="filter"></th>
+                            <th><input type="text" class="form-control" placeholder="filter"></th>
+                            <th><input type="text" class="form-control" placeholder="filter"></th>
+                            <th class="verticalLine"><input type="text" class="form-control" placeholder="filter"></th>
+                            <th><input type="text" class="form-control" placeholder="filter"></th>
+                            <th><input type="text" class="form-control" placeholder="filter"></th>
+                            <th class="verticalLine"><input type="text" class="form-control" placeholder="filter"></th>
+                            <th><input type="text" class="form-control" placeholder="filter"></th>
                           </tr>
                     </thead>
                     <tbody>
                     <% jobs.forEach(function(job){ %> 
                      <% job.forEach(function(jo){ %>                    
-                        <tr>                        
-                            <td><%= jo.JobId %></td>
-                            <td><%= jo.JobTitle %></td>
-                            <td><%= jo.JobDescription %></td>
-                            <td><%= new Date(jo.JobScheduledTime).toLocaleString() %></td> 
-                            <td class="Status"><%= jo.JobStatus %></td>                                        
-                            <td><%= jo.CustomerDetails.FirstName %></td>
-                            <td><%= jo.CustomerDetails.PrimaryPhone %></td>
-                            <td><%= jo.CustomerDetails.Address %></td>                              
-                            <td><%= jo.EmployeeDetails.EmployeeId +"_"+jo.EmployeeDetails.FirstName %></td>                   
-                            <td><a href="http://localhost:3001/usermanagement"><span class="glyphicon glyphicon-edit"></span></a> </td>
+                        <tr> 
+                            <td class="tabledit-view-mode"> 
+                              <span class="tabledit-span" style="display: inline;"><%= jo.JobId %></span>
+                              <input class="tabledit-input form-control input-sm" type="text" name="JobId" value=<%= jo.JobId %> style="display: none;" disabled=false>
+                             </td>                       
+                            <td class="tabledit-view-mode" >
+                               <span class="tabledit-span" style="display: inline;"><%= jo.JobDescription %></span>
+                              <input class="tabledit-input form-control input-sm" type="text" name="JobDescription" value=<%= jo.JobDescription %> style="display: none;" disabled=false>                             
+                            </td>
+                             <td class="tabledit-view-mode"> 
+                              <span class="tabledit-span" style="display: inline;"><%= jo.JobLocation %></span>
+                              <input class="tabledit-input form-control input-sm" type="text" name="JobLocation" value=<%= jo.JobLocation %> style="display: none;" disabled=false>
+                  
+                             </td>
+                             <td class="tabledit-view-mode">                            
 
+                             <%= new Date(jo.JobScheduledTime).toLocaleString().replace(/(.*)\D\d+/, '$1') %> 
+                
+                             </td>                              
+                            <td data-field="JobStatus" class="Status"><%= jo.JobStatus %>
+                                <% /* <select class="form-control" name="fieldforce" id="inputtext">
+                                            <option>Unassigned</option>
+                                            <option>Assigned</option>
+                                            <option>Started</option>
+                                            <option>Cancelled</option>
+                                            <option>Rescheduled</option>
+                                            <option>Completed</option>
+                                          </select> 
+                                */ %>
+                            </td>                                                            
+                            <% if (jo.CustomerDetails) { %>
+                              <% if (jo.CustomerDetails.FirstName) { %>  
+                                
+                              <td class="tabledit-view-mode"> 
+                              <span class="tabledit-span" style="display: inline;"><%= jo.CustomerDetails.FirstName %></span>
+                              <input class="tabledit-input form-control input-sm" type="text" name="FirstName" value=<%= jo.CustomerDetails.FirstName %> style="display: none;" disabled=false>
+                             </td>
+
+                               
+                            <% } %>                               
+                            <% } else { %>
+                                <td><%= "" %> </td>  
+                            <% } %>
+                           <% if (jo.CustomerDetails) { %>
+                              <% if (jo.CustomerDetails.PrimaryPhone) { %>
+
+                              <td class="tabledit-view-mode"> 
+                              <span class="tabledit-span" style="display: inline;"><%= jo.CustomerDetails.PrimaryPhone %></span>
+                              <input class="tabledit-input form-control input-sm" type="text" name="PrimaryPhone" value=<%= jo.CustomerDetails.PrimaryPhone %> style="display: none;" disabled=false>
+                             </td>  
+
+                                
+                              <% } %>                              
+                            <% }else { %>
+                                <td><%= "" %> </td>  
+                            <% } %>  
+                            <% if (jo.CustomerDetails) { %>
+                              <% if (jo.CustomerDetails.Address) { %>  
+                              
+                                <td class="tabledit-view-mode"> 
+                              <span class="tabledit-span" style="display: inline;"><%= jo.CustomerDetails.Address %></span>
+                              <input class="tabledit-input form-control input-sm" type="text" name="Address" value=<%= jo.CustomerDetails.Address %> style="display: none;" disabled=false>
+                             </td> 
+
+                              
+                              <% } %>  
+                            <% } else { %>
+                                <td><%= "" %> </td>  
+                            <% } %>
+                            <% if (jo.EmployeeDetails) { %>
+                              <% if (jo.EmployeeDetails.EmployeeId) { %>  
+                                
+                                  <td class="tabledit-view-mode"> 
+                              <span class="tabledit-span" style="display: inline;"><%= jo.EmployeeDetails.EmployeeId +"_"+jo.EmployeeDetails.FirstName %></span>
+                              <input class="tabledit-input form-control input-sm" type="text" name="EmployeeId" value=<%= jo.EmployeeDetails.EmployeeId +"_"+jo.EmployeeDetails.FirstName %> style="display: none;" disabled=false>
+                             </td> 
+
+                              
+                              <% } %>  
+                            <% } else { %>
+                                <td><%= "" %> </td>  
+                            <% } %>
+                                                        
                       <% }) %>
                         </tr>
                    <% }) %>
@@ -77,7 +162,7 @@
         </div>
     </div>
 </div>
-</div>
+
 <!-- Create Job Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -86,66 +171,102 @@
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
             <h4 class="modal-title" id="myModalLabel">Create New Job</h4>
         </div>
-        <div class="modal-body">
+      <%#  <div class="modal-body"> %>
             <section class="contactformhorizontal">
                 <div class="container">
                     <div class="row">
                       <div class="col-sm-12">
                         <div class="form-horizontal">
                           <div class="form-group col-sm-3">
-                                <div class="form-group">
-                                  <label class="control-label col-sm-6 required" for="job">Job Title:</label>
-                                  <div class="col-sm-6">
-                                    <input class="form-control" type="text" id="job">
-                                  </div>
-                                </div>
-                                <div class="form-group">
-                                  <label class="control-label col-sm-6 required" for="jobDescription">Job Description:</label>
-                                  <div class="col-sm-6">
-                                    <input class="form-control" type="text" id="jobDescription">
-                                  </div>
-                                </div>
-                                <div class="form-group">
-                                  <label class="control-label col-sm-6 required" for="jobTime">Job Time</label>
-                                  <div class="col-sm-6">
-                                    <input class="form-control" type="text" id="jobTime">
-                                  </div>
-                                </div>
-                                <div class="form-group">
-                                  <label class="control-label col-sm-6 required" for="jobLocation">Job Location</label>
-                                  <div class="col-sm-6">
-                                    <input class="form-control" type="text" id="jobLocation">
-                                  </div>
-                                </div>
-                                <div class="form-group">
-                                  <label class="control-label col-sm-6 required" for="customername">Customer Name</label>
-                                  <div class="col-sm-6">
-                                    <input class="form-control" type="text" id="customername">
-                                  </div>
-                                </div>
-                                <div class="form-group">
-                                  <label class="control-label col-sm-6 required" for="customerphone">Customr Phone</label>
-                                  <div class="col-sm-6">
-                                    <input class="form-control" type="text" id="customerphone">
-                                  </div>
-                                </div>
-                                <div class="form-group">
-                                <label class="control-label col-sm-6 required" for="customeraddress">Customer Address:</label>
-                                <div class="col-sm-6">
-                                  <textarea id="yourMessage" class="form-control" id="customeraddress" rows="6"></textarea>
-                                </div>
-                              </div>            
+                             <form action="/createjob" method="post">
+                                <div class="modal-body">
+                                    <h4 class="title"><span>Job Details</span></h4>
+                                    <div class="form-group">                                      
+                                      <label class="control-label col-sm-6 required" for="inputtext">Job Title:</label>
+                                      <div class="col-sm-6">
+                                        <input class="form-control" name="JobTitle" type="text" id="inputtext">
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="control-label col-sm-6 required" for="inputtext">Job Description:</label>
+                                      <div class="col-sm-6">
+                                        <input class="form-control" type="text" name="JobDescription" row="2" id="inputtext">
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="control-label col-sm-6 required" for="inputtext">Job Time:</label>
+                                        <div class="col-sm-6 input-append date form_datetime">
+                                          <input class="form-control" size="16" type="text" name="jobDateTime" id="inputtext" value="" readonly>
+                                          <span class="add-on"><i class="icon-remove"></i></span>
+                                          <span class="add-on"><i class="icon-th"></i></span>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="control-label col-sm-6 required" for="inputtext">Job Location:</label>
+                                      <div class="col-sm-6">
+                                        <input class="form-control" type="text" name="JobLocation" id="inputtext">
+                                      </div>
+                                    </div>
+                                    <h4 class="title"><span>Customer Details</span></h4>
+                                    <div class="form-group">
+                                      <label class="control-label col-sm-6 required" for="inputtext">First Name:</label>
+                                      <div class="col-sm-6">
+                                        <input class="form-control" type="text" name="firstname" id="inputtext">
+                                      </div>
+                                    </div>
+                                  <% /*  <div class="form-group">
+                                      <label class="control-label col-sm-6 required" for="inputtext">Last Name:</label>
+                                      <div class="col-sm-6">
+                                        <input class="form-control" type="text" name="lastname" id="inputtext">
+                                      </div>
+                                    </div>
+                                 */ %>
+                                    <div class="form-group">
+                                      <label class="control-label col-sm-6 required" for="inputtext">Primary Phone:</label>
+                                      <div class="col-sm-6">
+                                        <input class="form-control" type="number" name="primaryphone" id="inputtext">
+                                      </div>
+                                    </div>
+                                  <% /*
+                                     <div class="form-group">
+                                      <label class="control-label col-sm-6 required" for="inputtext">Secondary Phone:</label>
+                                      <div class="col-sm-6">
+                                        <input class="form-control" type="number" name="secondaryphone" id="inputtext">
+                                      </div>
+                                    </div>
+                                  */ %>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-6 required" for="inputtext">Address:</label>
+                                        <div class="col-sm-6">
+                                          <textarea class="form-control" name="customeraddress" id="inputtext" rows="3"></textarea>
+                                        </div>
+                                    </div>                                    
+                                  <h4 class="title"><span>Field Force Details</span></h4>
+                                    <div class="form-group">
+                                      <label class="control-label col-sm-6 required" for="inputtext">First Name:</label>
+                                      <div class="col-sm-6">                                        
+                                        <select class="form-control" name="fieldforce" id="inputtext">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                          </select>                                      
+                                      </div>
+                                    </div>
+                                    </div>
+                                         <div class="modal-footer">           
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <button class="btn btn-default" type="submit">Submit</button> 
+                                      </div>                                     
+                              </form>        
                           </div>                         
                         </div>
                       </div>
                     </div>
                 </div>
             </section> 
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save</button>
-        </div>
+        <%# </div> %>
+         
     </div>
   </div>
 </div>          
@@ -158,68 +279,76 @@
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
             <h4 class="modal-title" id="myModalLabel">Add Field Force</h4>
         </div>
-        <div class="modal-body">
             <section class="contactformhorizontal">
                 <div class="container">
                     <div class="row">
                       <div class="col-sm-12">
                         <div class="form-horizontal">
-                            <div class="form-group col-sm-3">
+                          <div class="form-group col-sm-3">
+                            <form action="/registerfieldforce" method="post">
+                              <div class="modal-body">
                                 <div class="form-group">
-                                      <label class="control-label col-sm-6 required" for="empid">Employee ID:</label>
+                                      <label class="control-label col-sm-6 required" for="inputtext">Employee ID:</label>
                                       <div class="col-sm-6">
-                                        <input class="form-control" type="text" id="empid">
+                                        <input class="form-control" name="employeeid" type="text" id="inputtext">
                                       </div>
                                 </div>
                                 <div class="form-group">
-                                      <label class="control-label col-sm-6 required" for="firstName">First Name:</label>
+                                      <label class="control-label col-sm-6 required" for="inputtext">Email:</label>
                                       <div class="col-sm-6">
-                                        <input class="form-control" type="text" id="firstName">
+                                        <input class="form-control" name="email" type="text" id="inputtext">
                                       </div>
                                 </div>
                                 <div class="form-group">
-                                      <label class="control-label col-sm-6 required" for="lastName">Last Name</label>
+                                      <label class="control-label col-sm-6 required" for="inputtext">First Name:</label>
                                       <div class="col-sm-6">
-                                        <input class="form-control" type="text" id="lastName">
+                                        <input class="form-control" type="text" name="firstname" id="inputtext">
                                       </div>
                                 </div>
                                 <div class="form-group">
-                                      <label class="control-label col-sm-6 required" for="primaryphone">Primary Phone</label>
+                                      <label class="control-label col-sm-6 required" for="inputtext">Last Name</label>
                                       <div class="col-sm-6">
-                                        <input class="form-control" type="text" id="primaryphone">
+                                        <input class="form-control" type="text" name="lastname" id="inputtext">
                                       </div>
                                 </div>
                                 <div class="form-group">
-                                      <label class="control-label col-sm-6 required" for="secondaryphone">Secondary Phone</label>
+                                      <label class="control-label col-sm-6 required" for="inputtext">Primary Phone</label>
                                       <div class="col-sm-6">
-                                        <input class="form-control" type="text" id="secondaryphone">
+                                        <input class="form-control" type="text" name="primaryphone" id="inputtext">
+                                      </div>
+                                </div>
+                                <div class="form-group">
+                                      <label class="control-label col-sm-6 required" for="inputtext">Secondary Phone</label>
+                                      <div class="col-sm-6">
+                                        <input class="form-control" type="text" name="secondaryphone" id="inputtext">
                                       </div>
                                 </div>                                
                                 <div class="form-group">
-                                      <label class="control-label col-sm-6 required" for="worklocation">Work Location</label>
+                                      <label class="control-label col-sm-6 required" for="inputtext">Work Location</label>
                                       <div class="col-sm-6">
-                                        <input class="form-control" type="text" id="worklocation">
+                                        <input class="form-control" type="text" name="worklocations" id="inputtext">
                                       </div>
                                 </div>
                                  <div class="form-group">
-                                      <label class="control-label col-sm-6 required" for="workpincodes">Work Pincodes</label>
+                                      <label class="control-label col-sm-6 required" for="inputtext">Work Pincodes</label>
                                       <div class="col-sm-6">
-                                        <input class="form-control" type="text" id="workpincodes">
+                                        <input class="form-control" type="text" name="workpincodes" id="inputtext">
                                       </div>
-                                </div>         
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button class="btn btn-default" type="submit">Submit</button> 
+                              </div>
+                            </form>         
                           </div>                         
                         </div>
                       </div>
                     </div>
                 </div>
             </section> 
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save</button>
-        </div>
+        </div>       
     </div>
-  </div>
 </div>        
 
 <% include ./partials/footer.ejs %>

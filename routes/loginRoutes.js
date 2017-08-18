@@ -6,6 +6,8 @@ var express 	= require('express'),
 var config		= require('../config/database'),
 	util		= require('../util/util');
 
+var token;
+
 module.exports = function(app){	
 
 	router.use('/',signinRoutes);
@@ -31,8 +33,15 @@ module.exports = function(app){
 			if(!util.verifyJson(body)){			
 				var body = JSON.parse(body);
 				if("token" in body){			
-					console.log("login successfully");					
+					console.log("login successfully");
+					token = body.token;					
 					res.cookie('employee',body.user.employeeid + "_" + body.user.firstname);
+					res.cookie('employeeid',body.user.employeeid);
+					res.cookie('firstname',body.user.firstname);
+					res.cookie('lastname',body.user.lastname);
+					res.cookie('primaryphone',body.user.primaryphone);
+					res.cookie('secondaryphone',body.user.secondaryphone);
+					res.cookie('email',body.user.email);
 					res.cookie('auth',body.token);
 					res.redirect("/telesales");
 				}			
