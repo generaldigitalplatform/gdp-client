@@ -30,20 +30,36 @@ module.exports = function(app){
 			console.log("register successfully");
 			res.redirect("/login");
 		}
-		if("error" in body){
-		 	if(body["error"]=='You must enter an email address'){
+		else if("error" in body){
+			if(body["error"]=='You must enter EmployeeID'){
+		 	req.flash("msg","You must enter EmployeeID");
+            res.locals.messages = req.flash();	
+			return res.render("register", {message:"You must enter EmployeeID"});
+			}
+		 	else if(body["error"]=='You must enter an email address'){
 		 	req.flash("msg","You must enter an email address");
             res.locals.messages = req.flash();	
 			return res.render("register", {message:"You must enter valid email address"});
 			}
-		}
-		if("error" in body){
-		 	if(body["error"]=='That email address is already in use'){
-		 	req.flash("msg","That email address is already in use");
+			else if(body["error"]=='You must enter Name'){
+		 	req.flash("msg","You must enter Name");
             res.locals.messages = req.flash();	
-			return res.render("register", {message:"email address is already in use"});
+			return res.render("register", {message:"You must enter Name"});
+			}		
+			else if(body["error"]=='You must enter a Password'){
+		 	req.flash("msg","You must enter a Password");
+            res.locals.messages = req.flash();	
+			return res.render("register", {message:"You must enter a Password"});
 			}
-		}
+			else if(body["error"]=='Existing User : EmployeeID/EmailID is already in use'){
+		 	req.flash("msg","Existing User : EmployeeID/EmailID is already in use");
+            res.locals.messages = req.flash();	
+			return res.render("register", {message:"Existing User : EmployeeID/EmailID is already in usee"});
+			}
+			else{
+				return res.render("register");
+			}
+		}		
 	}	
 
 	});

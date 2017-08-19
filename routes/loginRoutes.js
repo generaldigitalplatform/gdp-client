@@ -29,36 +29,44 @@ module.exports = function(app){
 				},
 				form:req.body
 			};
-		request(options,function(error, response, body){			
-			if(!util.verifyJson(body)){			
-				var body = JSON.parse(body);
-				if("token" in body){			
-					console.log("login successfully");
-					token = body.token;					
-					res.cookie('employee',body.user.employeeid + "_" + body.user.firstname);
-					res.cookie('employeeid',body.user.employeeid);
-					res.cookie('firstname',body.user.firstname);
-					res.cookie('lastname',body.user.lastname);
-					res.cookie('primaryphone',body.user.primaryphone);
-					res.cookie('secondaryphone',body.user.secondaryphone);
-					res.cookie('email',body.user.email);
-					res.cookie('auth',body.token);
-					res.redirect("/telesales");
-				}			
-				if("error" in body){
-				 	if(body["error"]=='Login failed. Please try again.'){
-				 	req.flash("msg","Login Failed. If you are not registered yet, please register and login again");
-	                res.locals.messages = req.flash();			
-					console.log("Login failed. Please try again.");
-					return res.render("register", {message:"Login Failed. Please enter the valid email and password. If you are not registered yet, please register and login again"});
-					}
-				}
+		request(options,function(error, response, body){
+			
+				if(!util.verifyJson(body)){			
+					var body = JSON.parse(body);
+					if("token" in body){			
+						console.log("login successfully");
+						token = body.token;					
+						res.cookie('employee',body.user.employeeid + "_" + body.user.firstname);
+						res.cookie('employeeid',body.user.employeeid);
+						res.cookie('firstname',body.user.firstname);
+						res.cookie('lastname',body.user.lastname);
+						res.cookie('primaryphone',body.user.primaryphone);
+						res.cookie('secondaryphone',body.user.secondaryphone);
+						res.cookie('email',body.user.email);
+						res.cookie('auth',body.token);
+						res.redirect("/telesales");
+					}			
+					else if("error" in body){
+					 	if(body["error"]=='Login failed. Please try again with right EmailID'){
+					 	req.flash("msg","Login failed. Please try again with right EmailID");
+		                res.locals.messages = req.flash();			
+						console.log("Login failed. Please try again with right EmailID");
+						return res.render("register", {message:"Login failed. Please try again with right EmailID"});
+						}
+						else if(body["error"]=='Login failed. Please try again with right Password'){
+					 	req.flash("msg","Login failed. Please try again with right Password");
+		                res.locals.messages = req.flash();			
+						console.log("Login failed. Please try again with right Password");
+						return res.render("register", {message:"Login failed. Please try again with right Password"});
+						}
+					}				
 			}
-			if(body=='Unauthorized'){
-				req.flash("msg","Login Failed. You are Unauthorized to login. If not registered yet, please register and login");
+			else if('Unauthorized' == body){
+				req.flash("msg","Login failed. Please try again with registered EmailID and Password");
                 res.locals.messages = req.flash();		
-				return res.render("login", {message:"Login Failed. You are Unauthorized to login. If you are not registered yet, please register and login"});				
+				return res.render("login", {message:"Login failed. Please try again with registered EmailID and Password"});				
 			}
+			
 		});
 	});
 
